@@ -151,3 +151,37 @@ footer nav a { margin: 0 4px; }
 .karte-link .datum { margin-top: 0; }
 .karte-titel { font-size: 19px; font-weight: 700; line-height: 1.3; margin: 2px 0 8px; }
 .karte-nav { margin-top: 12px !important; font-size: 14px; }
+
+/* Neue DAX-Notiz: Entscheidung, Chart, Signale, Bilanz */
+section.entscheidung { border-left: 4px solid var(--akzent); }
+.entscheid-kopf { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.richtung.gross { font-size: 18px; padding: 4px 14px; border-radius: 8px; }
+.richtung.kein { color: var(--neutral); background: var(--neutral-bg); }
+.score { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.score small { font-weight: 500; color: var(--leise); }
+.marken { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 10px 0 0; }
+.marken div { background: var(--bg); border-radius: 8px; padding: 8px 10px; }
+.marken dt { font-size: 12px; color: var(--leise); }
+.marken dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.marken .ziel dd { color: var(--plus); }
+.marken .stopp dd { color: var(--minus); }
+figure.chart { margin: 0; }
+figure.chart img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--linie); }
+figure.chart figcaption { margin-top: 6px; font-size: 13px; color: var(--leise); }
+td.rueckenwind, td.gegenwind, td.neutral { font-weight: 600; }
+td.rueckenwind { color: var(--plus); }
+td.gegenwind { color: var(--minus); }
+td.neutral { color: var(--neutral); }
+table.signale td { white-space: normal; }
+table.signale td:nth-child(2) { white-space: nowrap; }
+.bilanz-zahlen { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--leise); margin-top: 6px; }
+.bilanz-zahlen strong { color: var(--text); }
+
+/* Beweglicher Chart (docs/chart.js) */
+.chart-knoepfe { display: flex; gap: 6px; margin-bottom: 8px; }
+.chart-knoepfe button { font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--linie); background: var(--bg); color: var(--leise); cursor: pointer; }
+.chart-knoepfe button.an { background: var(--text); color: var(--flaeche); border-color: var(--text); }
+.chart-flaeche { height: 380px; }
+section.live-an figure.chart img { display: none; }
+table.signale th:nth-child(3), table.signale td:nth-child(3) { text-align: left; }
+table.signale th:nth-child(2), table.signale td:nth-child(2) { text-align: left; padding-right: 12px; }

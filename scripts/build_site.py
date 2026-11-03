@@ -11,6 +11,7 @@ Nur Standardbibliothek, damit es in jeder Umgebung ohne Installation läuft.
 """
 
 import html
+import json
 import re
 import shutil
 from datetime import date
@@ -77,12 +78,12 @@ def badge(tendenz):
 
 
 def seite(*, titel, basis, marke, kopf, inhalt, nav):
-    ersetzungen = {
+    ersetzungen = {  # INHALT zuerst, damit {{BASIS}} auch in Notizen (z. B. Chart-Bilder) ersetzt wird
+        "{{INHALT}}": inhalt,
         "{{TITEL}}": html.escape(titel),
         "{{BASIS}}": basis,
         "{{MARKE}}": html.escape(marke),
         "{{KOPF}}": kopf,
-        "{{INHALT}}": inhalt,
         "{{NAV}}": nav,
     }
     out = VORLAGE
@@ -155,6 +156,21 @@ def leere_seite(bericht):
     )
 
 
+def bilanz_zeile(bericht):
+    """Kurzbilanz der Tagesentscheidungen (entscheidungen/<bericht>/bilanz.json), falls vorhanden."""
+    pfad = ROOT / "entscheidungen" / bericht / "bilanz.json"
+    if not pfad.exists():
+        return ""
+    g = json.loads(pfad.read_text(encoding="utf-8")).get("gesamt", {})
+    if not g.get("trades"):
+        return '<div class="bilanz-zahlen"><span>Bilanz: noch keine bewertete Entscheidung</span></div>'
+    return (
+        f'<div class="bilanz-zahlen"><span>Bilanz: <strong>{g["trades"]}</strong> Trades</span>'
+        f'<span>Richtung richtig <strong>{g["richtung_richtig_pct"]} %</strong></span>'
+        f'<span>Summe <strong>{g["punkte_summe"]:+d}</strong> Punkte</span></div>'
+    )
+
+
 def uebersicht(neueste):
     karten = []
     for bericht, info in BERICHTE.items():
@@ -168,6 +184,7 @@ def uebersicht(neueste):
             )
         else:
             inhalt = '<p class="datum">Noch keine Ausgabe</p>'
+        inhalt += bilanz_zeile(bericht)
         karten.append(
             f'<section class="karte">\n'
             f'  <h2>{html.escape(info["name"])} <span class="plan">{info["plan"]}</span></h2>\n'
@@ -206,6 +223,10 @@ def main():
                 notiz_seite(notiz, bericht, "archiv", vorher, nachher), encoding="utf-8"
             )
         (archiv / "index.html").write_text(archiv_seite(notizen, bericht), encoding="utf-8")
+
+        charts = NOTIZEN / bericht / "charts"
+        if charts.exists():
+            shutil.copytree(charts, ziel / "charts", dirs_exist_ok=True)
 
         if notizen:
             neueste[bericht] = notizen[0]

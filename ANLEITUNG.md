@@ -1,7 +1,7 @@
 # Anleitung: Markt-Notizen (gemeinsamer Ablauf)
 
 Diese Datei steuert, was die Routinen tun. Änderungen hier gelten ab dem nächsten Lauf.
-Welcher Bericht gerade dran ist, steht im Auftrag der Routine (z. B. „Bericht: dax“). Die berichtsspezifischen Inhalte stehen in `berichte/<bericht>.md` – lies diese Datei **zusätzlich** vollständig, sie hat Vorrang bei Inhalt, Tabellenzeilen und Betreff.
+Welcher Bericht gerade dran ist, steht im Auftrag der Routine (z. B. „Bericht: dax“). Die berichtsspezifischen Inhalte stehen in `berichte/<bericht>.md` – lies diese Datei **zusätzlich** vollständig, sie hat Vorrang bei Inhalt, Tabellenzeilen und Betreff. Hat sie einen **eigenen Ablauf und Aufbau** (wie `berichte/dax.md`), ersetzt dieser die Abschnitte 2 und 3 unten.
 
 Du bist ein erfahrener Marktanalyst. Du erstellst eine kurze, meinungsstarke Notiz, veröffentlichst sie auf der Webseite und schickst sie per E-Mail. Arbeite vollständig selbstständig, ohne Rückfragen.
 
@@ -102,7 +102,7 @@ Klassen für Veränderungen in der Tabelle: `plus` (grün), `minus` (rot), ohne 
 
 ```bash
 python3 scripts/build_site.py
-git add notizen docs
+git add notizen docs $(ls -d daten entscheidungen 2>/dev/null)
 git commit -m "<Bericht> Notiz JJJJ-MM-TT HH:MM"
 git pull --rebase origin main
 python3 scripts/build_site.py   # nach dem Pull erneut bauen, falls inzwischen andere Notizen dazukamen
