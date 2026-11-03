@@ -65,6 +65,9 @@ const MAERKTE = [
   ["vix", "^VIX", "VIX", "America/New_York"],
   ["vxd", "^VXD", "VXD (Dow-Volatilität)", "America/New_York"],
   ["us10y", "^TNX", "US-Treasury 10J (Rendite in %, Yahoo)", "America/New_York"],
+  // Ersatz für die Kreditaufschläge, falls FRED nicht antwortet: Kurse der großen Anleihe-ETFs
+  ["hyg", "HYG", "US-Hochzins-Anleihen-ETF (HYG)", "America/New_York"],
+  ["lqd", "LQD", "US-Unternehmensanleihen-ETF Investment Grade (LQD)", "America/New_York"],
   ["es", "ES=F", "S&P-500-Future", "America/New_York"],
   ["nq", "NQ=F", "Nasdaq-100-Future", "America/New_York"],
   ["ym", "YM=F", "Dow-Future", "America/New_York"],
@@ -275,7 +278,12 @@ if (BERICHT === "us30") {
 
 // ---------- Profi-Sicht: ING Think ----------
 await block("ing_think", async () => {
-  const res = await fetch("https://think.ing.com/rss/", { headers: { "User-Agent": "Mozilla/5.0" } });
+  let res;
+  for (let versuch = 1; versuch <= 3; versuch++) {  // ING antwortet gelegentlich mit 503 – kurz warten und neu versuchen
+    res = await fetch("https://think.ing.com/rss/", { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36", Accept: "application/rss+xml, application/xml, text/xml, */*" } });
+    if (res.ok) break;
+    await new Promise((r) => setTimeout(r, 3000 * versuch));
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const xml = await res.text();
   const feld = (it, tag) => (it.match(new RegExp(`<${tag}[^>]*>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</${tag}>`)) || [])[1]?.trim();

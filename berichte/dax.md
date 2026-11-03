@@ -14,7 +14,7 @@ python3 scripts/entscheidung.py bilanz   # bewertet die Entscheidungen der Vorta
 
 - **Alle Zahlen** für Marktlage, Anleihen & Zinsen, Kalender, Positionierung und US-Datenüberraschungen kommen aus der Ausgabe von `marktdaten.mjs`. Gib Zahlen mit der Genauigkeit der Quelle an, keine Spannen „ca. X–Y“, wenn die Daten einen Wert liefern.
 - Steht dort `n/v` oder ein Fehler, darfst du den Wert per Websuche ergänzen (Quelle nennen), sonst `n/v`.
-- **Ersatzquellen in den Daten:** CNBC (Bund- und US-Live-Kurve) blockt Anfragen aus Rechenzentren. Fehlt die Bund-Kurve, nimm „Bund laut Bundesbank“ (Vortagesschluss); fehlt die US-Live-Kurve, nimm „US-Treasury 10J (Yahoo)“ aus den Märkten bzw. die offizielle Treasury-Kurve vom Vortag. Nenne dann die Quelle.
+- **Ersatzquellen in den Daten:** CNBC (Bund- und US-Live-Kurve) blockt Anfragen aus Rechenzentren. Fehlt die Bund-Kurve, nimm „Bund laut Bundesbank“ (Vortagesschluss); fehlt die US-Live-Kurve, nimm „US-Treasury 10J (Yahoo)“ aus den Märkten bzw. die offizielle Treasury-Kurve vom Vortag. FRED (Kreditaufschläge) blockt ebenfalls oft; fehlt `kredit`, beurteile Kreditstress über die Veränderung der Anleihe-ETFs HYG (Hochzins) und LQD (Investment Grade) aus den Märkten. Nenne jeweils die Quelle.
 - Schlägt das Skript ganz fehl (z. B. kein `node` oder gesperrte Domains), gib den Fehler in der Abschlusszeile aus und hole die Zahlen wie früher per Websuche. Die Notiz erscheint trotzdem.
 - Achte auf den **Handelstag** jeder Zeile: China und Japan sind um 8:30 Uhr meist schon geschlossen (dann ist „Stand“ der Schluss von heute), die US-Werte sind der Schluss von gestern, die US-Futures laufen.
 
