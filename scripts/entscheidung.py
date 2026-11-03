@@ -126,7 +126,9 @@ def bewerte(e, kerzen, tage):
     eroeffnung, schluss = offiziell.get("o") or tag[0]["o"], offiziell.get("c") or tag[-1]["c"]
     bewegung = round(schluss - eroeffnung)
     r = {"eroeffnung": eroeffnung, "schluss": schluss, "bewegung_punkte": bewegung,
-         "hoch": max(c["h"] for c in tag), "tief": min(c["l"] for c in tag)}
+         "hoch": max(c["h"] for c in tag), "tief": min(c["l"] for c in tag),
+         # Trifft die Spanne? Schluss innerhalb ±1 σ um die Eröffnung (Ziel: etwa 68 % der Tage)
+         "in_spanne": abs(schluss - eroeffnung) <= e["sigma_punkte"]}
     if e["richtung"] == "kein":
         r.update(ausgang="kein Trade", punkte=0, richtig=None)
         return r
@@ -178,11 +180,16 @@ def bilanz(a):
             "punkte_schnitt": round(sum(e["ergebnis"]["punkte"] for e in liste) / n),
         }
     stufen = {"1–3": (1, 3), "4–6": (4, 6), "7–10": (7, 10)}
+    mit_spanne = [e for e in alle if (e.get("ergebnis") or {}).get("in_spanne") is not None]
+    spanne = {"tage": len(mit_spanne),
+              "treffer_pct": round(100 * sum(e["ergebnis"]["in_spanne"] for e in mit_spanne) / len(mit_spanne)) if mit_spanne else None,
+              "soll_pct": 68}
     zusammen = {
         "stand": daten.get("datum"),
         "regeln": f"{BERICHTE[BERICHT]['fenster']}; Ziel {ZIEL_SIGMA} σ, Stopp {STOPP_SIGMA} σ; Kerze mit beidem zählt als Stopp",
         "gesamt": kennzahlen(fertig),
         "nach_score": {s: kennzahlen([e for e in fertig if lo <= e["score"] <= hi]) for s, (lo, hi) in stufen.items()},
+        "spanne": spanne,
         "kein_trade_tage": sum(1 for e in alle if e["richtung"] == "kein" and e.get("ergebnis")),
         "letzte": [{"datum": e["datum"], "richtung": e["richtung"], "score": e["score"], **(e["ergebnis"] or {})} for e in alle[-20:]],
     }
@@ -203,6 +210,9 @@ def bilanz(a):
         print(f"Bilanz {e['datum']}: {e['richtung'].upper()} (Überzeugung {e['score']}/10) – "
               f"{'Richtung richtig' if r['richtig'] else 'Richtung falsch'}, {AUSGANG.get(r['ausgang'], r['ausgang'])}, {r['punkte']:+d} Punkte "
               f"(Eröffnung {de(r['eroeffnung'])}, Schluss {de(r['schluss'])}, Hoch {de(r['hoch'])}, Tief {de(r['tief'])}).")
+    if "in_spanne" in r:
+        print(f"Spanne ±{de(e['sigma_punkte'])} um die Eröffnung: {'getroffen' if r['in_spanne'] else 'verfehlt'} "
+              f"(Bewegung {r['bewegung_punkte']:+d}); bisher {spanne['treffer_pct']} % von {spanne['tage']} Tagen getroffen (Soll ca. 68 %).")
     g = zusammen["gesamt"]
     if g["trades"]:
         print(f"Gesamt seit Start: {g['trades']} Trade{'s' if g['trades'] != 1 else ''}, Richtung richtig {g['richtung_richtig_pct']} %, Gewinnmitnahme erreicht {g['ziel_pct']} %, "

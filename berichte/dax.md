@@ -20,7 +20,7 @@ python3 scripts/entscheidung.py bilanz   # bewertet die Entscheidungen der Vorta
 
 ## B. Recherche (WebSearch / WebFetch) – nur, was die Daten nicht liefern
 
-1. **VDAX** (früher VDAX-NEW, eingepreiste 30-Tage-Schwankung des DAX): kommt aus den Daten (onvista). Nur wenn dort `n/v`, per Websuche suchen; bleibt er unauffindbar, nimmt `entscheidung.py` automatisch die realisierte Schwankung als Ersatz und sagt das.
+1. **Spanne:** kommt automatisch aus den Daten, bevorzugt aus der **DAX-Tagesoption (Eurex ODAP)**, die heute zur Xetra-Schlussauktion verfällt (Abschnitt „Tagesoption“ der Datenausgabe). Fehlt sie, nimmt `entscheidung.py` den **VDAX** (onvista), danach die realisierte Schwankung, und sagt das. Nichts davon per Websuche ersetzen.
 2. **DAX vorbörslich:** X-DAX, IG-, L&S- oder Tradegate-Indikation mit Uhrzeit.
 3. **Nachrichten zu DAX-Unternehmen** seit gestern Abend: Zahlen, Ad-hoc-Meldungen, Prognosen, Übernahmen, Managementwechsel, Analysten. Besonders die Schwergewichte (SAP, Siemens, Allianz, Deutsche Telekom, Airbus, Rheinmetall, Siemens Energy, Münchener Rück, Deutsche Bank, Mercedes-Benz).
 4. **Grund der China-Sitzung** (1 Satz) und **Konjunkturdaten von heute früh** (Destatis 8:00 Uhr), falls im Kalender noch kein Ist-Wert steht.
@@ -62,7 +62,7 @@ Bewerte **jedes** Signal dieser Liste mit Wert, Wirkung auf den DAX heute (`ruec
 
 ```bash
 python3 scripts/entscheidung.py anlegen --datum JJJJ-MM-TT --richtung long|short|kein --score N \
-  [--vola <VDAX nur wenn per Websuche ergänzt> --vola-quelle "<Quelle Uhrzeit>"] --indikation <DAX vorbörslich> \
+  --indikation <DAX vorbörslich> \
   --grund "<1 Satz>" --signale '<JSON-Liste: [{"name": "...", "wert": "...", "wirkung": "rueckenwind|gegenwind|neutral", "grund": "..."}]>'
 python3 scripts/chart.py --datum JJJJ-MM-TT
 ```
@@ -89,9 +89,9 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
     <div class="stopp"><dt>Obergrenze · Idee widerlegt</dt><dd>Eröffnung +190 (ca. 25.970)</dd></div>
     <div class="ziel"><dt>Untergrenze · Gewinnmitnahme</dt><dd>Eröffnung −238 (ca. 25.542)</dd></div>
     <!-- Reihenfolge immer Obergrenze vor Untergrenze; Klasse ziel (grün) für die Gewinnseite, stopp (rot) für die Verlustseite -->
-    <div><dt>VDAX</dt><dd>19,5 %</dd></div>
+    <div><dt>Eingepreist (Tagesoption)</dt><dd>±1,04 %</dd></div>   <!-- Quelle laut Ausgabe; bei Ersatz „VDAX 19,5 %“ -->
   </dl>
-  <p class="risiko">Einstieg zur Xetra-Eröffnung, Ausstieg spätestens zum Xetra-Schluss. Spanne = ±1 Tages-σ aus dem VDAX (ca. 68 %). Keine Anlageberatung.</p>
+  <p class="risiko">Einstieg zur Xetra-Eröffnung, Ausstieg spätestens zum Xetra-Schluss. Spanne = ±1 Tages-σ aus der DAX-Tagesoption (ca. 68 %). Keine Anlageberatung.</p>
 </section>
 
 <section class="chart">
@@ -118,7 +118,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 
 <section class="bilanz">
   <h2>Bilanz von gestern</h2>
-  <p>Ergebnis der letzten Entscheidung (Gewinnseite erreicht, Verlustseite erreicht oder Schluss) und Gesamtbilanz – direkt aus der Ausgabe von <code>entscheidung.py bilanz</code>.</p>
+  <p>Ergebnis der letzten Entscheidung (Gewinnseite erreicht, Verlustseite erreicht oder Schluss), ob die Spanne getroffen wurde, und Gesamtbilanz – direkt aus der Ausgabe von <code>entscheidung.py bilanz</code>.</p>
 </section>
 
 <section class="markt">

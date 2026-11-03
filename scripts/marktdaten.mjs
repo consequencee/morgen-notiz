@@ -176,6 +176,52 @@ async function vxd() {
 }
 await block("vola", CFG.vola === "vdax" ? vdax : vxd);
 
+// ---------- Tagesoption: eingepreiste Bewegung bis zum heutigen Schluss ----------
+// Straddle (Call + Put am Geld) ≈ 0,8 × σ × Kurs × √Tage  →  σ je Tag ≈ Straddle / 0,798 / √Tage.
+// DAX: Eurex-Tagesoption ODAP (verfällt zur Xetra-Schlussauktion), Abrechnungspreise vom letzten veröffentlichten Handelstag.
+// US30: S&P-500-Tagesoption (Cboe, verzögert), mit VXD/VIX auf den Dow umgerechnet.
+const werktage = (von, bis) => { let n = 0; for (let t = Date.parse(von + "T12:00:00Z") + 864e5; t <= Date.parse(bis + "T12:00:00Z"); t += 864e5) { const w = new Date(t).getUTCDay(); if (w && w < 6) n++; } return n; };
+async function odap() {
+  const basis = "https://www.eurex.com/api/v1/overallstatistics/3734540";
+  const kopf = { "User-Agent": "Mozilla/5.0 (Macintosh)" };
+  const ue = await (await fetch(`${basis}?filtertype=overview`, { headers: kopf })).json();
+  const verfall = HEUTE.replaceAll("-", "");
+  const zeile = (ue.dataRows || []).find((r) => r.date === verfall);
+  if (!zeile) throw new Error(`keine ODAP-Serie mit Verfall ${HEUTE}`);
+  const tage = (ue.header?.tradingDates || []).map((d) => `${d.slice(6, 10)}-${d.slice(3, 5)}-${d.slice(0, 2)}`).filter((d) => d < HEUTE).sort();
+  const bus = tage.at(-1);
+  if (!bus) throw new Error("kein veröffentlichter Handelstag");
+  const det = await (await fetch(`${basis}?filtertype=detail&productdate=${verfall}&busdate=${bus.replaceAll("-", "")}&contracttype=${zeile.contractType}`, { headers: kopf })).json();
+  const schluss = (out.maerkte?.dax?.kerzen || []).find((c) => c.tag === bus)?.c;
+  if (!fin(schluss)) throw new Error(`kein DAX-Schluss für ${bus}`);
+  const c = Object.fromEntries((det.dataRowsCall || []).map((r) => [r.strike, r.dSettle]));
+  const p = Object.fromEntries((det.dataRowsPut || []).map((r) => [r.strike, r.dSettle]));
+  const k = Object.keys(c).map(Number).filter((x) => fin(p[x])).sort((a, b) => Math.abs(a - schluss) - Math.abs(b - schluss))[0];
+  const straddle = c[k] + p[k];
+  const n = Math.max(1, werktage(bus, HEUTE));
+  const sigmaPct = straddle / 0.798 / Math.sqrt(n) / schluss * 100;
+  return { name: "DAX-Tagesoption (Eurex ODAP)", verfall: HEUTE, preise_vom: bus, handelstage: n, basispreis: k, call: c[k], put: p[k], straddle: rund(straddle, 1), sigma_tag_pct: rund(sigmaPct, 3), sigma_tag_punkte: rund(schluss * sigmaPct / 100, 0), quelle: "Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP" };
+}
+async function spx0dte() {
+  const omon = (await lade("lib/fn/omon.js")).default;
+  const tagNY = tagIn("America/New_York");
+  const r = await omon({ symbol: "^GSPC", expiry: HEUTE });
+  if (r.expiry?.date !== HEUTE) throw new Error(`keine SPX-Serie mit Verfall ${HEUTE} (nächste ${r.expiry?.date})`);
+  const pct = r.move?.pct;
+  if (!fin(pct)) throw new Error("keine eingepreiste Bewegung");
+  const vxd = out.maerkte?.vxd?.stand, vix = out.maerkte?.vix?.stand;
+  const faktor = fin(vxd) && fin(vix) && vix > 0 ? vxd / vix : 1;
+  const sigmaPct = (pct / 0.798) * faktor;
+  const schluss = out.index_kennzahlen?.schluss;
+  return { name: "S&P-500-Tagesoption (Cboe), auf den Dow umgerechnet", verfall: HEUTE, stand: r.priceTime, ny_tag: tagNY, basispreis: r.move.strike, straddle_pct: rund(pct, 3), faktor_vxd_vix: rund(faktor, 3), sigma_tag_pct: rund(sigmaPct, 3), sigma_tag_punkte: fin(schluss) ? rund(schluss * sigmaPct / 100, 0) : null, quelle: r.source };
+}
+await block("tagesoption", BERICHT === "dax" ? odap : spx0dte);
+// Spanne bevorzugt aus der Tagesoption; VDAX/VXD bleiben unter "vola_index" erhalten und dienen als Ersatz
+if (out.tagesoption?.sigma_tag_pct) {
+  out.vola_index = out.vola;
+  out.vola = { name: out.tagesoption.name, wert: rund(out.tagesoption.sigma_tag_pct * Math.sqrt(252), 2), zeit: out.tagesoption.preise_vom || out.tagesoption.stand, quelle: `${out.tagesoption.quelle}; als Jahresvola ausgedrückt (σ Tag × √252)` };
+}
+
 // ---------- Anleihen, Zinsen, Kredit ----------
 const kurve = (d) => {
   const n = d.curves?.find((c) => c.key === "now") || d.curves?.[0];
@@ -316,7 +362,9 @@ for (const [key] of MAERKTE) {
   z.push(`- ${m.name}: ${de(m.stand, dp)} (${vz(m.veraenderung_pct)} % vs. ${m.vortag ?? "Vortag"}) · Handelstag ${m.tag}${m.heute ? " (heute)" : ""} · Eröffnung ${de(m.eroeffnung, dp)} (${vz(m.eroeffnung_pct)} % vs. Vortagesschluss)`);
 }
 const k = out.index_kennzahlen;
-if (k) if (out.vola) z.push(`\n## ${out.vola.name}\n- ${de(out.vola.wert)} % (Vortag ${de(out.vola.vorher)} %), Stand ${out.vola.zeit}, ${out.vola.quelle}`);
+if (k) if (out.tagesoption) { const t = out.tagesoption; z.push(`\n## Tagesoption (Spanne für heute)\n- ${t.name}: Straddle ${t.straddle ?? t.straddle_pct + " %"} am Basispreis ${t.basispreis} → erwartete Tagesbewegung ±${de(t.sigma_tag_pct, 2)} % ≈ ±${de(t.sigma_tag_punkte, 0)} Punkte${t.preise_vom ? ` (Preise vom ${t.preise_vom}, ${t.handelstage} Handelstag(e) bis Verfall)` : ""}${t.faktor_vxd_vix ? ` (Faktor VXD/VIX ${de(t.faktor_vxd_vix, 3)})` : ""}`); }
+const vi = out.vola_index || out.vola;
+if (vi) z.push(`\n## ${vi.name}\n- ${de(vi.wert)} % (Vortag ${de(vi.vorher)} %), Stand ${vi.zeit}, ${vi.quelle}${out.vola_index ? " – nur Vergleich/Ersatz, die Spanne kommt aus der Tagesoption" : ""}`);
 z.push(`\n## ${CFG.index === "dax" ? "DAX" : "Dow"}-Kennzahlen\n- Letzter Handelstag ${k.letzter_handelstag}: Eröffnung ${de(k.eroeffnung)}, Hoch ${de(k.hoch)}, Tief ${de(k.tief)}, Schluss ${de(k.schluss)}\n- 21-Tage-Schnitt ${de(k.schnitt_21)}, 50-Tage-Schnitt ${de(k.schnitt_50)}, 200-Tage-Schnitt ${de(k.schnitt_200)}\n- Realisierte Vola 20 Tage (annualisiert): ${de(k.realisierte_vola_20t_pct, 1)} % (Ersatz, falls kein Volatilitätsindex gefunden wird)`);
 const kv = (n, d) => d && `- ${n} (${d.stand ?? "?"}): 2J ${de(d.werte?.["2Y"])} %, 10J ${de(d.werte?.["10Y"])} %, 30J ${de(d.werte?.["30Y"])} % · Vergleich ${d.vergleich?.label ?? "-"}: 10J ${de(d.vergleich?.werte?.["10Y"])} % · 2s10s ${de(d.spread_2s10s_bp, 0)} Bp.`;
 z.push("\n## Anleihen & Zinsen", kv("Bund", out.bund), kv("US-Treasury (offiziell, Vortag)", out.us_treasury), kv("US-Treasury live", out.us_treasury_live));
