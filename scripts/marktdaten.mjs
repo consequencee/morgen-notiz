@@ -205,15 +205,26 @@ async function odap() {
 async function spx0dte() {
   const omon = (await lade("lib/fn/omon.js")).default;
   const tagNY = tagIn("America/New_York");
-  const r = await omon({ symbol: "^GSPC", expiry: HEUTE });
-  if (r.expiry?.date !== HEUTE) throw new Error(`keine SPX-Serie mit Verfall ${HEUTE} (nächste ${r.expiry?.date})`);
+  // erst der S&P-500-Index über Cboe; antwortet Cboe nicht (in der Cloud schon vorgekommen), der SPY-ETF über Nasdaq
+  let r, fehler = [];
+  for (const symbol of ["^GSPC", "SPY"]) {
+    try {
+      r = await omon({ symbol, expiry: HEUTE });
+      if (r.expiry?.date === HEUTE && fin(r.move?.pct)) break;
+      fehler.push(`${symbol}: keine Serie mit Verfall ${HEUTE} (nächste ${r.expiry?.date})`);
+      r = null;
+    } catch (e) {
+      fehler.push(`${symbol}: ${e?.message || e}`);
+    }
+  }
+  if (!r) throw new Error(fehler.join(" | "));
   const pct = r.move?.pct;
   if (!fin(pct)) throw new Error("keine eingepreiste Bewegung");
   const vxd = out.maerkte?.vxd?.stand, vix = out.maerkte?.vix?.stand;
   const faktor = fin(vxd) && fin(vix) && vix > 0 ? vxd / vix : 1;
   const sigmaPct = (pct / 0.798) * faktor;
   const schluss = out.index_kennzahlen?.schluss;
-  return { name: "S&P-500-Tagesoption (Cboe), auf den Dow umgerechnet", verfall: HEUTE, stand: r.priceTime, ny_tag: tagNY, basispreis: r.move.strike, straddle_pct: rund(pct, 3), faktor_vxd_vix: rund(faktor, 3), sigma_tag_pct: rund(sigmaPct, 3), sigma_tag_punkte: fin(schluss) ? rund(schluss * sigmaPct / 100, 0) : null, quelle: r.source };
+  return { name: `S&P-500-Tagesoption (${r.symbol}), auf den Dow umgerechnet`, verfall: HEUTE, stand: r.priceTime, ny_tag: tagNY, basispreis: r.move.strike, straddle_pct: rund(pct, 3), faktor_vxd_vix: rund(faktor, 3), sigma_tag_pct: rund(sigmaPct, 3), sigma_tag_punkte: fin(schluss) ? rund(schluss * sigmaPct / 100, 0) : null, quelle: r.source };
 }
 await block("tagesoption", BERICHT === "dax" ? odap : spx0dte);
 // Spanne bevorzugt aus der Tagesoption; VDAX/VXD bleiben unter "vola_index" erhalten und dienen als Ersatz
