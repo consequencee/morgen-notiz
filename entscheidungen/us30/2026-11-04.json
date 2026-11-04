@@ -1,0 +1,114 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-04",
+ "richtung": "long",
+ "score": 6,
+ "grund": "Breite Erleichterungsrally nach dem klaren Midterm-Ergebnis: starker Start, fast alle Schwergewichte im Plus, fallender Ölpreis und Rückenwind aus Europa.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 52.410 (Lücke +1,2 %), jetzt 52.839 (+0,82 % seit Eröffnung), Hoch 52.834",
+   "wirkung": "rueckenwind",
+   "grund": "Lücke wird nicht verkauft, sondern ausgebaut"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +1.090 Pkt.; MSFT +146, GS +135, SHW +127; CAT −152",
+   "wirkung": "rueckenwind",
+   "grund": "Breite Basis, nur Caterpillar bremst deutlich"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "ADP 86K vs. Prognose 67K; Handelsbilanz −105,0 Mrd. vs. −107,9 Mrd.",
+   "wirkung": "neutral",
+   "grund": "Solide Daten, stützen aber auch die Zinserhöhungserwartung"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +1,97 %, Euro Stoxx 50 +1,95 %; Nikkei −1,42 %, CSI 300 +2,31 %",
+   "wirkung": "rueckenwind",
+   "grund": "Europa zieht mit, China kräftig im Plus"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 79 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Zinserhöhung im Dezember weitgehend eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,61 % (±0), 10J 4,93 % (−2 Bp.)",
+   "wirkung": "neutral",
+   "grund": "Leicht fallend, aber auf hohem Niveau"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,42 %, LQD +0,31 %",
+   "wirkung": "rueckenwind",
+   "grund": "Anleihe-ETFs steigen, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 93,03 (−3,18 %), Brent 100,30 (−3,19 %), EUR/USD 1,1263 (+0,63 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Fallendes Öl und schwächerer Dollar entlasten"
+  },
+  {
+   "name": "Trend",
+   "wert": "Dow 52.839 über 21-T. 52.019, 50-T. 52.153, 200-T. 50.630",
+   "wirkung": "rueckenwind",
+   "grund": "Wieder über allen Schnitten"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 27.10.: Hedgefonds S&P-Future netto −400.604",
+   "wirkung": "neutral",
+   "grund": "Short-Lastigkeit kann Eindeckungen befeuern, keine Extremlage"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "McDonald’s EPS 3,51 vs. 3,36 erwartet; Amgen bereinigt 6,45 USD",
+   "wirkung": "rueckenwind",
+   "grund": "Zwei Dow-Werte mit Zahlen über Erwartung"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: US-Zinsen mit dreifachem Gegenwind",
+   "wirkung": "neutral",
+   "grund": "Zinsseitig vorsichtig, nicht zu Aktien"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "15:45 PMI, 16:00 ISM Dienste, 16:30 Öllager; kein Fed-Entscheid",
+   "wirkung": "neutral",
+   "grund": "Bewegungspotenzial, aber kein Top-Ereignis"
+  }
+ ],
+ "vola_pct": 12.97,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52839,
+ "referenz_art": "Einstieg",
+ "einstieg": {
+  "kurs": 52839,
+  "zeit": 1793802753,
+  "zeit_iso": "2026-11-04T14:32:33+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 51786.7188,
+  "hoch": 51932.63,
+  "tief": 51593.16,
+  "tag": "2026-11-03"
+ },
+ "sigma_punkte": 430,
+ "spanne": [
+  52409,
+  53269
+ ],
+ "ziel_punkte": 323,
+ "stopp_punkte": 258,
+ "ziel_ca": 53162,
+ "stopp_ca": 52581,
+ "ergebnis": null
+}
