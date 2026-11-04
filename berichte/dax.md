@@ -167,7 +167,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 ## F. Ergänzungen zu Webseite und E-Mail
 
 - **Commit:** zusätzlich die neuen Dateien aufnehmen: `git add notizen docs daten entscheidungen`.
-- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Spanne, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt). Darunter der Chart als Bild mit der absoluten Adresse `https://consequencee.github.io/morgen-notiz/dax/charts/JJJJ-MM-TT.png` (bei Sonderausgaben `JJJJ-MM-TT-HHMM.png`), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
+- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt). Darunter der Chart als **eingebettetes Bild** (Inline-Anhang `notizen/dax/charts/JJJJ-MM-TT.png`, bei Sonderausgaben `JJJJ-MM-TT-HHMM.png`, im Text `<img src="cid:att0">` – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
 
 ## Tabellenzeilen (Marktlage)
 
