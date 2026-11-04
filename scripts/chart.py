@@ -193,8 +193,8 @@ def main():
         else:
                 marken.append((e["referenz"], f"{'INDIKATION' if e.get('referenz_art') == 'Indikation' else 'REFERENZ'} {zahl(e['referenz'])}", BLAU))
     if e.get("spanne"):
-        marken.append((e["spanne"][1], f"ERWARTETE RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
-        marken.append((e["spanne"][0], f"ERWARTETE RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
+        marken.append((e["spanne"][1], f"RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
+        marken.append((e["spanne"][0], f"RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
     # Beschriftungen links im Heute-Bereich, ohne Überlappung
     belegt = []
     for wert, label, farbe in sorted(marken, key=lambda m: -m[0]):
