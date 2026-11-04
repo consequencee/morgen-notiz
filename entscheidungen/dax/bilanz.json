@@ -1,0 +1,25 @@
+{
+ "stand": "2026-11-04",
+ "regeln": "Xetra 9:00–17:30; Ziel 0.75 σ, Stopp 0.6 σ; Kerze mit beidem zählt als Stopp",
+ "gesamt": {
+  "trades": 0
+ },
+ "nach_score": {
+  "1–3": {
+   "trades": 0
+  },
+  "4–6": {
+   "trades": 0
+  },
+  "7–10": {
+   "trades": 0
+  }
+ },
+ "spanne": {
+  "tage": 0,
+  "treffer_pct": null,
+  "soll_pct": 68
+ },
+ "kein_trade_tage": 0,
+ "letzte": []
+}

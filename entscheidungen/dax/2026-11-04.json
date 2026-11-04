@@ -1,0 +1,107 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-04",
+ "richtung": "short",
+ "score": 3,
+ "grund": "Midterm-Schock, hohe Renditen, Öl über 100 USD und Fed-Erhöhungserwartung überwiegen den intakten Aufwärtstrend knapp.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 +0,36 %, Nasdaq 100 +0,68 %; Futures S&P −0,22 %, Nasdaq −0,33 %",
+   "wirkung": "gegenwind",
+   "grund": "Futures nach Demokraten-Sieg bei Midterms über Nacht bis −1,3 %/−2,2 %, Verluste stark eingegrenzt"
+  },
+  {
+   "name": "DAX vorbörslich",
+   "wert": "X-DAX 25.824 (−0,21 %)",
+   "wirkung": "gegenwind",
+   "grund": "Leicht schwächerer Start, nachts IG zeitweise 25.532"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei −1,42 %, Shanghai +2,16 %, CSI 300 +2,31 %, Hang Seng +1,41 %",
+   "wirkung": "neutral",
+   "grund": "China fest auf Stützungserwartungen, Japan schwach"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "ISM Industrie 55,5 vs. 54,5",
+   "wirkung": "neutral",
+   "grund": "Starke US-Konjunktur, nährt aber Zinserhöhungserwartung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed Dez.: 79 % für +25 Bp.; EZB 2,5 %",
+   "wirkung": "gegenwind",
+   "grund": "Straffung eingepreist, Eurozone-Inflation heute erwartet 4,0 %"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,33 % (+2 Bp.), US 10J 4,95 % (+6 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Hohe und steigende Renditen belasten Bewertungen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,12 %, LQD +0,01 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress erkennbar"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 104,14 USD, EUR/USD 1,1240",
+   "wirkung": "gegenwind",
+   "grund": "Öl über 100 USD, stärkerer Euro belastet Exporteure"
+  },
+  {
+   "name": "Trend",
+   "wert": "DAX über 21-, 50- und 200-Tage-Schnitt",
+   "wirkung": "rueckenwind",
+   "grund": "Intakter Aufwärtstrend"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P: Hedgefonds netto −400.604 (−29.359)",
+   "wirkung": "neutral",
+   "grund": "Keine neue Extremlage"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Conti, Fresenius, Heidelberg Materials heben/bestätigen; BMW Gewinnwarnung",
+   "wirkung": "neutral",
+   "grund": "Gemischt, Schwergewichte ohne eigene Nachrichten"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Midterms weitgehend eingepreist",
+   "wirkung": "neutral",
+   "grund": "Dollar kurzfristig unter Druck, kein Strukturbruch"
+  },
+  {
+   "name": "Termine 9:00–17:30",
+   "wert": "EZ-Inflation 11:00, ADP 14:15, ISM Dienste 16:00",
+   "wirkung": "neutral",
+   "grund": "Kein Top-Ereignis, aber Inflation kann bewegen"
+  }
+ ],
+ "vola_pct": 19.73,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-03, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25824.0,
+ "referenz_art": "Indikation",
+ "vortag": {
+  "schluss": 25864.6191,
+  "hoch": 26037.28,
+  "tief": 25677.86,
+  "tag": "2026-11-03"
+ },
+ "sigma_punkte": 321,
+ "spanne": [
+  25503,
+  26145
+ ],
+ "ziel_punkte": 241,
+ "stopp_punkte": 193,
+ "ziel_ca": 25583,
+ "stopp_ca": 26017,
+ "ergebnis": null
+}
