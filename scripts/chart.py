@@ -195,11 +195,11 @@ def main():
     if e.get("ziel_ca"):
         bild.waagerecht(x_heute, R, y(e["ziel_ca"]), GRUEN, strich=5, dicke=2)
         grenze = "OBERGRENZE" if e["ziel_ca"] > (e.get("referenz") or 0) else "UNTERGRENZE"
-        marken.append((e["ziel_ca"], f"{grenze} CA. {zahl(e['ziel_ca'])}", GRUEN))
+        marken.append((e["ziel_ca"], f"{grenze} {zahl(e['ziel_ca'])}", GRUEN))
     if e.get("stopp_ca"):
         bild.waagerecht(x_heute, R, y(e["stopp_ca"]), ROT, strich=5, dicke=2)
         grenze = "OBERGRENZE" if e["stopp_ca"] > (e.get("referenz") or 0) else "UNTERGRENZE"
-        marken.append((e["stopp_ca"], f"{grenze} CA. {zahl(e['stopp_ca'])}", ROT))
+        marken.append((e["stopp_ca"], f"{grenze} {zahl(e['stopp_ca'])}", ROT))
     # Beschriftungen links im Heute-Bereich, ohne Überlappung
     belegt = []
     for wert, label, farbe in sorted(marken, key=lambda m: -m[0]):
@@ -236,10 +236,10 @@ def main():
         linien[-1] = {"name": "Vortagesschluss = Referenz", "preis": vs, "farbe": "blau", "stil": "durchgezogen"}
     if e.get("referenz") and not (e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1):
         linien.append({"name": "Indikation" if e.get("referenz_art") == "Indikation" else "Referenz", "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
-    for key, seite in (("ziel_ca", "Gewinnmitnahme"), ("stopp_ca", "Idee widerlegt")):
+    for key in ("ziel_ca", "stopp_ca"):
         if e.get(key):
             grenze = "Obergrenze" if e[key] > (e.get("referenz") or vs) else "Untergrenze"
-            linien.append({"name": f"{grenze} · {seite}", "preis": e[key], "farbe": "plus" if key == "ziel_ca" else "minus", "stil": "gestrichelt", "dick": True})
+            linien.append({"name": grenze, "preis": e[key], "farbe": "plus" if key == "ziel_ca" else "minus", "stil": "gestrichelt", "dick": True})
     if e.get("spanne"):
         linien += [{"name": "Spanne oben", "preis": e["spanne"][1], "farbe": "band", "stil": "gepunktet"},
                    {"name": "Spanne unten", "preis": e["spanne"][0], "farbe": "band", "stil": "gepunktet"}]
