@@ -21,7 +21,7 @@ python3 scripts/entscheidung.py bilanz   # bewertet die Entscheidungen der Vorta
 ## B. Recherche (WebSearch / WebFetch) – nur, was die Daten nicht liefern
 
 1. **Spanne:** kommt automatisch aus den Daten, bevorzugt aus der **DAX-Tagesoption (Eurex ODAP)**, die heute zur Xetra-Schlussauktion verfällt (Abschnitt „Tagesoption“ der Datenausgabe). Fehlt sie, nimmt `entscheidung.py` den **VDAX** (onvista), danach die realisierte Schwankung, und sagt das. Nichts davon per Websuche ersetzen.
-2. **DAX vorbörslich:** X-DAX, IG-, L&S- oder Tradegate-Indikation mit Uhrzeit.
+2. **DAX vorbörslich:** kommt aus den Daten (Abschnitt „DAX-Indikation“: Median der Indikationen von Lang & Schwarz, J.P. Morgan und UBS über onvista, mit Alter in Minuten). Nimm genau diesen Wert für Tabelle, Signal 2 und Entscheidung. Nur wenn er fehlt, per Websuche (X-DAX, IG, L&S) mit Uhrzeit ergänzen und als `--indikation` übergeben.
 3. **Nachrichten zu DAX-Unternehmen** seit gestern Abend: Zahlen, Ad-hoc-Meldungen, Prognosen, Übernahmen, Managementwechsel, Analysten. Besonders die Schwergewichte (SAP, Siemens, Allianz, Deutsche Telekom, Airbus, Rheinmetall, Siemens Energy, Münchener Rück, Deutsche Bank, Mercedes-Benz).
 4. **Grund der China-Sitzung** (1 Satz) und **Konjunkturdaten von heute früh** (Destatis 8:00 Uhr), falls im Kalender noch kein Ist-Wert steht.
 5. **Profi-Sicht:** Öffne die neuesten Artikel von ING THINK aus der Datenausgabe (FX Daily, Rates Spark, The Commodities Feed, Analysen zu EZB/Fed/Deutschland) und fasse ihre Einschätzung in 1–2 Sätzen zusammen. ING schreibt zu Zinsen, Devisen und Rohstoffen, nicht zu Aktien.
@@ -62,7 +62,7 @@ Bewerte **jedes** Signal dieser Liste mit Wert, Wirkung auf den DAX heute (`ruec
 
 ```bash
 python3 scripts/entscheidung.py anlegen --datum JJJJ-MM-TT --richtung long|short|kein --score N \
-  --indikation <DAX vorbörslich> \
+  [--indikation <nur wenn die Daten keine Indikation haben>] \
   --grund "<1 Satz>" --signale '<JSON-Liste: [{"name": "...", "wert": "...", "wirkung": "rueckenwind|gegenwind|neutral", "grund": "..."}]>'
 python3 scripts/chart.py --datum JJJJ-MM-TT
 ```

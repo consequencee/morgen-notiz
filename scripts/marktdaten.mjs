@@ -176,6 +176,26 @@ async function vxd() {
 }
 await block("vola", CFG.vola === "vdax" ? vdax : vxd);
 
+// ---------- nur DAX: vorbörsliche Indikation (L&S, J.P. Morgan, UBS) von onvista ----------
+// Median der Indikationen, die höchstens 60 Minuten alt sind; Veränderung gegen den Xetra-Schluss.
+if (BERICHT === "dax") {
+  await block("indikation", async () => {
+    const res = await fetch("https://www.onvista.de/index/DAX-Index-20735", { headers: { "User-Agent": "Mozilla/5.0 (Macintosh)" } });
+    if (!res.ok) throw new Error(`onvista HTTP ${res.status}`);
+    const h = await res.text();
+    const json = JSON.parse((h.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/) || [])[1] || "{}");
+    const suche = (o) => { if (o && typeof o === "object") { if (o.quoteList) return o.quoteList; for (const v of Object.values(o)) { const r = suche(v); if (r) return r; } } return null; };
+    const liste = suche(json)?.list || [];
+    const jetzt = Date.now();
+    const quellen = liste.filter((q) => /Indikation/i.test(q.market?.name || "")).map((q) => ({ quelle: q.market.name, kurs: rund(q.last), zeit: q.datetimeLast, alter_min: Math.round((jetzt - Date.parse(q.datetimeLast)) / 60000) }));
+    const frisch = quellen.filter((q) => fin(q.kurs) && q.alter_min <= 60).map((q) => q.kurs).sort((a, b) => a - b);
+    if (!frisch.length) throw new Error(`keine frische Indikation (${quellen.map((q) => `${q.quelle} ${q.alter_min} min alt`).join(", ") || "keine Quellen"})`);
+    const wert = frisch.length % 2 ? frisch[(frisch.length - 1) / 2] : (frisch[frisch.length / 2 - 1] + frisch[frisch.length / 2]) / 2;
+    const schluss = out.index_kennzahlen?.schluss;
+    return { wert: rund(wert, 0), veraenderung_pct: pct(wert, schluss), gegen_schluss: schluss, quellen, quelle: "onvista.de: Median der außerbörslichen DAX-Indikationen (höchstens 60 Minuten alt)" };
+  });
+}
+
 // ---------- Tagesoption: eingepreiste Bewegung bis zum heutigen Schluss ----------
 // Straddle (Call + Put am Geld) ≈ 0,8 × σ × Kurs × √Tage  →  σ je Tag ≈ Straddle / 0,798 / √Tage.
 // DAX: Eurex-Tagesoption ODAP (verfällt zur Xetra-Schlussauktion), Abrechnungspreise vom letzten veröffentlichten Handelstag.
@@ -389,7 +409,8 @@ z.push("\n## US-Datenüberraschungen (letzte Veröffentlichungen)");
 for (const r of (out.us_ueberraschungen?.zeilen || []).slice(0, 8)) z.push(`- ${r.tag} ${r.termin}: Ist ${r.ist} vs. Prognose ${r.prognose} (S&P ${vz(r.spx_pct)} %, US-10J ${vz(r.us10y_bp, 1)} Bp.)`);
 z.push("\n## Positionierung (CFTC COT)");
 for (const r of out.positionierung?.zeilen || []) z.push(`- ${r.markt} (${r.stand}): ` + Object.entries(r.gruppen).map(([g, v]) => `${g} netto ${v.netto?.toLocaleString("de-DE")} (${vz(v.veraenderung, 0)})`).join(", "));
-if (out.indikation) z.push(`\n## Dow-Indikation\n- ${de(out.indikation.wert, 0)} (Future ${vz(out.indikation.ym_pct)} %, Stand ${out.indikation.stand}; ${out.indikation.quelle})`);
+if (out.indikation && BERICHT === "dax") z.push(`\n## DAX-Indikation (vorbörslich)\n- ${de(out.indikation.wert, 0)} (${vz(out.indikation.veraenderung_pct)} % gegen Xetra-Schluss ${de(out.indikation.gegen_schluss)}) – ${out.indikation.quellen.map((q) => `${q.quelle} ${de(q.kurs, 0)} (${q.alter_min} min alt)`).join(", ")}`);
+if (out.indikation && BERICHT === "us30") z.push(`\n## Dow-Indikation\n- ${de(out.indikation.wert, 0)} (Future ${vz(out.indikation.ym_pct)} %, Stand ${out.indikation.stand}; ${out.indikation.quelle})`);
 if (out.dow_werte) {
   z.push(`\n## Dow-Werte (Beitrag in Indexpunkten; Divisor ${out.dow_werte.divisor}; Summe ${vz(out.dow_werte.summe_beitrag, 0)} Punkte)`);
   for (const r of out.dow_werte.werte.slice(0, 12)) z.push(r.fehler ? `- ${r.ticker}: n/v` : `- ${r.ticker} ${r.name}: ${de(r.jetzt)} $ (${vz(r.aenderung_pct)} %, ${r.quelle}) → ${vz(r.beitrag_punkte, 0)} Punkte`);

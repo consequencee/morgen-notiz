@@ -78,7 +78,9 @@ def anlegen(a):
     if vola is None:
         vola = k.get("realisierte_vola_20t_pct")
         vola_quelle = "Ersatz: realisierte Schwankung der letzten 20 Tage (kein Volatilitätsindex gefunden)"
-    referenz = a.indikation or schluss
+    ind = (daten.get("indikation") or {}).get("wert")
+    indikation = a.indikation or ind  # ohne Angabe: Indikation aus den Marktdaten
+    referenz = indikation or schluss
     if not (vola and referenz):
         sys.exit("Für die Spanne fehlen Vola oder Referenzkurs.")
     sigma = referenz * vola / 100 / math.sqrt(252)
@@ -93,7 +95,7 @@ def anlegen(a):
         "vola_pct": round(vola, 2),
         "vola_quelle": vola_quelle,
         "referenz": round(referenz, 2),
-        "referenz_art": "Indikation" if a.indikation else "Vortagesschluss",
+        "referenz_art": "Indikation" if indikation else "Vortagesschluss",
         "vortag": {"schluss": schluss, "hoch": k.get("hoch"), "tief": k.get("tief"), "tag": k.get("letzter_handelstag")},
         "sigma_punkte": round(sigma),
         "spanne": [round(referenz - sigma), round(referenz + sigma)],
