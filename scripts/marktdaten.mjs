@@ -38,6 +38,7 @@ const fin = (v) => typeof v === "number" && Number.isFinite(v);
 const rund = (v, dp = 2) => (fin(v) ? Number(v.toFixed(dp)) : null);
 const pct = (a, b) => (fin(a) && fin(b) && b ? rund((a / b - 1) * 100, 2) : null);
 
+const z_vorab = []; // Zeilen, die vor der Zusammenfassung feststehen
 const out = { datum: HEUTE, erstellt: new Date().toISOString(), quelle: "Amber Terminal (amber/), öffentliche Daten", fehler: {} };
 async function block(name, f) {
   try {
@@ -136,6 +137,14 @@ await block("index_stunden", async () => {
     .filter((c) => c.zeit >= CFG.von && c.zeit < CFG.bis && !(c.o === c.h && c.h === c.l && c.l === c.c));
 });
 
+// 5-Minuten-Kerzen der letzten Tage (Sitzung): Bewertung ab dem genauen Einstiegszeitpunkt
+await block("index_5min", async () => {
+  const { bars } = await yahoo(CFG.symbol, "5m", "5d");
+  return bars
+    .map((c) => ({ t: c.t, tag: tagIn(CFG.tz, c.t * 1000), zeit: zeitIn(CFG.tz, c.t * 1000), o: rund(c.o), h: rund(c.h), l: rund(c.l), c: rund(c.c) }))
+    .filter((c) => c.zeit >= CFG.von && c.zeit < CFG.bis);
+});
+
 await block("index_kennzahlen", async () => {
   const k = (out.maerkte?.[CFG.index]?.kerzen || []).filter((c) => c.tag < HEUTE);
   if (k.length < 22) throw new Error("zu wenige Tageskerzen");
@@ -195,6 +204,29 @@ if (BERICHT === "dax") {
     return { wert: rund(wert, 0), veraenderung_pct: pct(wert, schluss), gegen_schluss: schluss, quellen, quelle: "onvista.de: Median der außerbörslichen DAX-Indikationen (höchstens 60 Minuten alt)" };
   });
 }
+
+// ---------- Einstieg: Kurs zum Zeitpunkt der Notiz (die Notiz entsteht nach der Eröffnung) ----------
+// DAX: Echtzeit-Indikationen (onvista, folgen während des Handels dem DAX; Yahoo ist 15 Minuten verzögert).
+// Dow: Yahoo ^DJI mit Zeitstempel. Dazu die heutige Eröffnung und die Lücke zum Vortagesschluss.
+await block("einstieg", async () => {
+  const heute = (out.index_5min || []).filter((c) => c.tag === HEUTE);
+  const schluss = out.index_kennzahlen?.schluss;
+  let kurs, zeit, quelle;
+  if (BERICHT === "dax" && out.indikation?.wert) {
+    kurs = out.indikation.wert; zeit = new Date().toISOString(); quelle = "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)";
+  } else {
+    const { meta } = await yahoo(CFG.symbol, "1m", "1d");
+    kurs = meta.regularMarketPrice; zeit = new Date(meta.regularMarketTime * 1000).toISOString(); quelle = `Yahoo Finance ${CFG.symbol}`;
+  }
+  if (!fin(kurs)) throw new Error("kein aktueller Kurs");
+  const offen = heute[0]?.o ?? (out.maerkte?.[CFG.index]?.heute ? out.maerkte[CFG.index].eroeffnung : null);
+  return {
+    kurs: rund(kurs, 0), zeit, alter_min: Math.round((Date.now() - Date.parse(zeit)) / 60000), quelle,
+    eroeffnung_heute: rund(offen, 0), luecke_pct: pct(offen, schluss), seit_eroeffnung_pct: pct(kurs, offen),
+    hoch_heute: heute.length ? rund(Math.max(...heute.map((c) => c.h)), 0) : null, tief_heute: heute.length ? rund(Math.min(...heute.map((c) => c.l)), 0) : null,
+  };
+});
+if (out.einstieg) z_vorab.push(`\n## Einstieg (jetzt)\n- ${out.einstieg.kurs} um ${out.einstieg.zeit} (${out.einstieg.alter_min} min alt, ${out.einstieg.quelle}) · Eröffnung heute ${out.einstieg.eroeffnung_heute ?? "n/v"} (Lücke ${out.einstieg.luecke_pct ?? "n/v"} % zum Vortagesschluss) · seit Eröffnung ${out.einstieg.seit_eroeffnung_pct ?? "n/v"} % · Hoch/Tief heute ${out.einstieg.hoch_heute ?? "n/v"}/${out.einstieg.tief_heute ?? "n/v"} (Yahoo, bis 15 min verzögert)`);
 
 // ---------- Tagesoption: eingepreiste Bewegung bis zum heutigen Schluss ----------
 // Straddle (Call + Put am Geld) ≈ 0,8 × σ × Kurs × √Tage  →  σ je Tag ≈ Straddle / 0,798 / √Tage.
@@ -332,8 +364,9 @@ if (BERICHT === "us30") {
       z.push(...(await Promise.all(DOW.slice(i, i + 6).map(async (t) => {
         try {
           const q = await bq({ symbol: t });
-          const jetzt = q.pre?.price ?? q.last?.price;
-          return { ticker: t, name: q.name, vortag: q.prevClose, jetzt, quelle: q.pre ? "vorbörslich" : q.stateText, aenderung_pct: pct(jetzt, q.prevClose) };
+          const offen = q.state === "REGULAR" || !q.pre;  // nach der Eröffnung zählt der laufende Kurs
+          const jetzt = offen ? q.last?.price : q.pre.price;
+          return { ticker: t, name: q.name, vortag: q.prevClose, jetzt, quelle: offen ? "laufend" : "vorbörslich", aenderung_pct: pct(jetzt, q.prevClose) };
         } catch (e) {
           return { ticker: t, fehler: String(e?.message || e) };
         }
@@ -383,7 +416,9 @@ fs.writeFileSync(ziel, JSON.stringify(out, null, 1));
 const z = [];
 const de = (v, dp = 2) => (fin(v) ? v.toLocaleString("de-DE", { minimumFractionDigits: dp, maximumFractionDigits: dp }) : "n/v");
 const vz = (v, dp = 2) => (fin(v) ? `${v > 0 ? "+" : v < 0 ? "−" : "±"}${de(Math.abs(v), dp)}` : "n/v");
+z.push(...[]);
 z.push(`# Marktdaten ${BERICHT.toUpperCase()} ${HEUTE} (Abruf ${new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" })} Berlin) → ${path.relative(ROOT, ziel)}`);
+z.push(...z_vorab);
 z.push("\n## Märkte (letzte Tageskerze je Börse)");
 for (const [key] of MAERKTE) {
   const m = out.maerkte?.[key];

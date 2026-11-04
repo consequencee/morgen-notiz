@@ -24,8 +24,8 @@ VORLAGE = (ROOT / "vorlage" / "seite.html").read_text(encoding="utf-8")
 
 # Reihenfolge = Reihenfolge auf der Übersichtsseite
 BERICHTE = {
-    "dax": {"name": "DAX", "marke": "Morgen Notiz · DAX", "plan": "Mo–Fr vor 9:00 Uhr"},
-    "us30": {"name": "US30", "marke": "US30 Notiz · Dow Jones", "plan": "Mo–Fr vor 15:00 Uhr"},
+    "dax": {"name": "DAX", "marke": "Morgen Notiz · DAX", "plan": "Mo–Fr nach Xetra-Eröffnung, ca. 9:20 Uhr"},
+    "us30": {"name": "US30", "marke": "US30 Notiz · Dow Jones", "plan": "Mo–Fr nach US-Eröffnung, ca. 15:50 Uhr"},
 }
 
 WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]

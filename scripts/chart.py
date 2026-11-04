@@ -191,7 +191,7 @@ def main():
             marken = [m for m in marken if not m[1].startswith("SCHLUSS")]
             marken.append((vs, f"SCHLUSS {zahl(vs)} = REF.", BLAU))
         else:
-                marken.append((e["referenz"], f"{'INDIKATION' if e.get('referenz_art') == 'Indikation' else 'REFERENZ'} {zahl(e['referenz'])}", BLAU))
+                marken.append((e["referenz"], f"{ {'Indikation': 'INDIKATION', 'Einstieg': 'EINSTIEG'}.get(e.get('referenz_art'), 'REFERENZ') } {zahl(e['referenz'])}", BLAU))
     if e.get("spanne"):
         marken.append((e["spanne"][1], f"RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
         marken.append((e["spanne"][0], f"RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
@@ -230,7 +230,7 @@ def main():
     if e.get("referenz_art") != "Indikation" and e.get("referenz") and abs(e["referenz"] - vs) < 1:
         linien[-1] = {"name": "Vortagesschluss = Referenz", "preis": vs, "farbe": "blau", "stil": "durchgezogen"}
     if e.get("referenz") and not (e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1):
-        linien.append({"name": "Indikation" if e.get("referenz_art") == "Indikation" else "Referenz", "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
+        linien.append({"name": e.get("referenz_art") if e.get("referenz_art") in ("Indikation", "Einstieg") else "Referenz", "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
     if e.get("spanne"):
         linien += [{"name": "Erwartete Range oben", "preis": e["spanne"][1], "farbe": "band", "stil": "gestrichelt", "dick": True},
                    {"name": "Erwartete Range unten", "preis": e["spanne"][0], "farbe": "band", "stil": "gestrichelt", "dick": True}]

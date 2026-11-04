@@ -4,8 +4,8 @@ KI-generierte Marktberichte, erstellt von Claude-Cloud-Routinen:
 
 | Bericht | Zeitplan | Webseite |
 |---|---|---|
-| DAX – Morgen Notiz | Mo–Fr, fertig vor 9:00 Uhr | https://consequencee.github.io/morgen-notiz/dax/ |
-| US30 – Dow Jones | Mo–Fr, fertig vor 15:00 Uhr | https://consequencee.github.io/morgen-notiz/us30/ |
+| DAX – Morgen Notiz | Mo–Fr nach Xetra-Eröffnung, ca. 9:20 Uhr | https://consequencee.github.io/morgen-notiz/dax/ |
+| US30 – Dow Jones | Mo–Fr nach US-Eröffnung, ca. 15:50 Uhr | https://consequencee.github.io/morgen-notiz/us30/ |
 
 **Übersicht:** https://consequencee.github.io/morgen-notiz/
 
