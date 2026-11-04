@@ -99,7 +99,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
   <div class="chart-live" data-src="{{BASIS}}dax/charts/JJJJ-MM-TT.json"></div>   <!-- beweglicher Chart; ersetzt auf der Webseite das Bild -->
   <figure class="chart">
     <img src="{{BASIS}}dax/charts/JJJJ-MM-TT.png" alt="DAX Stundenkerzen der letzten 5 Tage mit Marken für heute">
-    <figcaption>Ziehen zum Verschieben, Mausrad oder zwei Finger zum Zoomen. Rechts: heute mit Spanne, Indikation, Ober- und Untergrenze.</figcaption>
+    <figcaption>Ziehen zum Verschieben, Mausrad oder zwei Finger zum Zoomen. Rechts: heute mit erwarteter Range und Indikation.</figcaption>
   </figure>
 </section>
 

@@ -5,7 +5,7 @@
 
 Liest daten/<bericht>/JJJJ-MM-TT.json (Stundenkerzen) und entscheidungen/<bericht>/JJJJ-MM-TT.json (Spanne, Grenzen)
 und schreibt notizen/<bericht>/charts/JJJJ-MM-TT.png (+ .json für den beweglichen Chart): die letzten 5 Handelstage in Stundenkerzen, Vortageshoch,
--tief und -schluss, rechts der heutige Tag mit erwarteter Spanne, Referenzkurs, Ober- und Untergrenze.
+-tief und -schluss, rechts der heutige Tag mit erwarteter Range (oben/unten) und Referenzkurs.
 """
 
 import argparse
@@ -141,7 +141,7 @@ def main():
     werte = [c["h"] for c in kerzen] + [c["l"] for c in kerzen]
     for key in ("spanne",):
         werte += e.get(key) or []
-    for key in ("ziel_ca", "stopp_ca", "referenz"):
+    for key in ("referenz",):
         if e.get(key):
             werte.append(e[key])
     lo, hi = min(werte), max(werte)
@@ -192,14 +192,9 @@ def main():
             marken.append((vs, f"SCHLUSS {zahl(vs)} = REF.", BLAU))
         else:
                 marken.append((e["referenz"], f"{'INDIKATION' if e.get('referenz_art') == 'Indikation' else 'REFERENZ'} {zahl(e['referenz'])}", BLAU))
-    if e.get("ziel_ca"):
-        bild.waagerecht(x_heute, R, y(e["ziel_ca"]), GRUEN, strich=5, dicke=2)
-        grenze = "OBERGRENZE" if e["ziel_ca"] > (e.get("referenz") or 0) else "UNTERGRENZE"
-        marken.append((e["ziel_ca"], f"{grenze} {zahl(e['ziel_ca'])}", GRUEN))
-    if e.get("stopp_ca"):
-        bild.waagerecht(x_heute, R, y(e["stopp_ca"]), ROT, strich=5, dicke=2)
-        grenze = "OBERGRENZE" if e["stopp_ca"] > (e.get("referenz") or 0) else "UNTERGRENZE"
-        marken.append((e["stopp_ca"], f"{grenze} {zahl(e['stopp_ca'])}", ROT))
+    if e.get("spanne"):
+        marken.append((e["spanne"][1], f"ERWARTETE RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
+        marken.append((e["spanne"][0], f"ERWARTETE RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
     # Beschriftungen links im Heute-Bereich, ohne Überlappung
     belegt = []
     for wert, label, farbe in sorted(marken, key=lambda m: -m[0]):
@@ -216,7 +211,7 @@ def main():
         kopf += f" - HEUTE {richtung}" + (f" {e['score']}/10" if e.get("score") else "")
     bild.text(L, 14, kopf, TEXT, groesse=2)
     if e.get("spanne"):
-        bild.text(L, 36, f"ERWARTETE SPANNE {zahl(e['spanne'][0])} - {zahl(e['spanne'][1])} (VOLA {e['vola_pct']:.1f} %)".replace(f"{e['vola_pct']:.1f}", f"{e['vola_pct']:.1f}".replace(".", ",")), LEISE)
+        bild.text(L, 36, f"ERWARTETE RANGE {zahl(e['spanne'][0])} - {zahl(e['spanne'][1])} (VOLA {e['vola_pct']:.1f} %)".replace(f"{e['vola_pct']:.1f}", f"{e['vola_pct']:.1f}".replace(".", ",")), LEISE)
     bild.text(B - 10, H - 14, "QUELLE: YAHOO FINANCE, EIGENE BERECHNUNG", LEISE, rechts=True)
 
     ziel = ROOT / "notizen" / a.bericht / "charts" / f"{a.name or d}.png"
@@ -236,13 +231,9 @@ def main():
         linien[-1] = {"name": "Vortagesschluss = Referenz", "preis": vs, "farbe": "blau", "stil": "durchgezogen"}
     if e.get("referenz") and not (e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1):
         linien.append({"name": "Indikation" if e.get("referenz_art") == "Indikation" else "Referenz", "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
-    for key in ("ziel_ca", "stopp_ca"):
-        if e.get(key):
-            grenze = "Obergrenze" if e[key] > (e.get("referenz") or vs) else "Untergrenze"
-            linien.append({"name": grenze, "preis": e[key], "farbe": "plus" if key == "ziel_ca" else "minus", "stil": "gestrichelt", "dick": True})
     if e.get("spanne"):
-        linien += [{"name": "Spanne oben", "preis": e["spanne"][1], "farbe": "band", "stil": "gepunktet"},
-                   {"name": "Spanne unten", "preis": e["spanne"][0], "farbe": "band", "stil": "gepunktet"}]
+        linien += [{"name": "Erwartete Range oben", "preis": e["spanne"][1], "farbe": "band", "stil": "gestrichelt", "dick": True},
+                   {"name": "Erwartete Range unten", "preis": e["spanne"][0], "farbe": "band", "stil": "gestrichelt", "dick": True}]
     tage_alle = [c for c in (daten.get("maerkte", {}).get(cfg["index"], {}).get("kerzen") or []) if c["tag"] < d]
     live = {
         "datum": d,
