@@ -1,25 +1,52 @@
 {
- "stand": "2026-11-04",
+ "stand": "2026-11-05",
  "regeln": "NYSE bis 16:00 New York; Ziel 0.75 σ, Stopp 0.6 σ; Kerze mit beidem zählt als Stopp",
  "gesamt": {
-  "trades": 0
+  "trades": 1,
+  "richtung_richtig_pct": 100,
+  "ziel_pct": 0,
+  "stopp_pct": 100,
+  "punkte_summe": -258,
+  "punkte_schnitt": -258
  },
  "nach_score": {
   "1–3": {
    "trades": 0
   },
   "4–6": {
-   "trades": 0
+   "trades": 1,
+   "richtung_richtig_pct": 100,
+   "ziel_pct": 0,
+   "stopp_pct": 100,
+   "punkte_summe": -258,
+   "punkte_schnitt": -258
   },
   "7–10": {
    "trades": 0
   }
  },
  "spanne": {
-  "tage": 0,
-  "treffer_pct": null,
+  "tage": 1,
+  "treffer_pct": 0,
   "soll_pct": 68
  },
  "kein_trade_tage": 0,
- "letzte": []
+ "letzte": [
+  {
+   "datum": "2026-11-04",
+   "richtung": "long",
+   "score": 6,
+   "einstieg": 52839,
+   "schluss": 53356.1211,
+   "bewegung_punkte": 517,
+   "eroeffnung": 52410.23,
+   "hoch": 53492.4,
+   "tief": 52410.23,
+   "in_spanne": false,
+   "ausgang": "Stopp",
+   "punkte": -258,
+   "richtig": true,
+   "punkte_ohne_marken": 517
+  }
+ ]
 }

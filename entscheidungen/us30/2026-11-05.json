@@ -1,0 +1,114 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-05",
+ "richtung": "long",
+ "score": 4,
+ "grund": "Rotation aus Tech in Dow-Werte, starke Arbeitsmarkt- und Produktivitätsdaten und Trend über allen Schnitten überwiegen den schwachen Start nach der Eröffnungslücke und die Fed-Zinserhöhungserwartung.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke +0,61 %, seit Eröffnung −0,13 %, nahe Tagestief",
+   "wirkung": "gegenwind",
+   "grund": "Die Lücke wird leicht abverkauft"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +188 Pkt., AXP +51, JPM +38, CAT −61",
+   "wirkung": "rueckenwind",
+   "grund": "Breite Unterstützung durch Banken und Konsum"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Erstanträge 189K vs. 197K, Produktivität 3,6 % vs. 2,8 %, Lohnstückkosten −0,7 % vs. +0,3 %",
+   "wirkung": "rueckenwind",
+   "grund": "Starker Arbeitsmarkt bei sinkenden Lohnkosten"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +0,75 %, Euro Stoxx 50 +0,68 %, Hang Seng +3,67 %, Nikkei −1,79 %",
+   "wirkung": "rueckenwind",
+   "grund": "Europa fest"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "82 % für Fed-Erhöhung am 9.12.",
+   "wirkung": "gegenwind",
+   "grund": "Straffung eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,61 %, 10J 4,90 %",
+   "wirkung": "neutral",
+   "grund": "Kaum verändert"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,15 %, LQD −0,12 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 89,78 (+1,9 %), Brent 97,43 (+3,0 %), EUR/USD 1,1220",
+   "wirkung": "gegenwind",
+   "grund": "Öl zieht wieder an"
+  },
+  {
+   "name": "Trend",
+   "wert": "über 21/50/200-Tage-Schnitt",
+   "wirkung": "rueckenwind",
+   "grund": "Aufwärtstrend"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev netto −400.604",
+   "wirkung": "neutral",
+   "grund": "Keine Extremlage"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Rotation aus KI/Chips in Value",
+   "wirkung": "rueckenwind",
+   "grund": "Dow profitiert von der Rotation"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: BoE hawkish, Dollar-Schwäche fehlt Zinsargument",
+   "wirkung": "neutral",
+   "grund": "Zinssicht"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Barkin 15:10, Lagarde 19:00, kein Fed-Entscheid",
+   "wirkung": "neutral",
+   "grund": "Kein großes Ereignis; Arbeitsmarktbericht erst morgen"
+  }
+ ],
+ "vola_pct": 10.62,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 53607,
+ "referenz_art": "Einstieg",
+ "einstieg": {
+  "kurs": 53607,
+  "zeit": 1793889153,
+  "zeit_iso": "2026-11-05T14:32:33+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 53356.1211,
+  "hoch": 53492.4,
+  "tief": 52410.23,
+  "tag": "2026-11-04"
+ },
+ "sigma_punkte": 357,
+ "spanne": [
+  53250,
+  53964
+ ],
+ "ziel_punkte": 268,
+ "stopp_punkte": 214,
+ "ziel_ca": 53875,
+ "stopp_ca": 53393,
+ "ergebnis": null
+}
