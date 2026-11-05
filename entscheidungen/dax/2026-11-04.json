@@ -103,5 +103,16 @@
  "stopp_punkte": 193,
  "ziel_ca": 25583,
  "stopp_ca": 26017,
- "ergebnis": null
+ "ergebnis": {
+  "eroeffnung": 25888.93,
+  "schluss": 26437.6699,
+  "bewegung_punkte": 549,
+  "hoch": 26541.64,
+  "tief": 25876.82,
+  "in_spanne": false,
+  "ausgang": "Stopp",
+  "punkte": -193,
+  "richtig": false,
+  "punkte_ohne_marken": -549
+ }
 }

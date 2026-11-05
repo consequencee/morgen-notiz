@@ -1,12 +1,22 @@
 {
- "stand": "2026-11-04",
- "regeln": "Xetra 9:00–17:30; Ziel 0.75 σ, Stopp 0.6 σ; Kerze mit beidem zählt als Stopp",
+ "stand": "2026-11-05",
+ "regeln": "Xetra bis 17:30; Ziel 0.75 σ, Stopp 0.6 σ; Kerze mit beidem zählt als Stopp",
  "gesamt": {
-  "trades": 0
+  "trades": 1,
+  "richtung_richtig_pct": 0,
+  "ziel_pct": 0,
+  "stopp_pct": 100,
+  "punkte_summe": -193,
+  "punkte_schnitt": -193
  },
  "nach_score": {
   "1–3": {
-   "trades": 0
+   "trades": 1,
+   "richtung_richtig_pct": 0,
+   "ziel_pct": 0,
+   "stopp_pct": 100,
+   "punkte_summe": -193,
+   "punkte_schnitt": -193
   },
   "4–6": {
    "trades": 0
@@ -16,10 +26,26 @@
   }
  },
  "spanne": {
-  "tage": 0,
-  "treffer_pct": null,
+  "tage": 1,
+  "treffer_pct": 0,
   "soll_pct": 68
  },
  "kein_trade_tage": 0,
- "letzte": []
+ "letzte": [
+  {
+   "datum": "2026-11-04",
+   "richtung": "short",
+   "score": 3,
+   "eroeffnung": 25888.93,
+   "schluss": 26437.6699,
+   "bewegung_punkte": 549,
+   "hoch": 26541.64,
+   "tief": 25876.82,
+   "in_spanne": false,
+   "ausgang": "Stopp",
+   "punkte": -193,
+   "richtig": false,
+   "punkte_ohne_marken": -549
+  }
+ ]
 }

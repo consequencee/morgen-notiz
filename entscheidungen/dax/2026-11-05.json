@@ -1,0 +1,114 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-05",
+ "richtung": "long",
+ "score": 5,
+ "grund": "US-Wahlrally, Ölpreissturz und fallende Renditen tragen den DAX Richtung Rekord, Chipschwäche bremst nur.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "Dow +3,03 %, S&P 500 +1,58 %, Nasdaq 100 +0,91 %; Futures S&P −0,12 %, Nasdaq −0,91 %",
+   "wirkung": "rueckenwind",
+   "grund": "Größte Post-Midterm-Rally seit 1982; Futures nur bei Tech schwach (Qualcomm/Arm)"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.468 (+0,12 %), Eröffnung n/v",
+   "wirkung": "neutral",
+   "grund": "Kaum Lücke nach +2,2 % gestern, Rekordhoch in Reichweite"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei −1,79 %, Shanghai +0,10 %, CSI 300 +0,29 %, Hang Seng +3,64 %",
+   "wirkung": "neutral",
+   "grund": "Chip-Ausverkauf in Japan/Korea gegen starkes Hongkong"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "ISM Dienste 54,5 vs. 54,8; Auftragseingang DE n/v",
+   "wirkung": "neutral",
+   "grund": "Leichte Verfehlung ohne Marktwirkung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 82 % für +25 Bp.; EZB 2,50 %, ca. 50 Bp. Straffung bis Sommer eingepreist (ING)",
+   "wirkung": "gegenwind",
+   "grund": "Zinserhöhungszyklus bleibt Belastung, aber bekannt"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,26 % (−3 Bp.), US 10J 4,86 % (−3 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "Fallende Renditen nach Ölpreissturz"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,70 %, LQD +0,75 %",
+   "wirkung": "rueckenwind",
+   "grund": "Anleihe-ETFs fester, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 95,13 (gestern −8,7 %), EUR/USD 1,1244 (+0,32 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Ölpreis-Entlastung dominiert, Euro-Stärke nur leicht bremsend"
+  },
+  {
+   "name": "Trend",
+   "wert": "DAX 26.438 über 21T 25.500, 50T 25.571, 200T 24.913",
+   "wirkung": "rueckenwind",
+   "grund": "Klar über allen Schnitten, Rekordnähe"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 27.10.: Leveraged Funds S&P netto −400.604 (−29.359)",
+   "wirkung": "neutral",
+   "grund": "Hohe Short-Position der Hedgefonds kann Rally nähren, kein Extremsignal für heute"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Telekom Prognose hoch, Rekorddividende; Commerzbank Gewinn +45 %; Infineon unter Druck",
+   "wirkung": "rueckenwind",
+   "grund": "Schwergewicht Telekom positiv, Chips belasten"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Öl-Ausverkauf übertrieben, BoE-Erhöhung eingepreist",
+   "wirkung": "neutral",
+   "grund": "Gegenbewegung beim Öl möglich"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "13:00 BoE-Zinsentscheid (Erhöhung erwartet), 14:30 US-Arbeitslosenanträge",
+   "wirkung": "neutral",
+   "grund": "BoE eingepreist, kein Top-Termin"
+  }
+ ],
+ "vola_pct": 15.06,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-04, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26468,
+ "referenz_art": "Einstieg",
+ "einstieg": {
+  "kurs": 26468,
+  "zeit": 1793865902,
+  "zeit_iso": "2026-11-05T08:05:02.204000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.99,
+ "vortag": {
+  "schluss": 26437.6699,
+  "hoch": 26541.64,
+  "tief": 25876.82,
+  "tag": "2026-11-04"
+ },
+ "sigma_punkte": 250,
+ "spanne": [
+  26218,
+  26718
+ ],
+ "ziel_punkte": 187,
+ "stopp_punkte": 150,
+ "ziel_ca": 26655,
+ "stopp_ca": 26318,
+ "ergebnis": null
+}
