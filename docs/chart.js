@@ -49,6 +49,12 @@
     const flaeche = document.createElement("div");
     flaeche.className = "chart-flaeche";
     el.append(knoepfe, flaeche);
+    if (d.trend && Object.keys(d.trend).length) {
+      const leg = document.createElement("p");
+      leg.className = "chart-legende";
+      leg.textContent = "Hintergrund: großer Trend (3 Monate, täglich entschieden) – grün = Bull, rot = Bear.";
+      el.append(leg);
+    }
     el.closest("section")?.classList.add("live-an");
 
     const chart = LW.createChart(flaeche, {
@@ -64,6 +70,15 @@
         timeFormatter: (t) => (typeof t === "number" ? tagLang.format(alsDatum(t)) : tagKurz.format(alsDatum(t))),
       },
     });
+    // Hintergrund: großer Trend (Bull grün, Bear rot), Tag für Tag so, wie er an dem Tag galt
+    const trend = d.trend || {};
+    const hatTrend = Object.keys(trend).length > 0;
+    const tagIn = new Intl.DateTimeFormat("en-CA", { timeZone: d.zeitzone || BERLIN, year: "numeric", month: "2-digit", day: "2-digit" });
+    const tagVon = (t) => (typeof t === "number" ? tagIn.format(new Date(t * 1000)) : t);
+    const TF = { bull: "rgba(26, 127, 55, 0.10)", bear: "rgba(207, 34, 46, 0.10)" };
+    const hinter = hatTrend ? chart.addSeries(LW.HistogramSeries, { priceScaleId: "trend", priceLineVisible: false, lastValueVisible: false, base: 0 }) : null;
+    if (hinter) chart.priceScale("trend").applyOptions({ scaleMargins: { top: 0, bottom: 0 }, visible: false });
+    const band = (zeiten) => zeiten.map((t) => { const st = trend[tagVon(t)]; return st ? { time: t, value: 1, color: TF[st] } : { time: t }; });
     const kerzen = chart.addSeries(LW.CandlestickSeries, {
       upColor: farbe.plus, downColor: farbe.minus, borderVisible: false,
       wickUpColor: farbe.plus, wickDownColor: farbe.minus, priceLineVisible: false, lastValueVisible: false,
@@ -90,6 +105,7 @@
       if (modus === "stunden") {
         const leer = d.heute_slots.map((t) => ({ time: t })); // Platz für heute (noch keine Kerzen)
         kerzen.setData([...d.stunden, ...leer]);
+        if (hinter) hinter.setData(band([...d.stunden.map((c) => c.time), ...d.heute_slots]));
         schnitte.forEach(({ s }) => s.applyOptions({ visible: false }));
         chart.applyOptions({
           timeScale: {
@@ -101,6 +117,7 @@
         chart.timeScale().setVisibleLogicalRange({ from: Math.max(0, n - 9 * 6), to: n + 1 });
       } else {
         kerzen.setData(d.tage);
+        if (hinter) hinter.setData(band(d.tage.map((c) => c.time)));
         for (const { n, s } of schnitte) {
           s.setData(schnitt(d.tage, n));
           s.applyOptions({ visible: true });

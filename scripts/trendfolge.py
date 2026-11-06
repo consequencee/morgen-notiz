@@ -126,6 +126,12 @@ def berechne(bericht, heute=None):
     while j - 1 >= TAGE and (lambda q: q[0] > q[1])(regel(j - 1)) == inv:
         j -= 1
     seit = daily[j]["d"]
+    # Verlauf für die Charts: Stand, der an einem Tag galt (entschieden aus dem Schluss davor), ca. 1 Jahr
+    verlauf = []
+    for j in range(max(TAGE + 1, k - 300), k + 1):
+        rj, zj = regel(j - 1)
+        verlauf.append({"tag": daily[j]["d"], "stand": "bull" if rj > zj else "bear"})
+    verlauf.append({"tag": heute, "stand": "bull" if inv else "bear"})
     # Heute zum Schluss wird neu entschieden: Bezug ist dann der Schluss vor TAGE-1 Handelstagen
     ref = daily[k - TAGE + 1]
     z_next = (sum(zins(daily[x]["d"]) for x in range(k - TAGE + 2, k + 1)) + zins(heute)) / TAGE / 100 * MONATE / 12
@@ -135,7 +141,7 @@ def berechne(bericht, heute=None):
         "index": cfg["name"], "stand": "bull" if inv else "bear",  # bull = investiert, bear = Cash
         "letzte_entscheidung": {"datum": daily[k]["d"], "r": round(r, 5), "z": round(z, 5), "seit": daily[k - TAGE]["d"],
                                 "kurs": round(daily[k]["c"], 2)},
-        "stand_seit": seit, "wechsel_3m": wechsel,
+        "stand_seit": seit, "wechsel_3m": wechsel, "verlauf": verlauf,
         "naechste_entscheidung": heute,
         "kipp_kurs": round(kipp, 0), "kipp_richtung": "unter" if inv else "über",
         "kipp_basis": {"datum": ref["d"], "kurs": round(ref["c"], 2), "z": round(z_next, 5)},

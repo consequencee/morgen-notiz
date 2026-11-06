@@ -101,7 +101,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
   <div class="chart-live" data-src="{{BASIS}}dax/charts/JJJJ-MM-TT.json"></div>   <!-- beweglicher Chart; ersetzt auf der Webseite das Bild -->
   <figure class="chart">
     <img src="{{BASIS}}dax/charts/JJJJ-MM-TT.png" alt="DAX Stundenkerzen der letzten 5 Tage mit Marken für heute">
-    <figcaption>Ziehen zum Verschieben, Mausrad oder zwei Finger zum Zoomen. Rechts: heute mit erwarteter Range und Indikation.</figcaption>
+    <figcaption>Ziehen zum Verschieben, Mausrad oder zwei Finger zum Zoomen. Rechts: heute mit erwarteter Range und Indikation. Hintergrund: großer Trend (grün = Bull, rot = Bear).</figcaption>
   </figure>
 </section>
 
@@ -179,7 +179,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 ## F. Ergänzungen zu Webseite und E-Mail
 
 - **Commit:** zusätzlich die neuen Dateien aufnehmen: `git add notizen docs daten entscheidungen`.
-- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt) sowie einer Zeile „Großer Trend (3 Monate, täglich): Bull/Bear seit TT.MM.“. Darunter der Chart als **eingebettetes Bild** (Inline-Anhang `notizen/dax/charts/JJJJ-MM-TT.png`, bei Sonderausgaben `JJJJ-MM-TT-HHMM.png`, im Text `<img src="cid:att0">` – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
+- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt) sowie einer Zeile „Großer Trend (3 Monate, täglich): Bull/Bear seit TT.MM.“. Darunter der Chart als **eingebettetes Bild** (Inline-Anhang `notizen/dax/charts/JJJJ-MM-TT-mail.png`, bei Sonderausgaben `JJJJ-MM-TT-HHMM-mail.png`, im Text `<img src="cid:att0">` – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
 
 ## Tabellenzeilen (Marktlage)
 

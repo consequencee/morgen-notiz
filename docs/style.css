@@ -180,6 +180,7 @@ table.signale td:nth-child(2) { white-space: nowrap; }
 /* Beweglicher Chart (docs/chart.js) */
 .chart-knoepfe { display: flex; gap: 6px; margin-bottom: 8px; }
 .chart-knoepfe button { font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--linie); background: var(--bg); color: var(--leise); cursor: pointer; }
+.chart-legende { margin: 6px 0 0; font-size: 12px; color: var(--leise); }
 .chart-knoepfe button.an { background: var(--text); color: var(--flaeche); border-color: var(--text); }
 .chart-flaeche { height: 380px; }
 section.live-an figure.chart img { display: none; }

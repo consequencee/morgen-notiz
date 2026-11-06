@@ -54,6 +54,7 @@ SCHRIFT = {
 UMLAUT = str.maketrans({"Ä": "AE", "Ö": "OE", "Ü": "UE", "ß": "SS", "−": "-", "–": "-", "·": "-"})
 
 WEISS, TEXT, GITTER, LEISE = (255, 255, 255), (40, 40, 38), (232, 232, 228), (140, 140, 135)
+TREND = {"bull": (234, 246, 236), "bear": (251, 234, 234)}
 GRUEN, ROT, BAND, GOLD, BLAU = (26, 127, 55), (207, 34, 46), (222, 235, 250), (184, 134, 11), (40, 90, 170)
 
 
@@ -97,12 +98,27 @@ class Bild:
                                       x + (i * 6 + c + 1) * groesse, y + (r + 1) * groesse, f)
 
     def png(self, pfad):
+        """Palette-PNG (wenige Farben): viel kleiner als RGB, wichtig für das eingebettete Bild in der Mail."""
         b, h = self.b * self.s, self.h * self.s
-        roh = b"".join(b"\x00" + bytes(self.px[y * b * 3:(y + 1) * b * 3]) for y in range(h))
+        farben, idx = [], {}
+        zeilen = []
+        for y in range(h):
+            zeile = bytearray(b"\x00")
+            for x in range(b):
+                i = (y * b + x) * 3
+                f = bytes(self.px[i:i + 3])
+                if f not in idx:
+                    idx[f] = len(farben)
+                    farben.append(f)
+                zeile.append(idx[f])
+            zeilen.append(bytes(zeile))
+        if len(farben) > 256:
+            raise SystemExit("Zu viele Farben für ein Palette-PNG.")
         def chunk(art, daten):
             return struct.pack(">I", len(daten)) + art + daten + struct.pack(">I", zlib.crc32(art + daten) & 0xFFFFFFFF)
-        Path(pfad).write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", b, h, 8, 2, 0, 0, 0))
-                              + chunk(b"IDAT", zlib.compress(roh, 9)) + chunk(b"IEND", b""))
+        Path(pfad).write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", b, h, 8, 3, 0, 0, 0))
+                              + chunk(b"PLTE", b"".join(farben)) + chunk(b"IDAT", zlib.compress(b"".join(zeilen), 9))
+                              + chunk(b"IEND", b""))
 
 
 def zahl(v):
@@ -133,6 +149,7 @@ def main():
     if k.get("letzter_handelstag") == tage[-1]:
         vh, vt, vs = k.get("hoch") or vh, k.get("tief") or vt, k.get("schluss") or vs
 
+    trend = {v["tag"]: v["stand"] for v in (daten.get("trendfolge") or {}).get("verlauf", [])}
     B, H = 1000, 460
     L, R, O, U = 20, 870, 52, 400          # Zeichenfläche
     heute_slots = len(cfg["stunden"])
@@ -149,78 +166,98 @@ def main():
     lo, hi = lo - rand, hi + rand
     y = lambda v: U - (v - lo) / (hi - lo) * (U - O)
 
-    bild = Bild(B, H)
-    # Gitter mit Kursen
-    stufe = next(s for s in (25, 50, 100, 200, 250, 500, 1000) if (hi - lo) / s <= 8)
-    v = (int(lo // stufe) + 1) * stufe
-    while v < hi:
-        bild.waagerecht(L, R, y(v), GITTER)
-        bild.text(R + 6, y(v) - 3, zahl(v), LEISE)
-        v += stufe
-    # Tagestrenner und Beschriftung
-    wt = ["MO", "DI", "MI", "DO", "FR", "SA", "SO"]
-    x = L
-    for t in tage:
-        n = sum(1 for c in kerzen if c["tag"] == t)
-        bild.rechteck(x, O, x + 1, U, GITTER)
-        dt = date.fromisoformat(t)
-        bild.text(x + 4, U + 8, f"{wt[dt.weekday()]} {dt:%d.%m.}", LEISE)
-        x += n * schritt
-    x_heute = L + (len(kerzen) + 1) * schritt
-    bild.rechteck(x_heute - schritt / 2, O, x_heute - schritt / 2 + 1, U, LEISE)
-    dt = date.fromisoformat(d)
-    bild.text(x_heute + 4, U + 8, f"HEUTE {wt[dt.weekday()]} {dt:%d.%m.}", TEXT)
-    # Erwartete Spanne heute
-    if e.get("spanne"):
-        bild.rechteck(x_heute, y(e["spanne"][1]), R, y(e["spanne"][0]), BAND)
-    # Kerzen
-    for i, c in enumerate(kerzen):
-        xm = L + (i + 0.5) * schritt
-        f = GRUEN if c["c"] >= c["o"] else ROT
-        bild.rechteck(xm - 0.6, y(c["h"]), xm + 0.6, y(c["l"]), f)
-        bild.rechteck(xm - schritt * 0.32, y(max(c["o"], c["c"])), xm + schritt * 0.32, y(min(c["o"], c["c"])) + 1, f)
-    # Vortagesmarken über die ganze Breite
-    bild.waagerecht(L, R, y(vh), LEISE, strich=4)
-    bild.waagerecht(L, R, y(vt), LEISE, strich=4)
-    bild.waagerecht(L, R, y(vs), TEXT, strich=2)
-    marken = [(vh, f"VORTAGESHOCH {zahl(vh)}", LEISE), (vt, f"VORTAGESTIEF {zahl(vt)}", LEISE), (vs, f"SCHLUSS {zahl(vs)}", TEXT)]
-    # Heute: Referenz, Ziel, Stopp
-    if e.get("referenz"):
-        bild.waagerecht(x_heute, R, y(e["referenz"]), BLAU, dicke=2)
-        if e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1:
-            marken = [m for m in marken if not m[1].startswith("SCHLUSS")]
-            marken.append((vs, f"SCHLUSS {zahl(vs)} = REF.", BLAU))
-        else:
-                marken.append((e["referenz"], f"{ {'Indikation': 'INDIKATION', 'Einstieg': 'EINSTIEG'}.get(e.get('referenz_art'), 'REFERENZ') } {zahl(e['referenz'])}", BLAU))
-    if e.get("spanne"):
-        marken.append((e["spanne"][1], f"RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
-        marken.append((e["spanne"][0], f"RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
-    # Beschriftungen links im Heute-Bereich, ohne Überlappung
-    belegt = []
-    for wert, label, farbe in sorted(marken, key=lambda m: -m[0]):
-        ty = y(wert) - 10
-        while any(abs(ty - b) < 10 for b in belegt):
-            ty += 10
-        belegt.append(ty)
-        bild.rechteck(x_heute + 2, ty - 2, x_heute + 6 + len(label) * 6, ty + 9, WEISS)  # Hintergrund, damit keine Linie durch den Text läuft
-        bild.text(x_heute + 4, ty, label, farbe)
-    # Titel
-    richtung = (e.get("richtung") or "").upper()
-    kopf = f"{cfg['name']} - 60 MIN - LETZTE 5 TAGE"
-    if richtung:
-        kopf += f" - HEUTE {richtung}" + (f" {e['score']}/10" if e.get("score") else "")
-    bild.text(L, 14, kopf, TEXT, groesse=2)
-    if e.get("spanne"):
-        bild.text(L, 36, f"ERWARTETE RANGE {zahl(e['spanne'][0])} - {zahl(e['spanne'][1])} (VOLA {e['vola_pct']:.1f} %)".replace(f"{e['vola_pct']:.1f}", f"{e['vola_pct']:.1f}".replace(".", ",")), LEISE)
-    bild.text(B - 10, H - 14, "QUELLE: YAHOO FINANCE, EIGENE BERECHNUNG", LEISE, rechts=True)
+    def zeichne(s):
+        bild = Bild(B, H, s)
+        # Hintergrund: großer Trend (Bull/Bear) Tag für Tag, so wie er an dem Tag galt
+        x = L
+        for t in tage:
+            n = sum(1 for c in kerzen if c["tag"] == t)
+            f = TREND.get(trend.get(t))
+            if f:
+                bild.rechteck(x, O, x + n * schritt, U, f)
+            x += n * schritt
+        if TREND.get(trend.get(d)):
+            bild.rechteck(x, O, R, U, TREND[trend[d]])
+        # Gitter mit Kursen
+        stufe = next(s for s in (25, 50, 100, 200, 250, 500, 1000) if (hi - lo) / s <= 8)
+        v = (int(lo // stufe) + 1) * stufe
+        while v < hi:
+            bild.waagerecht(L, R, y(v), GITTER)
+            bild.text(R + 6, y(v) - 3, zahl(v), LEISE)
+            v += stufe
+        # Tagestrenner und Beschriftung
+        wt = ["MO", "DI", "MI", "DO", "FR", "SA", "SO"]
+        x = L
+        for t in tage:
+            n = sum(1 for c in kerzen if c["tag"] == t)
+            bild.rechteck(x, O, x + 1, U, GITTER)
+            dt = date.fromisoformat(t)
+            bild.text(x + 4, U + 8, f"{wt[dt.weekday()]} {dt:%d.%m.}", LEISE)
+            x += n * schritt
+        x_heute = L + (len(kerzen) + 1) * schritt
+        bild.rechteck(x_heute - schritt / 2, O, x_heute - schritt / 2 + 1, U, LEISE)
+        dt = date.fromisoformat(d)
+        bild.text(x_heute + 4, U + 8, f"HEUTE {wt[dt.weekday()]} {dt:%d.%m.}", TEXT)
+        # Erwartete Spanne heute
+        if e.get("spanne"):
+            bild.rechteck(x_heute, y(e["spanne"][1]), R, y(e["spanne"][0]), BAND)
+        # Kerzen
+        for i, c in enumerate(kerzen):
+            xm = L + (i + 0.5) * schritt
+            f = GRUEN if c["c"] >= c["o"] else ROT
+            bild.rechteck(xm - 0.6, y(c["h"]), xm + 0.6, y(c["l"]), f)
+            bild.rechteck(xm - schritt * 0.32, y(max(c["o"], c["c"])), xm + schritt * 0.32, y(min(c["o"], c["c"])) + 1, f)
+        # Vortagesmarken über die ganze Breite
+        bild.waagerecht(L, R, y(vh), LEISE, strich=4)
+        bild.waagerecht(L, R, y(vt), LEISE, strich=4)
+        bild.waagerecht(L, R, y(vs), TEXT, strich=2)
+        marken = [(vh, f"VORTAGESHOCH {zahl(vh)}", LEISE), (vt, f"VORTAGESTIEF {zahl(vt)}", LEISE), (vs, f"SCHLUSS {zahl(vs)}", TEXT)]
+        # Heute: Referenz, Ziel, Stopp
+        if e.get("referenz"):
+            bild.waagerecht(x_heute, R, y(e["referenz"]), BLAU, dicke=2)
+            if e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1:
+                marken = [m for m in marken if not m[1].startswith("SCHLUSS")]
+                marken.append((vs, f"SCHLUSS {zahl(vs)} = REF.", BLAU))
+            else:
+                    marken.append((e["referenz"], f"{ {'Indikation': 'INDIKATION', 'Einstieg': 'EINSTIEG'}.get(e.get('referenz_art'), 'REFERENZ') } {zahl(e['referenz'])}", BLAU))
+        if e.get("spanne"):
+            marken.append((e["spanne"][1], f"RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
+            marken.append((e["spanne"][0], f"RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
+        # Beschriftungen links im Heute-Bereich, ohne Überlappung
+        belegt = []
+        for wert, label, farbe in sorted(marken, key=lambda m: -m[0]):
+            ty = y(wert) - 10
+            while any(abs(ty - b) < 10 for b in belegt):
+                ty += 10
+            belegt.append(ty)
+            bild.rechteck(x_heute + 2, ty - 2, x_heute + 6 + len(label) * 6, ty + 9, WEISS)  # Hintergrund, damit keine Linie durch den Text läuft
+            bild.text(x_heute + 4, ty, label, farbe)
+        # Titel
+        richtung = (e.get("richtung") or "").upper()
+        kopf = f"{cfg['name']} - 60 MIN - LETZTE 5 TAGE"
+        if richtung:
+            kopf += f" - HEUTE {richtung}" + (f" {e['score']}/10" if e.get("score") else "")
+        bild.text(L, 14, kopf, TEXT, groesse=2)
+        if e.get("spanne"):
+            bild.text(L, 36, f"ERWARTETE RANGE {zahl(e['spanne'][0])} - {zahl(e['spanne'][1])} (VOLA {e['vola_pct']:.1f} %)".replace(f"{e['vola_pct']:.1f}", f"{e['vola_pct']:.1f}".replace(".", ",")), LEISE)
+        bild.text(B - 10, H - 14, "QUELLE: YAHOO FINANCE, EIGENE BERECHNUNG", LEISE, rechts=True)
+        if trend:
+            legende = "HINTERGRUND: GROSSER TREND (3 MONATE, TAEGLICH)  GRUEN = BULL  ROT = BEAR"
+            bild.text(L, H - 14, legende, LEISE)
+        return bild
 
     ziel = ROOT / "notizen" / a.bericht / "charts" / f"{a.name or d}.png"
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    bild.png(ziel)
+    zeichne(2).png(ziel)
     print(f"Chart: {ziel.relative_to(ROOT)}")
+    # kleine Fassung für die Mail (wird als Text in die Mail kopiert, muss klein bleiben)
+    mail = ziel.with_name(ziel.stem + "-mail.png")
+    zeichne(1).png(mail)
+    print(f"Chart für die Mail: {mail.relative_to(ROOT)} ({mail.stat().st_size} Bytes)")
 
     # Daten für den beweglichen Chart auf der Webseite (docs/chart.js)
     boerse = ZoneInfo(cfg["tz"])
+    dt = date.fromisoformat(d)
     heute_slots = [int(datetime(dt.year, dt.month, dt.day, h, m, tzinfo=boerse).astimezone(timezone.utc).timestamp()) for h, m in cfg["stunden"]]
     linien = [
         {"name": "Vortageshoch", "preis": vh, "farbe": "leise", "stil": "gestrichelt"},
@@ -245,6 +282,7 @@ def main():
         "tage": [{"time": c["tag"], "open": c["o"], "high": c["h"], "low": c["l"], "close": c["c"]} for c in tage_alle],
         "heute_slots": heute_slots,
         "linien": [l for l in linien if l["preis"]],
+        "trend": trend,
     }
     (ziel.with_suffix(".json")).write_text(json.dumps(live, ensure_ascii=False), encoding="utf-8")
     print(f"Daten für beweglichen Chart: {ziel.with_suffix('.json').relative_to(ROOT)}")

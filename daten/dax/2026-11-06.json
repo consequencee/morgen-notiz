@@ -8479,5 +8479,1246 @@
    }
   ],
   "quelle": "ING THINK RSS (think.ing.com)"
+ },
+ "trendfolge": {
+  "regel": "Absolute Momentum, 3 Monate (63 Handelstage), täglich entschieden (Antonacci 2014: 12 Monate, monatlich)",
+  "index": "DAX",
+  "stand": "bear",
+  "letzte_entscheidung": {
+   "datum": "2026-11-05",
+   "r": 4e-05,
+   "z": 0.00599,
+   "seit": "2026-08-10",
+   "kurs": 26325.01
+  },
+  "stand_seit": "2026-10-22",
+  "wechsel_3m": 5,
+  "verlauf": [
+   {
+    "tag": "2025-09-01",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-03",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-04",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-08",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-09",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-10",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-11",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-12",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-09-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-09-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-09-18",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-09-22",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-23",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-24",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-25",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-26",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-29",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-09-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-01",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-07",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-08",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-15",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-16",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-17",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-20",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-21",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-22",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-23",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-27",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-28",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-10-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-30",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-10-31",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-11-03",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-04",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-11-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-06",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-07",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-10",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-11",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-12",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-13",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-14",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-17",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-18",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-19",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-20",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-21",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-24",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-25",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-26",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-27",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-11-28",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-12-01",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-12-03",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-12-04",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-12-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2025-12-08",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-11",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-12",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-18",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2025-12-30",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-05",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-08",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-12",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-20",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-21",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-26",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-27",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-28",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-01-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-02-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-04",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-05",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-11",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-12",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-18",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-20",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-25",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-26",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-02-27",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-03-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-03-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-03-04",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-05",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-03-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-03-09",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-10",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-11",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-12",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-13",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-16",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-17",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-18",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-19",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-20",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-23",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-24",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-25",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-26",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-27",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-03-31",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-01",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-07",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-08",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-09",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-10",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-13",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-14",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-15",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-16",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-17",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-20",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-21",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-22",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-23",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-24",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-27",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-28",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-29",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-04-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-04",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-06",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-05-08",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-11",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-12",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-13",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-14",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-15",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-18",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-19",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-20",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-21",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-22",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-25",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-05-26",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-05-27",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-05-28",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-05-29",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-06-01",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-06-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-06-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-04",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-05",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-08",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-11",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-12",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-18",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-25",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-26",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-06-30",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-01",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-08",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-20",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-21",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-27",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-28",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-30",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-07-31",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-04",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-05",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-11",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-12",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-18",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-20",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-21",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-25",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-26",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-27",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-28",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-08-31",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-01",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-02",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-03",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-04",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-08",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-09",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-10",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-11",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-17",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-18",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-21",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-23",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-24",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-25",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-28",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-29",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-09-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-01",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-06",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-07",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-08",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-09",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-12",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-13",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-14",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-15",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-16",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-19",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-20",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-21",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-22",
+    "stand": "bull"
+   },
+   {
+    "tag": "2026-10-23",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-26",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-27",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-28",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-29",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-10-30",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-11-02",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-11-03",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-11-04",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-11-05",
+    "stand": "bear"
+   },
+   {
+    "tag": "2026-11-06",
+    "stand": "bear"
+   }
+  ],
+  "naechste_entscheidung": "2026-11-06",
+  "kipp_kurs": 26550.0,
+  "kipp_richtung": "über",
+  "kipp_basis": {
+   "datum": "2026-08-11",
+   "kurs": 26391.42,
+   "z": 0.006
+  },
+  "kurs_jetzt": 25820.36,
+  "kurs_tag": "2026-11-06",
+  "abstand": -0.02748,
+  "wuerde_jetzt": "bear",
+  "zins": "EZB-Einlagensatz",
+  "zins_jetzt": 2.5,
+  "zins_quelle": "EZB-Datenbank",
+  "quelle": "Yahoo Finance Tagesschlusskurse",
+  "hinweis": "Täglich entschieden und 3 statt 12 Monate Rückschau sind eigene Wahl, das Paper entscheidet monatlich über 12 Monate. Beides bringt mehr Fehlsignale, wenn der Markt schnell dreht. Keine Anlageberatung."
  }
 }
