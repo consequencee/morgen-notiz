@@ -1,10 +1,10 @@
 """Großer Trend für die Notiz: Absolute Momentum mit 3 Monaten Rückschau (nach Antonacci 2014, dort 12 Monate).
 
-Regel: Am letzten Handelstag jedes Monats
-    r = Schluss / Schluss am Monatsende vor 3 Monaten − 1
-    z = Mittel des Jahreszinses an den 3 Monatsenden × 3/12   (DAX: EZB-Einlagensatz, Dow: 13-Wochen-T-Bill ^IRX)
-    r > z → Bull (investiert), sonst Bear (Cash). Gewechselt wird zur Eröffnung nach dem Monatsschluss.
-Ein Monatsende zählt erst, wenn der neue Monat begonnen hat; die laufende Tageskerze geht nie in eine Entscheidung ein.
+Regel (täglich, Zeitrahmen Tageskerzen): nach jedem Handelsschluss
+    r = Schluss / Schluss vor 63 Handelstagen (≈ 3 Monate) − 1
+    z = Mittel des Jahreszinses über dieselben 63 Tage × 3/12   (DAX: EZB-Einlagensatz, Dow: 13-Wochen-T-Bill ^IRX)
+    r > z → Bull (investiert), sonst Bear (Cash). Gewechselt wird zur Eröffnung des nächsten Handelstags.
+Die Notiz zeigt den Stand aus dem letzten fertigen Schluss; die laufende Tageskerze geht nie in eine Entscheidung ein.
 Forschung und Rückrechnung dazu: t1/wissen/momentum_3m.py (nicht im Repo).
 
 Aufruf:  python3 scripts/trendfolge.py [--bericht dax|us30] [--datum JJJJ-MM-TT]
@@ -22,6 +22,7 @@ import os
 import urllib.request
 
 MONATE = 3
+TAGE = 63  # Handelstage ≈ 3 Monate
 UA = {"User-Agent": "Mozilla/5.0"}
 BERICHTE = {
     "dax": {"name": "DAX", "symbol": "^GDAXI", "zins": "EZB-Einlagensatz"},
@@ -31,8 +32,8 @@ BERICHTE = {
 EZB_ERSATZ = [("2024-06-12", 3.75), ("2024-09-18", 3.50), ("2024-10-23", 3.25), ("2024-12-18", 3.00),
               ("2025-02-05", 2.75), ("2025-03-12", 2.50), ("2025-04-23", 2.25), ("2025-06-11", 2.00),
               ("2026-06-17", 2.25), ("2026-09-16", 2.50)]
-HINWEIS = ("3 Monate Rückschau sind eine eigene Wahl, das Paper nutzt 12. Kürzere Rückschau bringt mehr Fehlsignale, "
-           "wenn der Markt schnell dreht. Monatssignal, kein Tagessignal. Keine Anlageberatung.")
+HINWEIS = ("Täglich entschieden und 3 statt 12 Monate Rückschau sind eigene Wahl, das Paper entscheidet monatlich über 12 Monate. "
+           "Beides bringt mehr Fehlsignale, wenn der Markt schnell dreht. Keine Anlageberatung.")
 
 
 def hole(url):
@@ -100,41 +101,47 @@ def letzter_handelstag(bericht, jahr, monat):
 
 
 def berechne(bericht, heute=None):
+    """Tägliche Entscheidung aus dem letzten FERTIGEN Tagesschluss (die laufende Tageskerze von heute zählt nicht)."""
     cfg = BERICHTE[bericht]
-    daily = tageskurse(cfg["symbol"])
-    if heute:
-        daily = [x for x in daily if x["d"] <= heute]
+    heute = heute or dt.date.today().isoformat()
+    alle = tageskurse(cfg["symbol"])
+    daily = [x for x in alle if x["d"] < heute]  # nur abgeschlossene Handelstage
+    jetzt = next((x for x in alle if x["d"] == heute), daily[-1])
     reihe, zquelle = zinsreihe(bericht)
     tage = [d for d, _ in reihe]
     zins = lambda d: reihe[max(0, bisect.bisect_right(tage, d) - 1)][1]
-    me = monatsenden(daily)
-    k = len(me) - 1
-    i, j = me[k], me[k - MONATE]
-    r = daily[i]["c"] / daily[j]["c"] - 1
-    z = sum(zins(daily[me[x]]["d"]) for x in range(k - MONATE + 1, k + 1)) / MONATE / 100 * MONATE / 12
+
+    def regel(k):
+        r = daily[k]["c"] / daily[k - TAGE]["c"] - 1
+        z = sum(zins(daily[x]["d"]) for x in range(k - TAGE + 1, k + 1)) / TAGE / 100 * MONATE / 12
+        return r, z
+
+    k = len(daily) - 1
+    r, z = regel(k)
     inv = r > z
-    # vorige Entscheidung: gab es zuletzt einen Wechsel?
-    i0, j0 = me[k - 1], me[k - 1 - MONATE]
-    r0 = daily[i0]["c"] / daily[j0]["c"] - 1
-    z0 = sum(zins(daily[me[x]]["d"]) for x in range(k - MONATE, k)) / MONATE / 100 * MONATE / 12
-    jetzt = daily[-1]
-    t = dt.date.fromisoformat(jetzt["d"])
-    naechste = letzter_handelstag(bericht, t.year, t.month)
-    # Am nächsten Monatsende ist me[k-2] das Monatsende vor 3 Monaten; Zins: die zwei letzten Monatsenden plus heute
-    ref = daily[me[k - MONATE + 1]]
-    z_next = (sum(zins(daily[me[x]]["d"]) for x in range(k - MONATE + 2, k + 1)) + zins(jetzt["d"])) / 100 / 12
+    # wie lange gilt der Stand schon, und wie oft hat er in den letzten 63 Handelstagen gewechselt?
+    zust = [regel(j)[0] > regel(j)[1] for j in range(k - TAGE, k + 1)]
+    wechsel = sum(1 for a, b in zip(zust, zust[1:]) if a != b)
+    j = k
+    while j - 1 >= TAGE and (lambda q: q[0] > q[1])(regel(j - 1)) == inv:
+        j -= 1
+    seit = daily[j]["d"]
+    # Heute zum Schluss wird neu entschieden: Bezug ist dann der Schluss vor TAGE-1 Handelstagen
+    ref = daily[k - TAGE + 1]
+    z_next = (sum(zins(daily[x]["d"]) for x in range(k - TAGE + 2, k + 1)) + zins(heute)) / TAGE / 100 * MONATE / 12
     kipp = ref["c"] * (1 + z_next)
     return {
-        "regel": "Absolute Momentum, 3 Monate (Antonacci 2014: 12 Monate)",
+        "regel": "Absolute Momentum, 3 Monate (63 Handelstage), täglich entschieden (Antonacci 2014: 12 Monate, monatlich)",
         "index": cfg["name"], "stand": "bull" if inv else "bear",  # bull = investiert, bear = Cash
-        "letzte_entscheidung": {"datum": daily[i]["d"], "r": round(r, 5), "z": round(z, 5), "seit": daily[j]["d"],
-                                "kurs": round(daily[i]["c"], 2), "wechsel": inv != (r0 > z0)},
-        "naechste_entscheidung": naechste.isoformat(),
+        "letzte_entscheidung": {"datum": daily[k]["d"], "r": round(r, 5), "z": round(z, 5), "seit": daily[k - TAGE]["d"],
+                                "kurs": round(daily[k]["c"], 2)},
+        "stand_seit": seit, "wechsel_3m": wechsel,
+        "naechste_entscheidung": heute,
         "kipp_kurs": round(kipp, 0), "kipp_richtung": "unter" if inv else "über",
         "kipp_basis": {"datum": ref["d"], "kurs": round(ref["c"], 2), "z": round(z_next, 5)},
         "kurs_jetzt": round(jetzt["c"], 2), "kurs_tag": jetzt["d"], "abstand": round(jetzt["c"] / kipp - 1, 5),
         "wuerde_jetzt": "bull" if jetzt["c"] > kipp else "bear",
-        "zins": cfg["zins"], "zins_jetzt": zins(jetzt["d"]), "zins_quelle": zquelle,
+        "zins": cfg["zins"], "zins_jetzt": zins(heute), "zins_quelle": zquelle,
         "quelle": "Yahoo Finance Tagesschlusskurse", "hinweis": HINWEIS,
     }
 
@@ -144,12 +151,13 @@ def text(s):
     pct = lambda x: ("+" if x >= 0 else "−") + de(abs(x) * 100, 2) + " %"
     dat = lambda d: f"{d[8:10]}.{d[5:7]}.{d[:4]}"
     L = s["letzte_entscheidung"]
+    neu = "Bear" if s["stand"] == "bull" else "Bull"
     return "\n".join([
-        f"Großer Trend (3-Monats-Momentum) {s['index']}: {s['stand'].upper()}"
-        + (" (Wechsel am letzten Monatsende)" if L["wechsel"] else ""),
-        f"  Entscheidung {dat(L['datum'])}: r = {pct(L['r'])} seit {dat(L['seit'])} gegen z = {pct(L['z'])} ({s['zins']})",
-        f"  Nächste Entscheidung {dat(s['naechste_entscheidung'])} zum Schluss. Dreht bei Schluss {s['kipp_richtung']} "
-        f"{de(s['kipp_kurs'])} (jetzt {de(s['kurs_jetzt'])}, Abstand {pct(s['abstand'])}; stünde der Monat jetzt, wäre es {s['wuerde_jetzt']}).",
+        f"Großer Trend (3 Monate, täglich) {s['index']}: {s['stand'].upper()} seit {dat(s['stand_seit'])} "
+        f"({s['wechsel_3m']} Wechsel in den letzten 63 Handelstagen)",
+        f"  Entscheidung aus dem Schluss {dat(L['datum'])}: r = {pct(L['r'])} seit {dat(L['seit'])} gegen z = {pct(L['z'])} ({s['zins']})",
+        f"  Nächste Entscheidung: heute zum Schluss. Dreht auf {neu} bei Schluss {s['kipp_richtung']} {de(s['kipp_kurs'])} "
+        f"(jetzt {de(s['kurs_jetzt'])}, Abstand {pct(s['abstand'])}; mit dem Kurs von jetzt wäre es {s['wuerde_jetzt'].upper()}).",
         f"  Zins jetzt {de(s['zins_jetzt'], 2)} % ({s['zins_quelle']}). {s['hinweis']}",
     ])
 
