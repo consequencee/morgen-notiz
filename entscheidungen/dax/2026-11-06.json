@@ -1,0 +1,114 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-06",
+ "richtung": "long",
+ "score": 2,
+ "grund": "Die Lücke von −1,46 % preist den US-Tech-Crash weitgehend ein, Nasdaq-Futures erholen sich (+0,86 %), Renditen fallen und die Industrieproduktion überrascht positiv; dagegen stehen Asien-Ausverkauf und Arbeitsmarktbericht um 14:30.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 −4,36 %, Nasdaq 100 −6,36 %; Futures S&P ±0,00 %, Nasdaq +0,86 %",
+   "wirkung": "gegenwind",
+   "grund": "Schlechtester Nasdaq-100-Tag seit 2020, Futures stabilisieren sich"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.940 (−1,46 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Große Lücke nach unten, Erholungspotenzial"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei −5,96 %, Shanghai −1,10 %, CSI 300 −1,44 %, Hang Seng −1,30 %",
+   "wirkung": "gegenwind",
+   "grund": "KI-Ausverkauf schwappt nach Asien"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "DE Industrieproduktion +0,7 % vs. 0,0 %; US-Erstanträge 189K vs. 197K",
+   "wirkung": "rueckenwind",
+   "grund": "Positive Überraschungen"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 62 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Erhöhung mehrheitlich eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,22 % (−3 Bp.), US 10J 4,83 %",
+   "wirkung": "rueckenwind",
+   "grund": "Fluchtbewegung in Anleihen senkt Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,31 %, LQD +0,15 %",
+   "wirkung": "neutral",
+   "grund": "Leichte Ausweitung, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 99,36 (+1,09 %), EUR/USD 1,1183 (−0,46 %)",
+   "wirkung": "neutral",
+   "grund": "Teureres Öl belastet, schwächerer Euro hilft Exporteuren"
+  },
+  {
+   "name": "Trend",
+   "wert": "DAX über 21-, 50-, 200-Tage-Schnitt",
+   "wirkung": "rueckenwind",
+   "grund": "Aufwärtstrend intakt, Vortag Rekordhoch"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 27.10.: Hedgefonds S&P netto −400.604",
+   "wirkung": "neutral",
+   "grund": "Kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Munich Re abgestuft, Infineon unter Druck",
+   "wirkung": "gegenwind",
+   "grund": "Schwergewichte belastet"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: idiosynkratische Tech-Neubewertung, kein Rezessionssignal",
+   "wirkung": "rueckenwind",
+   "grund": "Keine Ansteckung auf Gesamtwirtschaft erwartet"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "14:30 US-Arbeitsmarktbericht",
+   "wirkung": "gegenwind",
+   "grund": "Hohes Ereignisrisiko bei 62 % Fed-Erhöhung eingepreist"
+  }
+ ],
+ "vola_pct": 17.13,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-05, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25940,
+ "referenz_art": "Einstieg",
+ "einstieg": {
+  "kurs": 25940,
+  "zeit": 1793952276,
+  "zeit_iso": "2026-11-06T08:04:36.356000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.991,
+ "vortag": {
+  "schluss": 26325.0098,
+  "hoch": 26692.9,
+  "tief": 26223.34,
+  "tag": "2026-11-05"
+ },
+ "sigma_punkte": 279,
+ "spanne": [
+  25661,
+  26219
+ ],
+ "ziel_punkte": 209,
+ "stopp_punkte": 167,
+ "ziel_ca": 26149,
+ "stopp_ca": 25773,
+ "ergebnis": null
+}
