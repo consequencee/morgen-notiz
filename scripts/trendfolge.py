@@ -3,7 +3,7 @@
 Regel: Am letzten Handelstag jedes Monats
     r = Schluss / Schluss am Monatsende vor 3 Monaten − 1
     z = Mittel des Jahreszinses an den 3 Monatsenden × 3/12   (DAX: EZB-Einlagensatz, Dow: 13-Wochen-T-Bill ^IRX)
-    r > z → investiert, sonst Cash. Gewechselt wird zur Eröffnung nach dem Monatsschluss.
+    r > z → Bull (investiert), sonst Bear (Cash). Gewechselt wird zur Eröffnung nach dem Monatsschluss.
 Ein Monatsende zählt erst, wenn der neue Monat begonnen hat; die laufende Tageskerze geht nie in eine Entscheidung ein.
 Forschung und Rückrechnung dazu: t1/wissen/momentum_3m.py (nicht im Repo).
 
@@ -126,14 +126,14 @@ def berechne(bericht, heute=None):
     kipp = ref["c"] * (1 + z_next)
     return {
         "regel": "Absolute Momentum, 3 Monate (Antonacci 2014: 12 Monate)",
-        "index": cfg["name"], "stand": "investiert" if inv else "cash",
+        "index": cfg["name"], "stand": "bull" if inv else "bear",  # bull = investiert, bear = Cash
         "letzte_entscheidung": {"datum": daily[i]["d"], "r": round(r, 5), "z": round(z, 5), "seit": daily[j]["d"],
                                 "kurs": round(daily[i]["c"], 2), "wechsel": inv != (r0 > z0)},
         "naechste_entscheidung": naechste.isoformat(),
         "kipp_kurs": round(kipp, 0), "kipp_richtung": "unter" if inv else "über",
         "kipp_basis": {"datum": ref["d"], "kurs": round(ref["c"], 2), "z": round(z_next, 5)},
         "kurs_jetzt": round(jetzt["c"], 2), "kurs_tag": jetzt["d"], "abstand": round(jetzt["c"] / kipp - 1, 5),
-        "wuerde_jetzt": "investiert" if jetzt["c"] > kipp else "cash",
+        "wuerde_jetzt": "bull" if jetzt["c"] > kipp else "bear",
         "zins": cfg["zins"], "zins_jetzt": zins(jetzt["d"]), "zins_quelle": zquelle,
         "quelle": "Yahoo Finance Tagesschlusskurse", "hinweis": HINWEIS,
     }

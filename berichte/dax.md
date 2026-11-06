@@ -43,7 +43,7 @@ Bewerte **jedes** Signal dieser Liste mit Wert, Wirkung auf den DAX heute (`ruec
 | 6 | Renditen | Bund 10J und US 10J, Veränderung zum Vortag |
 | 7 | Kreditstress | Risikoaufschläge Euro- und US-Hochzins, Veränderung 1 Woche |
 | 8 | Öl & Dollar | Brent, EUR/USD |
-| 9 | Trend | DAX gegen 21-, 50- und 200-Tage-Schnitt; dazu der große Trend aus `trendfolge.py` (investiert/Cash). Der ist ein Monatssignal: Er bestimmt die Richtung heute nicht, zählt aber als Rückenwind, wenn er zur Richtung passt |
+| 9 | Trend | DAX gegen 21-, 50- und 200-Tage-Schnitt; dazu der große Trend aus `trendfolge.py` (Bull/Bear). Der ist ein Monatssignal: Er bestimmt die Richtung heute nicht, zählt aber als Rückenwind, wenn er zur Richtung passt |
 | 10 | Positionierung | CFTC COT (wöchentlich): Extreme oder deutliche Veränderungen bei S&P-Future, Euro, Treasuries |
 | 11 | Unternehmensnachrichten | Schwergewichte mit eigenen Nachrichten |
 | 12 | Profi-Sicht | ING THINK |
@@ -121,12 +121,12 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 <section class="trend">
   <h2>Großer Trend (3-Monats-Momentum)</h2>
   <dl class="marken">
-    <div class="ziel"><dt>Stand</dt><dd>Investiert</dd></div>   <!-- Klasse ziel bei Investiert, keine Klasse bei Cash -->
+    <div class="ziel"><dt>Stand</dt><dd>Bull</dd></div>   <!-- Bull (r > z) mit Klasse ziel, Bear mit Klasse stopp -->
     <div><dt>Entscheidung 30.10.</dt><dd>+0,74 % vs. Zins +0,60 %</dd></div>   <!-- r gegen z der letzten Entscheidung -->
     <div><dt>Nächste Entscheidung</dt><dd>30.11.2026</dd></div>
-    <div><dt>Dreht bei Schluss unter</dt><dd>26.422 (jetzt −2,3 %)</dd></div>   <!-- „über“ bei Cash -->
+    <div><dt>Dreht auf Bear bei Schluss unter</dt><dd>26.422 (jetzt −2,3 %)</dd></div>   <!-- bei Bear: „Dreht auf Bull bei Schluss über“ -->
   </dl>
-  <p class="risiko">1 Satz Einordnung (z. B. „Stünde der Monat heute, wäre das Signal Cash.“). Regel: Rendite der letzten 3 Monate gegen den EZB-Einlagensatz, Entscheidung am letzten Handelstag des Monats (nach Antonacci 2014, dort 12 Monate; 3 Monate drehen öfter falsch). Keine Anlageberatung.</p>
+  <p class="risiko">1 Satz Einordnung (z. B. „Stünde der Monat heute, wäre das Signal Bear.“). Bull = Rendite der letzten 3 Monate über dem Geldmarktzins, Bear = darunter. Regel: Rendite der letzten 3 Monate gegen den EZB-Einlagensatz, Entscheidung am letzten Handelstag des Monats (nach Antonacci 2014, dort 12 Monate; 3 Monate drehen öfter falsch). Keine Anlageberatung.</p>
 </section>   <!-- fehlt der Block trendfolge in den Daten: Abschnitt weglassen -->
 
 <section class="bilanz">
@@ -179,7 +179,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 ## F. Ergänzungen zu Webseite und E-Mail
 
 - **Commit:** zusätzlich die neuen Dateien aufnehmen: `git add notizen docs daten entscheidungen`.
-- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt) sowie einer Zeile „Großer Trend (3 Monate): Investiert/Cash, nächste Entscheidung TT.MM.“. Darunter der Chart als **eingebettetes Bild** (Inline-Anhang `notizen/dax/charts/JJJJ-MM-TT.png`, bei Sonderausgaben `JJJJ-MM-TT-HHMM.png`, im Text `<img src="cid:att0">` – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
+- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt) sowie einer Zeile „Großer Trend (3 Monate): Bull/Bear, nächste Entscheidung TT.MM.“. Darunter der Chart als **eingebettetes Bild** (Inline-Anhang `notizen/dax/charts/JJJJ-MM-TT.png`, bei Sonderausgaben `JJJJ-MM-TT-HHMM.png`, im Text `<img src="cid:att0">` – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite, dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
 
 ## Tabellenzeilen (Marktlage)
 
