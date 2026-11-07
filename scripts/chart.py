@@ -125,6 +125,60 @@ def zahl(v):
     return f"{v:,.0f}".replace(",", ".")
 
 
+def mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg):
+    """Chart für die Mail als reines HTML (keine Bilddatei): Bilder müssten als Base64 abgetippt werden und kommen dann
+    kaputt an. Kerzen = gestapelte div-Kästchen, Hintergrund = großer Trend je Tag, rechts die erwartete Range heute."""
+    H = 220
+    werte = [c["h"] for c in kerzen] + [c["l"] for c in kerzen] + list(e.get("spanne") or []) + ([e["referenz"]] if e.get("referenz") else [])
+    lo, hi = min(werte), max(werte)
+    rand = (hi - lo) * 0.04 or 20
+    lo, hi = lo - rand, hi + rand
+    y = lambda v: round((hi - v) / (hi - lo) * H)
+    farbe = {"bull": "#e6f4e8", "bear": "#fae6e6"}
+    zellen = []
+    for t in tage:  # je Tag eine Zelle mit Trend-Hintergrund, darin die Stundenkerzen
+        innen = []
+        for c in (k for k in kerzen if k["tag"] == t):
+            f = "#183" if c["c"] >= c["o"] else "#c23"
+            o, u = max(c["o"], c["c"]), min(c["o"], c["c"])
+            hoehen = [(y(c["h"]), 0), (y(o) - y(c["h"]), 1), (max(1, y(u) - y(o)), 7), (y(c["l"]) - y(u), 1)]
+            innen.append('<td valign="top" width="9">' + "".join(
+                f'<div style="height:{h}px' + (f';width:{w}px;margin:auto;background:{f}' if w else "") + '"></div>'
+                for h, w in hoehen if h > 0) + "</td>")
+        zellen.append(f'<td valign="top" style="border-left:1px solid #bbb;background:{farbe.get(trend.get(t), "#fff")}">'
+                      f'<table cellpadding="0" cellspacing="0"><tr style="height:{H}px">{"".join(innen)}</tr></table></td>')
+    heute = ""
+    if e.get("spanne"):
+        a, b = e["spanne"][1], e["spanne"][0]
+        r = e.get("referenz")
+        if r and b < r < a:  # Einstieg als durchgezogene Linie in der Range
+            heute = (f'<div style="height:{y(a)}px"></div>'
+                     f'<div style="height:{max(1, y(r) - y(a) - 1)}px;background:#deebfa;border-top:2px dashed #285aaa"></div>'
+                     f'<div style="height:2px;background:#285aaa"></div>'
+                     f'<div style="height:{max(1, y(b) - y(r) - 1)}px;background:#deebfa;border-bottom:2px dashed #285aaa"></div>')
+        else:
+            heute = (f'<div style="height:{y(a)}px"></div><div style="height:{max(1, y(b) - y(a))}px;background:#deebfa;'
+                     f'border-top:2px dashed #285aaa;border-bottom:2px dashed #285aaa"></div>')
+    zellen.append(f'<td style="border-left:2px solid #888;padding:0 2px;width:60px;vertical-align:top;background:{farbe.get(trend.get(d), "#fff")}">{heute}</td>')
+    achse = (f'<td style="padding:0 0 0 6px;vertical-align:top;font:11px Arial;color:#666;white-space:nowrap">'
+             f'<div style="height:{H - 14}px">{zahl(hi)}</div><div>{zahl(lo)}</div></td>')
+    wt = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+    kopf = "".join(f'<td style="font:11px Arial;color:#666;padding:2px 4px">'
+                   f'{wt[date.fromisoformat(t).weekday()]} {date.fromisoformat(t):%d.%m.}</td>' for t in tage)
+    kopf += f'<td style="font:bold 11px Arial;padding:2px 4px">Heute</td><td></td>'
+    marken = [f"Vortageshoch {zahl(vh)}", f"Schluss {zahl(vs)}", f"Vortagestief {zahl(vt)}"]
+    if e.get("referenz"):
+        marken.append(f"Einstieg (blaue Linie) {zahl(e['referenz'])}")
+    if e.get("spanne"):
+        marken.append(f"Erwartete Range heute (blau) {zahl(e['spanne'][0])} – {zahl(e['spanne'][1])}")
+    st = trend.get(d)
+    legende = ("Hintergrund: großer Trend, grün = Bull, rot = Bear" + (f" (heute {st.capitalize()})" if st else "")) if trend else ""
+    return (f'<table style="border-collapse:collapse;border:1px solid #ddd" cellpadding="0" cellspacing="0">'
+            f'<tr style="height:{H}px">{"".join(zellen)}{achse}</tr><tr>{kopf}</tr></table>'
+            f'<p style="font:12px Arial;color:#555;margin:4px 0">{cfg["name"]}, 60-Minuten-Kerzen der letzten 5 Tage. '
+            f'{" · ".join(marken)}. {legende}.</p>')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--bericht", default="dax", choices=list(BERICHTE))
@@ -250,10 +304,10 @@ def main():
     ziel.parent.mkdir(parents=True, exist_ok=True)
     zeichne(2).png(ziel)
     print(f"Chart: {ziel.relative_to(ROOT)}")
-    # kleine Fassung für die Mail (wird als Text in die Mail kopiert, muss klein bleiben)
-    mail = ziel.with_name(ziel.stem + "-mail.png")
-    zeichne(1).png(mail)
-    print(f"Chart für die Mail: {mail.relative_to(ROOT)} ({mail.stat().st_size} Bytes)")
+    # Chart für die Mail als HTML (kein Bild): wird unverändert in den htmlBody übernommen
+    mail = ziel.with_name(ziel.stem + "-mail.html")
+    mail.write_text(mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg), encoding="utf-8")
+    print(f"Chart für die Mail (HTML): {mail.relative_to(ROOT)} ({mail.stat().st_size} Zeichen)")
 
     # Daten für den beweglichen Chart auf der Webseite (docs/chart.js)
     boerse = ZoneInfo(cfg["tz"])
