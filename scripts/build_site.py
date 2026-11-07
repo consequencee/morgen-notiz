@@ -165,7 +165,7 @@ def bilanz_zeile(bericht):
     if not g.get("trades"):
         return '<div class="bilanz-zahlen"><span>Bilanz: noch keine bewertete Entscheidung</span></div>'
     return (
-        f'<div class="bilanz-zahlen"><span>Bilanz: <strong>{g["trades"]}</strong> Trades</span>'
+        f'<div class="bilanz-zahlen"><span>Bilanz: <strong>{g["trades"]}</strong> Einschätzungen</span>'
         f'<span>Richtung richtig <strong>{g["richtung_richtig_pct"]} %</strong></span>'
         f'<span>Summe <strong>{g["punkte_summe"]:+d}</strong> Punkte</span></div>'
     )

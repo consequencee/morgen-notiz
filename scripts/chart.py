@@ -147,36 +147,66 @@ def mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg):
                 for h, w in hoehen if h > 0) + "</td>")
         zellen.append(f'<td valign="top" style="border-left:1px solid #bbb;background:{farbe.get(trend.get(t), "#fff")}">'
                       f'<table cellpadding="0" cellspacing="0"><tr style="height:{H}px">{"".join(innen)}</tr></table></td>')
-    heute = ""
+    # Heute-Spalte Zeile für Zeile malen (Range-Band, Linien für Vortageshoch/-schluss/-tief und Kurs), dann zusammenfassen
+    zeilen = [None] * H
     if e.get("spanne"):
-        a, b = e["spanne"][1], e["spanne"][0]
-        r = e.get("referenz")
-        if r and b < r < a:  # Einstieg als durchgezogene Linie in der Range
-            heute = (f'<div style="height:{y(a)}px"></div>'
-                     f'<div style="height:{max(1, y(r) - y(a) - 1)}px;background:#deebfa;border-top:2px dashed #285aaa"></div>'
-                     f'<div style="height:2px;background:#285aaa"></div>'
-                     f'<div style="height:{max(1, y(b) - y(r) - 1)}px;background:#deebfa;border-bottom:2px dashed #285aaa"></div>')
-        else:
-            heute = (f'<div style="height:{y(a)}px"></div><div style="height:{max(1, y(b) - y(a))}px;background:#deebfa;'
-                     f'border-top:2px dashed #285aaa;border-bottom:2px dashed #285aaa"></div>')
-    zellen.append(f'<td style="border-left:2px solid #888;padding:0 2px;width:60px;vertical-align:top;background:{farbe.get(trend.get(d), "#fff")}">{heute}</td>')
-    achse = (f'<td style="padding:0 0 0 6px;vertical-align:top;font:11px Arial;color:#666;white-space:nowrap">'
-             f'<div style="height:{H - 14}px">{zahl(hi)}</div><div>{zahl(lo)}</div></td>')
+        for i in range(max(0, y(e["spanne"][1])), min(H, y(e["spanne"][0]) + 1)):
+            zeilen[i] = "#deebfa"
+    linien = [(vh, "#999"), (vt, "#999"), (vs, "#333")] + ([(e["referenz"], "#285aaa")] if e.get("referenz") else [])
+    if e.get("spanne"):
+        linien += [(e["spanne"][1], "#285aaa"), (e["spanne"][0], "#285aaa")]
+    for wert, f in linien:
+        for i in (y(wert), y(wert) + 1 if f == "#285aaa" else -1):
+            if 0 <= i < H:
+                zeilen[i] = f
+    blöcke, i = [], 0
+    while i < H:
+        j = i
+        while j < H and zeilen[j] == zeilen[i]:
+            j += 1
+        blöcke.append(f'<div style="height:{j - i}px' + (f';background:{zeilen[i]}' if zeilen[i] else "") + '"></div>')
+        i = j
+    zellen.append(f'<td style="border-left:2px solid #888;width:60px;vertical-align:top;background:{farbe.get(trend.get(d), "#fff")}">{"".join(blöcke)}</td>')
+    # Preisachse: Marken mit Namen, dazwischen runde Kurse; Beschriftungen ohne Überlappung
+    marken = [(vh, f"Hoch {zahl(vh)}", "#777"), (vs, f"Schluss {zahl(vs)}", "#333"), (vt, f"Tief {zahl(vt)}", "#777")]
+    if e.get("referenz"):
+        marken.append((e["referenz"], f"Kurs {zahl(e['referenz'])}", "#285aaa"))
+    if e.get("spanne"):
+        marken += [(e["spanne"][1], f"Range {zahl(e['spanne'][1])}", "#285aaa"), (e["spanne"][0], f"Range {zahl(e['spanne'][0])}", "#285aaa")]
+    stufe = next(x for x in (25, 50, 100, 200, 250, 500, 1000, 2000) if (hi - lo) / x <= 6)
+    gitter, v = [], (int(lo // stufe) + 1) * stufe
+    while v < hi:
+        gitter.append((v, zahl(v), "#aaa"))
+        v += stufe
+    L_H = 12
+    belegt = []
+    for wert, text, f in sorted(marken, key=lambda m: -m[0]):
+        ty = max(0, y(wert) - L_H // 2)
+        while any(abs(ty - b) < L_H for b, _, _ in belegt):
+            ty += 1
+        belegt.append((ty, text, f))
+    for wert, text, f in gitter:
+        ty = y(wert) - L_H // 2
+        if 0 <= ty <= H - L_H and not any(abs(ty - b) < L_H + 2 for b, _, _ in belegt):
+            belegt.append((ty, text, f))
+    teile, pos = [], 0
+    for ty, text, f in sorted(belegt):
+        if ty > pos:
+            teile.append(f'<div style="height:{ty - pos}px"></div>')
+        teile.append(f'<div style="height:{L_H}px;line-height:{L_H}px;color:{f}">– {text}</div>')
+        pos = max(pos, ty) + L_H
+    achse = (f'<td style="padding:0 0 0 2px;vertical-align:top;font:10px Arial;white-space:nowrap">{"".join(teile)}</td>')
     wt = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
     kopf = "".join(f'<td style="font:11px Arial;color:#666;padding:2px 4px">'
                    f'{wt[date.fromisoformat(t).weekday()]} {date.fromisoformat(t):%d.%m.}</td>' for t in tage)
     kopf += f'<td style="font:bold 11px Arial;padding:2px 4px">Heute</td><td></td>'
-    marken = [f"Vortageshoch {zahl(vh)}", f"Schluss {zahl(vs)}", f"Vortagestief {zahl(vt)}"]
-    if e.get("referenz"):
-        marken.append(f"Einstieg (blaue Linie) {zahl(e['referenz'])}")
-    if e.get("spanne"):
-        marken.append(f"Erwartete Range heute (blau) {zahl(e['spanne'][0])} – {zahl(e['spanne'][1])}")
     st = trend.get(d)
     legende = ("Hintergrund: großer Trend, grün = Bull, rot = Bear" + (f" (heute {st.capitalize()})" if st else "")) if trend else ""
     return (f'<table style="border-collapse:collapse;border:1px solid #ddd" cellpadding="0" cellspacing="0">'
             f'<tr style="height:{H}px">{"".join(zellen)}{achse}</tr><tr>{kopf}</tr></table>'
             f'<p style="font:12px Arial;color:#555;margin:4px 0">{cfg["name"]}, 60-Minuten-Kerzen der letzten 5 Tage. '
-            f'{" · ".join(marken)}. {legende}.</p>')
+            f'Rechts heute: Vortageshoch, Schluss und Vortagestief (graue/schwarze Linien), Kurs zur Notiz (blaue Linie), '
+            f'erwartete Range bis Schluss (blaues Feld). {legende}.</p>')
 
 
 def main():
@@ -266,14 +296,14 @@ def main():
         bild.waagerecht(L, R, y(vt), LEISE, strich=4)
         bild.waagerecht(L, R, y(vs), TEXT, strich=2)
         marken = [(vh, f"VORTAGESHOCH {zahl(vh)}", LEISE), (vt, f"VORTAGESTIEF {zahl(vt)}", LEISE), (vs, f"SCHLUSS {zahl(vs)}", TEXT)]
-        # Heute: Referenz, Ziel, Stopp
+        # Heute: Kurs zur Notiz und Range
         if e.get("referenz"):
             bild.waagerecht(x_heute, R, y(e["referenz"]), BLAU, dicke=2)
             if e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1:
                 marken = [m for m in marken if not m[1].startswith("SCHLUSS")]
                 marken.append((vs, f"SCHLUSS {zahl(vs)} = REF.", BLAU))
             else:
-                    marken.append((e["referenz"], f"{ {'Indikation': 'INDIKATION', 'Einstieg': 'EINSTIEG'}.get(e.get('referenz_art'), 'REFERENZ') } {zahl(e['referenz'])}", BLAU))
+                    marken.append((e["referenz"], f"{ {'Indikation': 'INDIKATION', 'Einstieg': 'KURS', 'Kurs zur Notiz': 'KURS'}.get(e.get('referenz_art'), 'REFERENZ') } {zahl(e['referenz'])}", BLAU))
         if e.get("spanne"):
             marken.append((e["spanne"][1], f"RANGE OBEN {zahl(e['spanne'][1])}", BLAU))
             marken.append((e["spanne"][0], f"RANGE UNTEN {zahl(e['spanne'][0])}", BLAU))
@@ -321,7 +351,7 @@ def main():
     if e.get("referenz_art") != "Indikation" and e.get("referenz") and abs(e["referenz"] - vs) < 1:
         linien[-1] = {"name": "Vortagesschluss = Referenz", "preis": vs, "farbe": "blau", "stil": "durchgezogen"}
     if e.get("referenz") and not (e.get("referenz_art") != "Indikation" and abs(e["referenz"] - vs) < 1):
-        linien.append({"name": e.get("referenz_art") if e.get("referenz_art") in ("Indikation", "Einstieg") else "Referenz", "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
+        linien.append({"name": {"Indikation": "Indikation", "Einstieg": "Kurs zur Notiz", "Kurs zur Notiz": "Kurs zur Notiz"}.get(e.get("referenz_art"), "Referenz"), "preis": e["referenz"], "farbe": "blau", "stil": "durchgezogen"})
     if e.get("spanne"):
         linien += [{"name": "Erwartete Range oben", "preis": e["spanne"][1], "farbe": "band", "stil": "gestrichelt", "dick": True},
                    {"name": "Erwartete Range unten", "preis": e["spanne"][0], "farbe": "band", "stil": "gestrichelt", "dick": True}]

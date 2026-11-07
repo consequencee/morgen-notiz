@@ -3,7 +3,7 @@
 Geplanter Lauf: Mo–Fr **nach der Xetra-Eröffnung**: Start kurz nach 9:00 Uhr, fertig etwa 9:20 Uhr. Die Notiz kennt also schon die Eröffnung und die ersten Minuten.
 Diese Datei hat einen **eigenen Ablauf und Aufbau**. Sie ersetzt die Abschnitte 2 und 3 der ANLEITUNG (Recherche, Notiz schreiben); Abschnitt 1 (Datum, Modus), 4 (Webseite) und 5 (E-Mail) der ANLEITUNG gelten weiter, mit den Ergänzungen unten.
 
-Zweck: **Trading zuerst.** Ganz oben steht eine Tagesentscheidung für den DAX-Index **vom Einstieg (Kurs zum Zeitpunkt der Notiz) bis zum Xetra-Schluss (17:30)**, darunter die Begründung und der Marktüberblick. Kompakt, in etwa 2 Minuten lesbar.
+Zweck: **Markteinschätzung zuerst.** Ganz oben steht eine Tageseinschätzung für den DAX-Index **vom Kurs zum Zeitpunkt der Notiz bis zum Xetra-Schluss (17:30)**, darunter die Begründung und der Marktüberblick. Kompakt, in etwa 2 Minuten lesbar.
 
 ## A. Daten holen (vor jeder Recherche)
 
@@ -22,7 +22,7 @@ python3 scripts/trendfolge.py           # großer Trend (3-Monats-Momentum, täg
 ## B. Recherche (WebSearch / WebFetch) – nur, was die Daten nicht liefern
 
 1. **Spanne:** kommt automatisch aus den Daten, bevorzugt aus der **DAX-Tagesoption (Eurex ODAP)**, die heute zur Xetra-Schlussauktion verfällt (Abschnitt „Tagesoption“ der Datenausgabe). Fehlt sie, nimmt `entscheidung.py` den **VDAX** (onvista), danach die realisierte Schwankung, und sagt das. Nichts davon per Websuche ersetzen.
-2. **Einstieg und Eröffnung:** kommen aus den Daten (Abschnitt „Einstieg (jetzt)“): aktueller DAX-Stand (Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS über onvista, mit Uhrzeit), Eröffnung heute, Lücke zum Vortagesschluss, Bewegung seit Eröffnung. Nur wenn der Einstieg fehlt, den aktuellen Stand per Websuche mit Uhrzeit ergänzen und als `--einstieg` übergeben.
+2. **Kurs zur Notiz und Eröffnung:** kommen aus den Daten (Abschnitt „Einstieg (jetzt)“ der Datenausgabe): aktueller DAX-Stand (Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS über onvista, mit Uhrzeit), Eröffnung heute, Lücke zum Vortagesschluss, Bewegung seit Eröffnung. Nur wenn der Einstieg fehlt, den aktuellen Stand per Websuche mit Uhrzeit ergänzen und als `--einstieg` übergeben.
 3. **Nachrichten zu DAX-Unternehmen** seit gestern Abend: Zahlen, Ad-hoc-Meldungen, Prognosen, Übernahmen, Managementwechsel, Analysten. Besonders die Schwergewichte (SAP, Siemens, Allianz, Deutsche Telekom, Airbus, Rheinmetall, Siemens Energy, Münchener Rück, Deutsche Bank, Mercedes-Benz).
 4. **Grund der China-Sitzung** (1 Satz) und **Konjunkturdaten von heute früh** (Destatis 8:00 Uhr), falls im Kalender noch kein Ist-Wert steht.
 5. **Profi-Sicht:** Öffne die neuesten Artikel von ING THINK aus der Datenausgabe (FX Daily, Rates Spark, The Commodities Feed, Analysen zu EZB/Fed/Deutschland) und fasse ihre Einschätzung in 1–2 Sätzen zusammen. ING schreibt zu Zinsen, Devisen und Rohstoffen, nicht zu Aktien.
@@ -52,48 +52,45 @@ Bewerte **jedes** Signal dieser Liste mit Wert, Wirkung auf den DAX heute (`ruec
 ## D. Tagesentscheidung treffen
 
 - **Richtung:** `long` oder `short` nach dem Saldo der Signale, gewichtet nach ihrer Bedeutung für **heute**. Sei mutig: Es gibt keine Tendenz „neutral“; ist das Bild knapp, entscheide trotzdem und gib einen niedrigen Score.
-- **Kein Trade** (`kein`) nur, wenn **beides** zutrifft: Im Fenster bis 17:30 liegt ein großer Termin (EZB-Zinsentscheid, US-Arbeitsmarktbericht, US-Verbraucherpreise oder ein vergleichbares Ereignis) **und** die Signale widersprechen sich. Außerdem `kein`, wenn Xetra geschlossen ist.
+- **Keine Richtung** (`kein`) nur, wenn **beides** zutrifft: Im Fenster bis 17:30 liegt ein großer Termin (EZB-Zinsentscheid, US-Arbeitsmarktbericht, US-Verbraucherpreise oder ein vergleichbares Ereignis) **und** die Signale widersprechen sich. Außerdem `kein`, wenn Xetra geschlossen ist.
 - **Überzeugung 1–10:**
   - 1–2: Saldo knapp, Signale widersprüchlich
   - 3–4: leichtes Übergewicht in eine Richtung
   - 5–6: klares Übergewicht, mindestens drei gewichtige Signale gleichgerichtet, keine starke Gegenkraft
   - 7–8: starkes Übergewicht plus konkreter Katalysator (z. B. deutliche Vorbörse in Richtung, klare Datenüberraschung)
   - 9–10: nur in außergewöhnlicher Lage, fast alle Signale gleichgerichtet
-- Entscheidung speichern und Marken berechnen lassen (geplanter Modus):
+- Einschätzung speichern und Range berechnen lassen (geplanter Modus):
 
 ```bash
 python3 scripts/entscheidung.py anlegen --datum JJJJ-MM-TT --richtung long|short|kein --score N \
-  [--einstieg <nur wenn die Daten keinen Einstieg haben>] \
+  [--einstieg <Kurs zur Notiz, nur wenn die Daten keinen haben>] \
   --grund "<1 Satz>" --signale '<JSON-Liste: [{"name": "...", "wert": "...", "wirkung": "rueckenwind|gegenwind|neutral", "grund": "..."}]>'
 python3 scripts/chart.py --datum JJJJ-MM-TT
 ```
 
-  Die Ausgabe nennt **erwartete Range** (±1 σ für die restliche Handelszeit), **Obergrenze** und **Untergrenze**, alle ab dem **Einstieg**. Die Grenze auf der Gewinnseite liegt 0,75 σ in Handelsrichtung (Gewinnmitnahme), die auf der Verlustseite 0,6 σ dagegen (Idee widerlegt). Bei Long ist die Obergrenze die Gewinnseite, bei Short die Untergrenze. Übernimm die Zahlen unverändert.
+  Die Ausgabe nennt den **Kurs zur Notiz** und die **erwartete Range** (±1 σ für die restliche Handelszeit). Übernimm die Zahlen unverändert. **Keine Handelsbegriffe** in der Notiz: kein „Einstieg“, „Ausstieg“, „Gewinnmitnahme“, „Stopp“, „Ziel“, „Idee widerlegt“, „Ober-/Untergrenze“, „Trade“.
 - **Manueller Modus (Sonderausgabe):** Die Entscheidung zählt nicht in der Bilanz. Nutze `--ausgabe /tmp/entscheidung-sonder.json` beim Anlegen und `python3 scripts/chart.py --datum JJJJ-MM-TT --entscheidung /tmp/entscheidung-sonder.json --name JJJJ-MM-TT-HHMM`.
 
 ## E. Aufbau der Notiz (HTML-Fragment)
 
-Kopf wie in der ANLEITUNG; `tendenz:` ist **Bullish** bei long, **Bearish** bei short, **Neutral** bei kein Trade. Der `titel` ist die Kernaussage des Tages (z. B. „Short: Apple-Schock und Iran-Angriff überwiegen“).
+Kopf wie in der ANLEITUNG; `tendenz:` ist **Bullish** bei long, **Bearish** bei short, **Neutral** bei keine Richtung. Der `titel` ist die Kernaussage des Tages (z. B. „Short: Apple-Schock und Iran-Angriff überwiegen“).
 
 Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (das `data-src`-Attribut beim beweglichen Chart ist erlaubt):
 
 ```html
 <section class="entscheidung">
-  <h2>Tagesentscheidung ab HH:MM bis 17:30 Uhr</h2>   <!-- HH:MM = Uhrzeit des Einstiegs -->
+  <h2>Tagesentscheidung ab HH:MM bis 17:30 Uhr</h2>   <!-- HH:MM = Uhrzeit des Kurses zur Notiz -->
   <div class="entscheid-kopf">
-    <span class="richtung gross short">Short</span>   <!-- Klassen: long | short | kein; Text: Long | Short | Kein Trade -->
+    <span class="richtung gross short">Short</span>   <!-- Klassen: long | short | kein; Text: Long | Short | Keine Richtung -->
     <span class="score">6/10 <small>Überzeugung</small></span>
   </div>
   <p>2–3 Sätze: welche Signale den Ausschlag geben und welches das wichtigste Gegenargument ist.</p>
   <dl class="marken">
-    <div><dt>Einstieg (HH:MM)</dt><dd>25.906</dd></div>
+    <div><dt>Kurs um HH:MM</dt><dd>25.906</dd></div>
     <div><dt>Erwartete Range</dt><dd>25.590 – 26.222</dd></div>
-    <div class="stopp"><dt>Obergrenze · Idee widerlegt</dt><dd>26.096 (+190)</dd></div>
-    <div class="ziel"><dt>Untergrenze · Gewinnmitnahme</dt><dd>25.668 (−238)</dd></div>
-    <!-- Reihenfolge immer Obergrenze vor Untergrenze; Klasse ziel (grün) für die Gewinnseite, stopp (rot) für die Verlustseite -->
     <div><dt>Eingepreist (Tagesoption)</dt><dd>±1,04 %</dd></div>   <!-- Quelle laut Ausgabe; bei Ersatz „VDAX 19,5 %“ -->
   </dl>
-  <p class="risiko">Einstieg zum Kurs um HH:MM, Ausstieg spätestens zum Xetra-Schluss. Range = ±1 σ für die restliche Handelszeit aus der DAX-Tagesoption (ca. 68 %). Keine Anlageberatung.</p>
+  <p class="risiko">Einschätzung vom Kurs um HH:MM bis zum Xetra-Schluss. Range = ±1 σ für die restliche Handelszeit aus der DAX-Tagesoption (ca. 68 %). Keine Anlageberatung.</p>
 </section>
 
 <section class="chart">
@@ -137,7 +134,7 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 <section class="markt">
   <h2>Marktlage</h2>
   <!-- Tabelle wie bisher: Markt | Stand | Veränderung; Klassen plus / minus -->
-  <!-- Zeilen: DAX (Schluss gestern), DAX (Eröffnung heute), DAX (jetzt, Einstieg), S&P 500, Nasdaq 100, Dow Jones, US-Futures (S&P/Nasdaq), Nikkei 225,
+  <!-- Zeilen: DAX (Schluss gestern), DAX (Eröffnung heute), DAX (jetzt, Kurs zur Notiz), S&P 500, Nasdaq 100, Dow Jones, US-Futures (S&P/Nasdaq), Nikkei 225,
        Shanghai Composite, CSI 300, Hang Seng (je „Eröffnung X → Schluss/aktuell Y“), EUR/USD, Brent, Gold, VIX -->
   <p class="risiko">1 Satz zur China-Sitzung (Grund), Feiertage klar nennen.</p>
 </section>
@@ -179,11 +176,11 @@ Danach genau diese Abschnitte, nur diese Tags und Klassen, keine Inline-Styles (
 ## F. Ergänzungen zu Webseite und E-Mail
 
 - **Commit:** zusätzlich die neuen Dateien aufnehmen: `git add notizen docs daten entscheidungen`.
-- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Obergrenze und Untergrenze (jeweils mit Zusatz Gewinnmitnahme bzw. Idee widerlegt) sowie einer Zeile „Großer Trend (3 Monate, täglich): Bull/Bear seit TT.MM.“. Darunter der Chart als **HTML** (Inhalt von `notizen/dax/charts/JJJJ-MM-TT-mail.html`, bei Sonderausgaben `JJJJ-MM-TT-HHMM-mail.html`, unverändert einfügen – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite (`https://consequencee.github.io/morgen-notiz/dax/`), dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
+- **E-Mail:** Ganz oben ein Kasten (Tabelle mit Rahmen) mit Richtung, Überzeugung, erwarteter Range, Kurs zur Notiz sowie einer Zeile „Großer Trend (3 Monate, täglich): Bull/Bear seit TT.MM.“. Darunter der Chart als **HTML** (Inhalt von `notizen/dax/charts/JJJJ-MM-TT-mail.html`, bei Sonderausgaben `JJJJ-MM-TT-HHMM-mail.html`, unverändert einfügen – siehe ANLEITUNG Abschnitt 5), darunter der Link „Beweglicher Chart auf der Webseite“ zur Berichtsseite (`https://consequencee.github.io/morgen-notiz/dax/`), dann die komplette Notiz. Signale als Tabelle, Rückenwind grün, Gegenwind rot (Inline-Styles).
 
 ## Tabellenzeilen (Marktlage)
 
-DAX (Schluss gestern), DAX (Eröffnung heute), DAX (jetzt, Einstieg), S&P 500, Nasdaq 100, Dow Jones, US-Futures (S&P / Nasdaq), Nikkei 225, Shanghai Composite (Eröffnung → Schluss), CSI 300 (Eröffnung → Schluss), Hang Seng (Eröffnung → aktuell), EUR/USD, Brent, Gold, VIX
+DAX (Schluss gestern), DAX (Eröffnung heute), DAX (jetzt, Kurs zur Notiz), S&P 500, Nasdaq 100, Dow Jones, US-Futures (S&P / Nasdaq), Nikkei 225, Shanghai Composite (Eröffnung → Schluss), CSI 300 (Eröffnung → Schluss), Hang Seng (Eröffnung → aktuell), EUR/USD, Brent, Gold, VIX
 
 ## Überschrift Nachrichten
 
@@ -191,4 +188,4 @@ DAX (Schluss gestern), DAX (Eröffnung heute), DAX (jetzt, Einstieg), S&P 500, N
 
 ## E-Mail-Betreff
 
-`Morgen Notiz – DAX – TT.MM.JJJJ – Long 6/10` (bzw. `Short N/10` oder `Kein Trade`)
+`Morgen Notiz – DAX – TT.MM.JJJJ – Long 6/10` (bzw. `Short N/10` oder `Keine Richtung`)

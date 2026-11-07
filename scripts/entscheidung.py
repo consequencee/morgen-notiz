@@ -6,15 +6,15 @@
       --signale '[{"name": "Vorbörse", "wert": "−0,9 %", "wirkung": "gegen"}, ...]'
   python3 scripts/entscheidung.py bilanz [--bericht dax|us30] [--daten daten/<bericht>/JJJJ-MM-TT.json]
 
-anlegen  rechnet Spanne, Ober- und Untergrenze aus und schreibt entscheidungen/<bericht>/JJJJ-MM-TT.json.
+anlegen  rechnet die erwartete Range aus und schreibt entscheidungen/<bericht>/JJJJ-MM-TT.json.
 bilanz   bewertet alle offenen Entscheidungen mit den Stundenkerzen aus der neuesten Datei in
          daten/<bericht>/, schreibt das Ergebnis in die Entscheidung und entscheidungen/<bericht>/bilanz.json.
 
 Regeln (fest, damit die Bilanz vergleichbar bleibt):
   Handel von der Eröffnung bis zum Schluss der Heimatbörse (DAX: Xetra 9:00–17:30, Dow: NYSE 9:30–16:00 New York).
   Erwartete Tagesbewegung σ = Referenz × Vola / 100 / √252 (Referenz = Indikation, sonst letzter Schluss).
-  Grenze auf der Gewinnseite (Ziel) = Eröffnung ± ZIEL_SIGMA × σ, Grenze auf der Verlustseite (Stopp, Idee widerlegt)
-  = Eröffnung ∓ STOPP_SIGMA × σ. Bei Long ist das Ziel die Obergrenze, bei Short die Untergrenze.
+  Bewertet wird nur: Stimmte die Richtung (Kurs zur Notiz → Schluss)? Lag der Schluss in der erwarteten Range?
+  Keine Kauf-/Verkaufsmarken (seit 07.11.2026). Ältere Einträge mit Marken werden unverändert weiter gelesen.
 Nur Standardbibliothek.
 """
 
@@ -35,10 +35,7 @@ BERICHTE = {
 BERICHT = "dax"
 ORDNER = ROOT / "entscheidungen" / "dax"
 DATEN = ROOT / "daten" / "dax"
-ZIEL_SIGMA = 0.75   # etwas weniger als die eingepreiste Tagesbewegung
-STOPP_SIGMA = 0.6
 WIRKUNGEN = {"rueckenwind", "gegenwind", "neutral"}
-AUSGANG = {"Ziel": "Gewinnmitnahme-Grenze erreicht", "Stopp": "Idee widerlegt (Grenze auf der Verlustseite erreicht)", "Schluss": "keine Grenze erreicht, Ausstieg zum Schluss"}
 
 
 def lies_daten(pfad=None):
@@ -84,7 +81,7 @@ def anlegen(a):
     ind = (daten.get("indikation") or {}).get("wert")
     indikation = a.indikation or ind
     if a.einstieg or ein.get("kurs"):
-        referenz, referenz_art = a.einstieg or ein["kurs"], "Einstieg"
+        referenz, referenz_art = a.einstieg or ein["kurs"], "Kurs zur Notiz"
         ein_zeit = datetime.now(timezone.utc) if a.einstieg else datetime.fromisoformat(ein["zeit"].replace("Z", "+00:00"))
     else:
         referenz, referenz_art, ein_zeit = indikation or schluss, "Indikation" if indikation else "Vortagesschluss", None
@@ -117,10 +114,6 @@ def anlegen(a):
         "vortag": {"schluss": schluss, "hoch": k.get("hoch"), "tief": k.get("tief"), "tag": k.get("letzter_handelstag")},
         "sigma_punkte": round(sigma),
         "spanne": [round(referenz - sigma), round(referenz + sigma)],
-        "ziel_punkte": round(ZIEL_SIGMA * sigma) if vorz else None,
-        "stopp_punkte": round(STOPP_SIGMA * sigma) if vorz else None,
-        "ziel_ca": round(referenz + vorz * ZIEL_SIGMA * sigma) if vorz else None,
-        "stopp_ca": round(referenz - vorz * STOPP_SIGMA * sigma) if vorz else None,
         "ergebnis": None,
     }
     ziel = Path(a.ausgabe) if a.ausgabe else ORDNER / f"{datum}.json"
@@ -129,14 +122,9 @@ def anlegen(a):
     print(f"Entscheidung gespeichert: {ziel}")
     print(f"Richtung {richtung.upper()}" + (f", Überzeugung {a.score}/10" if vorz else ""))
     print(f"Vola {de(vola, 1)} % ({vola_quelle}) → erwartete Bewegung bis Schluss ±{de(sigma)} Punkte (ca. 68 %, {round(rest * 100)} % der Handelszeit übrig)")
-    print(f"Erwartete Range um {e['referenz_art']} {de(referenz)}: {de(e['spanne'][0])} – {de(e['spanne'][1])}")
-    if vorz:
-        basis = "Einstieg" if referenz_art == "Einstieg" else "Eröffnung"
-        gewinn = f"{basis} {'+' if vorz > 0 else '−'}{de(e['ziel_punkte'])} Punkte (= {de(e['ziel_ca'])}) – Gewinnmitnahme"
-        verlust = f"{basis} {'−' if vorz > 0 else '+'}{de(e['stopp_punkte'])} Punkte (= {de(e['stopp_ca'])}) – Idee widerlegt"
-        ober, unter = (gewinn, verlust) if vorz > 0 else (verlust, gewinn)
-        print(f"Obergrenze: {ober}")
-        print(f"Untergrenze: {unter}")
+    zeit = datetime.fromtimestamp(e["einstieg"]["zeit"], ZoneInfo(BERICHTE[BERICHT]["tz"] if BERICHT == "dax" else "Europe/Berlin")).strftime("%H:%M") if e.get("einstieg") else ""
+    print(f"Kurs zur Notiz{' (' + zeit + ' Uhr)' if zeit else ''}: {de(referenz)}")
+    print(f"Erwartete Range bis Schluss: {de(e['spanne'][0])} – {de(e['spanne'][1])}")
 
 
 def bewerte(e, kerzen, tage, fein=None):
@@ -156,10 +144,10 @@ def bewerte(e, kerzen, tage, fein=None):
         r.update(ausgang="kein Trade", punkte=0, richtig=None)
         return r
     vorz = 1 if e["richtung"] == "long" else -1
-    ziel = eroeffnung + vorz * e["ziel_punkte"]
-    stopp = eroeffnung - vorz * e["stopp_punkte"]
     ausgang, punkte = "Schluss", vorz * (schluss - eroeffnung)
-    for c in tag:  # Stundenkerzen der Reihe nach; trifft eine Kerze beides, zählt vorsichtshalber der Stopp
+    ziel = eroeffnung + vorz * (e.get("ziel_punkte") or 1e9)
+    stopp = eroeffnung - vorz * (e.get("stopp_punkte") or 1e9)
+    for c in (tag if e.get("ziel_punkte") else []):  # Stundenkerzen der Reihe nach; trifft eine Kerze beides, zählt vorsichtshalber der Stopp
         stopp_hit = c["l"] <= stopp if vorz > 0 else c["h"] >= stopp
         ziel_hit = c["h"] >= ziel if vorz > 0 else c["l"] <= ziel
         if stopp_hit:
@@ -174,7 +162,7 @@ def bewerte(e, kerzen, tage, fein=None):
 
 
 def bewerte_ab_einstieg(e, fein, tage):
-    """Neue Regel: Einstieg zum Kurs der Notiz, Ausstieg zum Schluss; Grenzen ab Einstieg, 5-Minuten-Kerzen ab Einstiegszeit."""
+    """Bewertung ab dem Kurs zur Zeit der Notiz bis zum Schluss (5-Minuten-Kerzen ab dieser Zeit)."""
     ein = e["einstieg"]
     tag = [c for c in fein if c["tag"] == e["datum"]]
     if not tag or tag[-1]["zeit"] < ("17:25" if BERICHT == "dax" else "15:55"):
@@ -190,9 +178,9 @@ def bewerte_ab_einstieg(e, fein, tage):
         r.update(ausgang="kein Trade", punkte=0, richtig=None)
         return r
     vorz = 1 if e["richtung"] == "long" else -1
-    ziel, stopp = kurs + vorz * e["ziel_punkte"], kurs - vorz * e["stopp_punkte"]
     ausgang, punkte = "Schluss", vorz * (schluss - kurs)
-    for c in danach:
+    ziel, stopp = kurs + vorz * (e.get("ziel_punkte") or 1e9), kurs - vorz * (e.get("stopp_punkte") or 1e9)
+    for c in (danach if e.get("ziel_punkte") else []):
         if (c["l"] <= stopp) if vorz > 0 else (c["h"] >= stopp):
             ausgang, punkte = "Stopp", -e["stopp_punkte"]
             break
@@ -221,6 +209,10 @@ def bilanz(a):
         alle.append(e)
 
     fertig = [e for e in alle if e.get("ergebnis") and e["richtung"] != "kein" and e["ergebnis"].get("richtig") is not None]
+    def bis_schluss(e):  # Punkte vom Kurs zur Notiz bis Schluss, in Richtung der Einschätzung
+        r = e["ergebnis"]
+        return r.get("punkte_ohne_marken", r.get("punkte", 0))
+
     def kennzahlen(liste):
         n = len(liste)
         if not n:
@@ -228,10 +220,8 @@ def bilanz(a):
         return {
             "trades": n,
             "richtung_richtig_pct": round(100 * sum(e["ergebnis"]["richtig"] for e in liste) / n),
-            "ziel_pct": round(100 * sum(e["ergebnis"]["ausgang"] == "Ziel" for e in liste) / n),
-            "stopp_pct": round(100 * sum(e["ergebnis"]["ausgang"] == "Stopp" for e in liste) / n),
-            "punkte_summe": sum(e["ergebnis"]["punkte"] for e in liste),
-            "punkte_schnitt": round(sum(e["ergebnis"]["punkte"] for e in liste) / n),
+            "punkte_summe": sum(bis_schluss(e) for e in liste),
+            "punkte_schnitt": round(sum(bis_schluss(e) for e in liste) / n),
         }
     stufen = {"1–3": (1, 3), "4–6": (4, 6), "7–10": (7, 10)}
     mit_spanne = [e for e in alle if (e.get("ergebnis") or {}).get("in_spanne") is not None]
@@ -240,7 +230,7 @@ def bilanz(a):
               "soll_pct": 68}
     zusammen = {
         "stand": daten.get("datum"),
-        "regeln": f"{BERICHTE[BERICHT]['fenster']}; Ziel {ZIEL_SIGMA} σ, Stopp {STOPP_SIGMA} σ; Kerze mit beidem zählt als Stopp",
+        "regeln": f"{BERICHTE[BERICHT]['fenster']}; Richtung vom Kurs zur Notiz bis Schluss; Range ±1 σ",
         "gesamt": kennzahlen(fertig),
         "nach_score": {s: kennzahlen([e for e in fertig if lo <= e["score"] <= hi]) for s, (lo, hi) in stufen.items()},
         "spanne": spanne,
@@ -259,18 +249,19 @@ def bilanz(a):
     if "eroeffnung" not in r:
         print(f"Bilanz {e['datum']}: {r['ausgang']}.")
     elif e["richtung"] == "kein":
-        print(f"Bilanz {e['datum']}: kein Trade. {BERICHTE[BERICHT]['name']} von Eröffnung {de(r['eroeffnung'])} bis Schluss {de(r['schluss'])}: {r['bewegung_punkte']:+d} Punkte.")
+        print(f"Bilanz {e['datum']}: keine Richtung. {BERICHTE[BERICHT]['name']} von Eröffnung {de(r['eroeffnung'])} bis Schluss {de(r['schluss'])}: {r['bewegung_punkte']:+d} Punkte.")
     else:
+        bs = r.get("punkte_ohne_marken", r.get("punkte", 0))
         print(f"Bilanz {e['datum']}: {e['richtung'].upper()} (Überzeugung {e['score']}/10) – "
-              f"{'Richtung richtig' if r['richtig'] else 'Richtung falsch'}, {AUSGANG.get(r['ausgang'], r['ausgang'])}, {r['punkte']:+d} Punkte "
-              f"({'Einstieg ' + de(r['einstieg']) if 'einstieg' in r else 'Eröffnung ' + de(r['eroeffnung'])}, Schluss {de(r['schluss'])}, Hoch {de(r['hoch'])}, Tief {de(r['tief'])}).")
+              f"{'Richtung richtig' if r['richtig'] else 'Richtung falsch'}, {bs:+d} Punkte in Richtung der Einschätzung "
+              f"({'Kurs zur Notiz ' + de(r['einstieg']) if 'einstieg' in r else 'Eröffnung ' + de(r['eroeffnung'])}, Schluss {de(r['schluss'])}, Hoch {de(r['hoch'])}, Tief {de(r['tief'])}).")
     if "in_spanne" in r:
-        print(f"Range ±{de(e['sigma_punkte'])} um {'den Einstieg' if 'einstieg' in r else 'die Eröffnung'}: {'getroffen' if r['in_spanne'] else 'verfehlt'} "
+        print(f"Range ±{de(e['sigma_punkte'])} um {'den Kurs zur Notiz' if 'einstieg' in r else 'die Eröffnung'}: {'getroffen' if r['in_spanne'] else 'verfehlt'} "
               f"(Bewegung {r['bewegung_punkte']:+d}); bisher {spanne['treffer_pct']} % von {spanne['tage']} Tagen getroffen (Soll ca. 68 %).")
     g = zusammen["gesamt"]
     if g["trades"]:
-        print(f"Gesamt seit Start: {g['trades']} Trade{'s' if g['trades'] != 1 else ''}, Richtung richtig {g['richtung_richtig_pct']} %, Gewinnmitnahme erreicht {g['ziel_pct']} %, "
-              f"Idee widerlegt {g['stopp_pct']} %, Summe {g['punkte_summe']:+d} Punkte (Schnitt {g['punkte_schnitt']:+d}).")
+        print(f"Gesamt seit Start: {g['trades']} Einschätzung{'en' if g['trades'] != 1 else ''}, Richtung richtig {g['richtung_richtig_pct']} %, "
+              f"Summe {g['punkte_summe']:+d} Punkte bis Schluss (Schnitt {g['punkte_schnitt']:+d}).")
 
 
 def main():
@@ -284,7 +275,7 @@ def main():
     an.add_argument("--vola", type=float)
     an.add_argument("--vola-quelle", default="")
     an.add_argument("--indikation", type=float)
-    an.add_argument("--einstieg", type=float, help="nur wenn die Daten keinen Einstiegskurs haben")
+    an.add_argument("--einstieg", type=float, help="Kurs zur Notiz, nur wenn die Daten keinen haben")
     an.add_argument("--grund", default="")
     an.add_argument("--signale", default="")
     an.add_argument("--ausgabe", help="andere Zieldatei (Sonderausgabe: zählt nicht in der Bilanz)")
