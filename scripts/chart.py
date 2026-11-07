@@ -134,29 +134,31 @@ def mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg):
     rand = (hi - lo) * 0.04 or 20
     lo, hi = lo - rand, hi + rand
     y = lambda v: round((hi - v) / (hi - lo) * H)
-    farbe = {"bull": "#e6f4e8", "bear": "#fae6e6"}
-    zellen = []
-    for t in tage:  # je Tag eine Zelle mit Trend-Hintergrund, darin die Stundenkerzen
+    # Gmail entfernt Hintergrundfarben -> alles wird mit Rahmenlinien (border) gezeichnet
+    farbe = {"bull": "#2e9e4f", "bear": "#d0353f"}
+    zellen, leisten = [], []
+    for t in tage:  # je Tag eine Zelle, darin die Stundenkerzen
         innen = []
         for c in (k for k in kerzen if k["tag"] == t):
-            f = "#183" if c["c"] >= c["o"] else "#c23"
+            f = "#1f8a3c" if c["c"] >= c["o"] else "#d0353f"
             o, u = max(c["o"], c["c"]), min(c["o"], c["c"])
             hoehen = [(y(c["h"]), 0), (y(o) - y(c["h"]), 1), (max(1, y(u) - y(o)), 7), (y(c["l"]) - y(u), 1)]
-            innen.append('<td valign="top" width="9">' + "".join(
-                f'<div style="height:{h}px' + (f';width:{w}px;margin:auto;background:{f}' if w else "") + '"></div>'
+            innen.append('<td valign="top" width="9" style="width:9px">' + "".join(
+                f'<div style="height:{h}px' + (f';width:0;margin-left:{4 if w == 1 else 1}px;border-left:{w}px solid {f}' if w else "") + '"></div>'
                 for h, w in hoehen if h > 0) + "</td>")
-        zellen.append(f'<td valign="top" style="border-left:1px solid #bbb;background:{farbe.get(trend.get(t), "#fff")}">'
+        zellen.append(f'<td valign="top" style="border-left:1px solid #999">'
                       f'<table cellpadding="0" cellspacing="0"><tr style="height:{H}px">{"".join(innen)}</tr></table></td>')
-    # Heute-Spalte Zeile für Zeile malen (Range-Band, Linien für Vortageshoch/-schluss/-tief und Kurs), dann zusammenfassen
+        leisten.append(f'<td style="border-left:1px solid #999;padding:0"><div style="height:0;border-top:6px solid {farbe.get(trend.get(t), "#999")}"></div></td>')
+    # Heute-Spalte Zeile für Zeile: Range als blaue Fläche (breiter Rahmen), Linien für Vortageshoch/-schluss/-tief und Kurs
     zeilen = [None] * H
     if e.get("spanne"):
         for i in range(max(0, y(e["spanne"][1])), min(H, y(e["spanne"][0]) + 1)):
-            zeilen[i] = "#deebfa"
-    linien = [(vh, "#999"), (vt, "#999"), (vs, "#333")] + ([(e["referenz"], "#285aaa")] if e.get("referenz") else [])
+            zeilen[i] = "#9dc0ef"
+    linien = [(vh, "#888"), (vt, "#888"), (vs, "#888")] + ([(e["referenz"], "#1f4fa0")] if e.get("referenz") else [])
     if e.get("spanne"):
-        linien += [(e["spanne"][1], "#285aaa"), (e["spanne"][0], "#285aaa")]
+        linien += [(e["spanne"][1], "#1f4fa0"), (e["spanne"][0], "#1f4fa0")]
     for wert, f in linien:
-        for i in (y(wert), y(wert) + 1 if f == "#285aaa" else -1):
+        for i in (y(wert), y(wert) + 1 if f == "#1f4fa0" else -1):
             if 0 <= i < H:
                 zeilen[i] = f
     blöcke, i = [], 0
@@ -164,15 +166,16 @@ def mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg):
         j = i
         while j < H and zeilen[j] == zeilen[i]:
             j += 1
-        blöcke.append(f'<div style="height:{j - i}px' + (f';background:{zeilen[i]}' if zeilen[i] else "") + '"></div>')
+        blöcke.append(f'<div style="height:{j - i}px' + (f';width:0;border-left:60px solid {zeilen[i]}' if zeilen[i] else "") + '"></div>')
         i = j
-    zellen.append(f'<td style="border-left:2px solid #888;width:60px;vertical-align:top;background:{farbe.get(trend.get(d), "#fff")}">{"".join(blöcke)}</td>')
+    zellen.append(f'<td valign="top" style="border-left:2px solid #888;width:60px">{"".join(blöcke)}</td>')
+    leisten.append(f'<td style="border-left:2px solid #888;padding:0"><div style="height:0;border-top:6px solid {farbe.get(trend.get(d), "#999")}"></div></td><td></td>')
     # Preisachse: Marken mit Namen, dazwischen runde Kurse; Beschriftungen ohne Überlappung
-    marken = [(vh, f"Hoch {zahl(vh)}", "#777"), (vs, f"Schluss {zahl(vs)}", "#333"), (vt, f"Tief {zahl(vt)}", "#777")]
+    marken = [(vh, f"Hoch {zahl(vh)}", "#777"), (vs, f"Schluss {zahl(vs)}", "#888"), (vt, f"Tief {zahl(vt)}", "#777")]
     if e.get("referenz"):
-        marken.append((e["referenz"], f"Kurs {zahl(e['referenz'])}", "#285aaa"))
+        marken.append((e["referenz"], f"Kurs {zahl(e['referenz'])}", "#3b7dd8"))
     if e.get("spanne"):
-        marken += [(e["spanne"][1], f"Range {zahl(e['spanne'][1])}", "#285aaa"), (e["spanne"][0], f"Range {zahl(e['spanne'][0])}", "#285aaa")]
+        marken += [(e["spanne"][1], f"Range {zahl(e['spanne'][1])}", "#3b7dd8"), (e["spanne"][0], f"Range {zahl(e['spanne'][0])}", "#3b7dd8")]
     stufe = next(x for x in (25, 50, 100, 200, 250, 500, 1000, 2000) if (hi - lo) / x <= 6)
     gitter, v = [], (int(lo // stufe) + 1) * stufe
     while v < hi:
@@ -201,10 +204,10 @@ def mail_html(kerzen, tage, trend, e, d, vh, vt, vs, cfg):
                    f'{wt[date.fromisoformat(t).weekday()]} {date.fromisoformat(t):%d.%m.}</td>' for t in tage)
     kopf += f'<td style="font:bold 11px Arial;padding:2px 4px">Heute</td><td></td>'
     st = trend.get(d)
-    legende = ("Hintergrund: großer Trend, grün = Bull, rot = Bear" + (f" (heute {st.capitalize()})" if st else "")) if trend else ""
+    legende = ("Farbige Leiste unter jedem Tag: großer Trend, grün = Bull, rot = Bear" + (f" (heute {st.capitalize()})" if st else "")) if trend else ""
     return (f'<table style="border-collapse:collapse;border:1px solid #ddd" cellpadding="0" cellspacing="0">'
-            f'<tr style="height:{H}px">{"".join(zellen)}{achse}</tr><tr>{kopf}</tr></table>'
-            f'<p style="font:12px Arial;color:#555;margin:4px 0">{cfg["name"]}, 60-Minuten-Kerzen der letzten 5 Tage. '
+            f'<tr style="height:{H}px">{"".join(zellen)}{achse}</tr><tr>{"".join(leisten)}</tr><tr>{kopf}</tr></table>'
+            f'<p style="font:12px Arial;color:#888;margin:4px 0">{cfg["name"]}, 60-Minuten-Kerzen der letzten 5 Tage. '
             f'Rechts heute: Vortageshoch, Schluss und Vortagestief (graue/schwarze Linien), Kurs zur Notiz (blaue Linie), '
             f'erwartete Range bis Schluss (blaues Feld). {legende}.</p>')
 
