@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-09",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Nach dem −1,9-%-Freitag stützen Nikkei-Erholung, schwächeres Öl und Dollar, starke Exporte, SAP-Kaufempfehlung und hohe Absicherungsquote; Nasdaq-Futures −1 % und 76 % Fed-Erhöhungswahrscheinlichkeit bremsen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P +0,31 %, Nasdaq 100 +1,35 %, Dow −0,46 %; Futures S&P −0,12 %, Nasdaq −1,00 %",
+   "wirkung": "gegenwind",
+   "grund": "Tech-Futures geben Freitagserholung wieder ab (Nvidia-Untersuchung gegen CEO)"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.788 (−0,13 %), Eröffnung n/v",
+   "wirkung": "neutral",
+   "grund": "kleine Lücke, keine Richtung"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +2,33 %, Shanghai +0,32 %, CSI 300 +0,05 %, Hang Seng −0,12 %",
+   "wirkung": "rueckenwind",
+   "grund": "Japan erholt sich deutlich, China stabil"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "DE Exporte +2,0 % vs. 0,5 %; US Payrolls 165K vs. 65K",
+   "wirkung": "rueckenwind",
+   "grund": "robuste Konjunktur"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 76 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung im Dezember wahrscheinlicher geworden"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,24 % (−1 Bp.), US 10J 4,85 % (−1 Bp.)",
+   "wirkung": "neutral",
+   "grund": "kaum Bewegung"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG −0,06 %, LQD −0,12 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 96,55 (−1,80 %), EUR/USD 1,1177 (−0,46 %)",
+   "wirkung": "rueckenwind",
+   "grund": "billigeres Öl, schwächerer Euro hilft Exporteuren"
+  },
+  {
+   "name": "Trend",
+   "wert": "über 21/50/200-T.-Schnitt; großer Trend Bear seit 22.10.",
+   "wirkung": "neutral",
+   "grund": "kurzfristig intakt, großer Trend gegen Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "Absicherungen Freitag höchste seit April 2025; COT S&P lev −372.318",
+   "wirkung": "rueckenwind",
+   "grund": "abgesicherte Anleger müssen nicht verkaufen"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "SAP JPMorgan-Kaufempfehlung, Hannover Rück schlägt Erwartungen, Rheinmetall schwach",
+   "wirkung": "rueckenwind",
+   "grund": "Schwergewicht SAP stützt"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar-Rally überdehnt, braucht mehr Risikoscheu",
+   "wirkung": "neutral",
+   "grund": "keine Aktienaussage"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "Sentix 10:30, Fed-Reden Bowman 14:40, Goolsbee 16:00",
+   "wirkung": "neutral",
+   "grund": "kein großer Termin"
+  }
+ ],
+ "vola_pct": 19.57,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-06, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25788,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25788,
+  "zeit": 1794211556,
+  "zeit_iso": "2026-11-09T08:05:56.663000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.988,
+ "vortag": {
+  "schluss": 25820.3594,
+  "hoch": 26061.64,
+  "tief": 25617.54,
+  "tag": "2026-11-06"
+ },
+ "sigma_punkte": 316,
+ "spanne": [
+  25472,
+  26104
+ ],
+ "ergebnis": null
+}
