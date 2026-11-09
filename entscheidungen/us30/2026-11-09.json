@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-09",
+ "richtung": "long",
+ "score": 5,
+ "grund": "Breite Erholung nach der Eröffnung: Schwergewichte +534 Punkte, Öl −5 %, fallende Renditen und starkes Europa überwiegen Bear-Trend und Nvidia-Schwäche.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke +0,7 %, seit Eröffnung +0,4 %, Hoch 51.952",
+   "wirkung": "rueckenwind",
+   "grund": "Käufe nach der Eröffnung, kein Abverkauf der Lücke"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +534 Pkt.; GS +118, CAT +103, MSFT +88, AMZN +86, NVDA −76",
+   "wirkung": "rueckenwind",
+   "grund": "breite Gewinne, nur Nvidia und Chevron bremsen"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "keine Daten um 14:30; Lagerbestände Großhandel 16:00",
+   "wirkung": "neutral",
+   "grund": "ruhiger Datenkalender"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +1,4 %, Euro Stoxx 50 +1,6 %, Nikkei +2,3 %",
+   "wirkung": "rueckenwind",
+   "grund": "globale Erholung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "79 % für Fed-Erhöhung am 09.12.",
+   "wirkung": "gegenwind",
+   "grund": "Zinserhöhung nach starkem Arbeitsmarkt fast eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,52 %, 10J 4,84 % (−2 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "leicht fallend"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,24 %, LQD +0,26 %",
+   "wirkung": "rueckenwind",
+   "grund": "Anleihe-ETFs fester, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 86,58 (−4,7 %), Brent 93,17 (−5,2 %), EUR/USD 1,1197",
+   "wirkung": "rueckenwind",
+   "grund": "Ölrückgang nach Berichten über Iran-Zugeständnisse"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21T (52.126) und 50T (52.064), über 200T (50.676); großer Trend Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "mittelfristig angeschlagen"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P-Future Lev. Funds netto −372 Tsd. (+28 Tsd.)",
+   "wirkung": "neutral",
+   "grund": "Short-Positionen werden verringert"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia −6,6 % nach interner Untersuchung um CEO Huang",
+   "wirkung": "gegenwind",
+   "grund": "belastet Technologie, im Dow nur −76 Pkt."
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar-Rally überdehnt, Dezember-Erhöhung erwartet",
+   "wirkung": "neutral",
+   "grund": "gemischt"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed-Reden Bowman, Goolsbee, Barkin; kein Fed-Entscheid",
+   "wirkung": "neutral",
+   "grund": "Reden können Zinserwartung bewegen"
+  }
+ ],
+ "vola_pct": 13.41,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 51852,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 51852,
+  "zeit": 1794234750,
+  "zeit_iso": "2026-11-09T14:32:30+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.994,
+ "vortag": {
+  "schluss": 51285.7305,
+  "hoch": 51662.26,
+  "tief": 50992.61,
+  "tag": "2026-11-06"
+ },
+ "sigma_punkte": 437,
+ "spanne": [
+  51415,
+  52289
+ ],
+ "ergebnis": null
+}
