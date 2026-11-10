@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-10",
+ "richtung": "short",
+ "score": 5,
+ "grund": "Heiße US-Inflation treibt Renditen und Fed-Erwartung hoch, Caterpillar und Nvidia drücken den Dow",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke −0,43 %, seit Eröffnung +0,08 %",
+   "wirkung": "gegenwind",
+   "grund": "Negative Lücke nach heißer Inflation, bisher nur seitwärts, keine Erholung"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −137 Pkt.",
+   "wirkung": "gegenwind",
+   "grund": "Caterpillar allein −136 Pkt., dazu Nvidia −43, Chevron −28"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "CPI +0,4 % (Prog. 0,3), Kern +0,3 % (Prog. 0,2)",
+   "wirkung": "gegenwind",
+   "grund": "Inflation über Erwartung, stützt Fed-Erhöhung im Dezember"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +1,00 %, Nikkei +2,87 %",
+   "wirkung": "rueckenwind",
+   "grund": "Europa und Japan fest, aber vor der CPI gelaufen"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 113 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung voll eingepreist, Rest auf 50 Bp."
+  },
+  {
+   "name": "Renditen",
+   "wert": "2J 4,71 %, 10J 4,97 % (+11 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Kräftiger Renditeanstieg nach CPI belastet Bewertungen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,35 %, LQD −0,74 %",
+   "wirkung": "gegenwind",
+   "grund": "Anleihe-ETFs schwächer, vor allem zinsgetrieben"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 84,48 (−2,7 %), EUR/USD 1,1189",
+   "wirkung": "rueckenwind",
+   "grund": "Fallender Ölpreis entlastet"
+  },
+  {
+   "name": "Trend",
+   "wert": "knapp über 21/50/200-Tage-Schnitt, großer Trend Bear",
+   "wirkung": "gegenwind",
+   "grund": "Bear seit 28.10.; Kurs nur knapp über 21- und 50-Tage-Schnitt"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT S&P lev −372.318",
+   "wirkung": "neutral",
+   "grund": "Keine Extremlage"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Caterpillar −3,7 %, Nvidia −3,9 %",
+   "wirkung": "gegenwind",
+   "grund": "Gegenzug nach CAT +7 % gestern, Nvidia-Unsicherheit um Huang"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dezember-Erhöhung gestärkt",
+   "wirkung": "gegenwind",
+   "grund": "Heiße CPI stärkt Erhöhung im Dezember"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed-Reden Logan, Schmid, Bowman",
+   "wirkung": "neutral",
+   "grund": "Kein Fed-Entscheid; Reden können nach CPI falkenhaft klingen"
+  }
+ ],
+ "vola_pct": 11.75,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52203,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 52203,
+  "zeit": 1794321229,
+  "zeit_iso": "2026-11-10T14:33:49+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.99,
+ "vortag": {
+  "schluss": 52389.75,
+  "hoch": 52574.34,
+  "tief": 51643.01,
+  "tag": "2026-11-09"
+ },
+ "sigma_punkte": 385,
+ "spanne": [
+  51818,
+  52588
+ ],
+ "ergebnis": null
+}
