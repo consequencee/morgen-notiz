@@ -1,18 +1,18 @@
 {
- "stand": "2026-11-09",
+ "stand": "2026-11-10",
  "regeln": "Xetra bis 17:30; Richtung vom Kurs zur Notiz bis Schluss; Range ±1 σ",
  "gesamt": {
-  "trades": 3,
-  "richtung_richtig_pct": 0,
-  "punkte_summe": -812,
-  "punkte_schnitt": -271
+  "trades": 4,
+  "richtung_richtig_pct": 25,
+  "punkte_summe": -333,
+  "punkte_schnitt": -83
  },
  "nach_score": {
   "1–3": {
-   "trades": 2,
-   "richtung_richtig_pct": 0,
-   "punkte_summe": -669,
-   "punkte_schnitt": -334
+   "trades": 3,
+   "richtung_richtig_pct": 33,
+   "punkte_summe": -190,
+   "punkte_schnitt": -63
   },
   "4–6": {
    "trades": 1,
@@ -25,8 +25,8 @@
   }
  },
  "spanne": {
-  "tage": 3,
-  "treffer_pct": 67,
+  "tage": 4,
+  "treffer_pct": 50,
   "soll_pct": 68
  },
  "kein_trade_tage": 0,
@@ -77,6 +77,22 @@
    "punkte": -167,
    "richtig": false,
    "punkte_ohne_marken": -120
+  },
+  {
+   "datum": "2026-11-09",
+   "richtung": "long",
+   "score": 3,
+   "einstieg": 25788,
+   "schluss": 26267.1895,
+   "bewegung_punkte": 479,
+   "eroeffnung": 25815.3,
+   "hoch": 26276.09,
+   "tief": 25823.52,
+   "in_spanne": false,
+   "ausgang": "Schluss",
+   "punkte": 479,
+   "richtig": true,
+   "punkte_ohne_marken": 479
   }
  ]
 }

@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-10",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Starke Vorgaben aus USA und Japan, fallendes Öl und Infineon-Ausblick tragen, die schon gelaufene Lücke von +1 % und die US-Inflation um 14:30 bremsen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 +2,35 %, Nasdaq 100 +3,40 %, Dow +2,15 % (Mo); Futures S&P +0,17 %, Nasdaq −0,12 %",
+   "wirkung": "rueckenwind",
+   "grund": "Kräftige Erholungsrally, Futures halten das Niveau"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.540 (+1,04 %), Eröffnung n/v",
+   "wirkung": "neutral",
+   "grund": "Große Lücke nach oben ist schon gelaufen, Rekordhoch 26.693 nah"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +2,87 %, Shanghai +0,08 %, CSI 300 +0,07 %, Hang Seng +0,38 %",
+   "wirkung": "rueckenwind",
+   "grund": "Japan stark, China stabil"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "Keine neuen Daten seit Freitag (Payrolls 165K vs. 65K)",
+   "wirkung": "neutral",
+   "grund": "Heute nur Frankreich-Arbeitslosenquote früh"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 82 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung fast eingepreist, CPI kann sie festigen"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,25 % (−2 Bp.), US 10J 4,87 % (+1 Bp.)",
+   "wirkung": "neutral",
+   "grund": "Kaum Bewegung"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,36 %, LQD +0,13 %",
+   "wirkung": "rueckenwind",
+   "grund": "Kreditmärkte entspannt"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 91,18 USD (−1,50 %), EUR/USD 1,1245 (+0,87 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Öl fällt weiter, dämpft Inflationssorgen; starker Euro leichte Last"
+  },
+  {
+   "name": "Trend",
+   "wert": "Über 21-/50-/200-T.-Schnitt; großer Trend Bear seit 22.10., dreht über 26.458",
+   "wirkung": "neutral",
+   "grund": "Kurzfristig intakt, großer Trend noch Bear, mit Kurs von jetzt Bull"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 03.11.: Hedgefonds S&P netto −372.318",
+   "wirkung": "neutral",
+   "grund": "Kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Infineon Ausblick >20 % Wachstum, vorbörslich ca. +7 %; Henkel hebt Umsatzziel",
+   "wirkung": "rueckenwind",
+   "grund": "Starke Zahlen von DAX-Werten"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Kern-CPI 0,3 % über Konsens, zu heiß für Zinssenkungen",
+   "wirkung": "gegenwind",
+   "grund": "Risiko höherer Renditen nach CPI"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "14:30 US-Verbraucherpreise, 10:00 Waller",
+   "wirkung": "gegenwind",
+   "grund": "Großes Ereignisrisiko am Nachmittag"
+  }
+ ],
+ "vola_pct": 14.43,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-09, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26540,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 26540,
+  "zeit": 1794297846,
+  "zeit_iso": "2026-11-10T08:04:06.567000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.992,
+ "vortag": {
+  "schluss": 26267.1895,
+  "hoch": 26276.09,
+  "tief": 25793.06,
+  "tag": "2026-11-09"
+ },
+ "sigma_punkte": 240,
+ "spanne": [
+  26300,
+  26780
+ ],
+ "ergebnis": null
+}
