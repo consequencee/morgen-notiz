@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-11",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Tech-Erholung nach CoreWeave (Nasdaq-Future +1,33 %), starke Asien-Vorgaben und Siemens Energy tragen, ohne großen Termin bis 17:30; heiße US-Inflation, US-Rendite 5 % und die schon gelaufene Lücke von knapp +1 % bremsen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 -0,38 %, Nasdaq 100 -0,60 %; Futures S&P +0,57 %, Nasdaq +1,33 %",
+   "wirkung": "rueckenwind",
+   "grund": "Futures drehen nach CoreWeave-Ausblick klar ins Plus"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.605 (+0,98 %), Eröffnung n/v",
+   "wirkung": "neutral",
+   "grund": "Lücke schon groß, Rekordhoch 26.693 nah"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +1,31 %, Shanghai +0,46 %, CSI 300 +0,41 %, Hang Seng -1,07 %",
+   "wirkung": "rueckenwind",
+   "grund": "Tech-lastige Märkte stark"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-Kern-CPI 0,3 % vs. 0,2 %; DE-VPI 2,8 % bestätigt",
+   "wirkung": "gegenwind",
+   "grund": "heiße US-Inflation"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 113 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Zinserhöhung voll eingepreist, 50 Bp. diskutiert"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 10J 4,98 % (+12 Bp.), Bund 10J 3,30 %",
+   "wirkung": "gegenwind",
+   "grund": "US-Rendite an 5 %"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG -0,43 %, LQD -0,75 %",
+   "wirkung": "gegenwind",
+   "grund": "leichter Druck, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 92,22 (+0,80 %), EUR/USD 1,1157 (-0,58 %)",
+   "wirkung": "neutral",
+   "grund": "Öl belastet, schwacher Euro hilft Exporteuren"
+  },
+  {
+   "name": "Trend",
+   "wert": "über 21/50/200-T.; großer Trend Bear, Schwelle 26.600",
+   "wirkung": "neutral",
+   "grund": "Kurzfristtrend aufwärts, großer Trend genau an der Schwelle"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 03.11. kein Extrem",
+   "wirkung": "neutral",
+   "grund": "keine Auffälligkeit"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Siemens Energy +4,5 %, Brenntag -2,5 %, Eon -0,6 %",
+   "wirkung": "rueckenwind",
+   "grund": "Schwergewicht Siemens Energy stark"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar nahe Jahreshoch, 5 % US-10J gerechtfertigt",
+   "wirkung": "gegenwind",
+   "grund": "Zinsdruck"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "Lagarde 10:45, US-Feiertag Veterans Day (Anleihemarkt zu)",
+   "wirkung": "rueckenwind",
+   "grund": "kein großes Ereignisrisiko"
+  }
+ ],
+ "vola_pct": 14.92,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-10, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26605,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 26605,
+  "zeit": 1794384370,
+  "zeit_iso": "2026-11-11T08:06:10.589000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.988,
+ "vortag": {
+  "schluss": 26347.4492,
+  "hoch": 26633.78,
+  "tief": 26347.45,
+  "tag": "2026-11-10"
+ },
+ "sigma_punkte": 249,
+ "spanne": [
+  26356,
+  26854
+ ],
+ "ergebnis": null
+}
