@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-11",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Breite Erholung nach dem CPI-Rücksetzer (S&P +1,1 %, Nasdaq 100 +2 %, Europa fest) bei ruhigem Feiertags-Fenster ohne Daten; der Dow hinkt wegen defensiver Schwergewichte hinterher, Fed-Zinserhöhungsangst und Bear-Trend bremsen.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke −0,07 %, seit Eröffnung +0,25 %, 52.326",
+   "wirkung": "rueckenwind",
+   "grund": "Kleine Lücke nach unten sofort geschlossen, Kurs nahe Tageshoch 52.338."
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +4 Pkt.; CAT +69, GS +63, NVDA +37, HD −31, AMGN −25",
+   "wirkung": "neutral",
+   "grund": "Zyklische Werte und Chips ziehen, Defensive (HD, AMGN, MCD, JNJ, V) bremsen."
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "keine (Veterans Day); gestern CPI 0,4 % vs. 0,3 %",
+   "wirkung": "neutral",
+   "grund": "Heute keine Daten; der Inflationsschock von gestern ist bekannt und wird bereits gekauft."
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +0,85 %, Euro Stoxx 50 +0,66 %, Nikkei +1,31 %, Hang Seng −0,98 %",
+   "wirkung": "rueckenwind",
+   "grund": "Europa und Japan fest, nur Hongkong schwach."
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Dez.-Erhöhung voll eingepreist (113 % für 25 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Fed im Erhöhungsmodus, Waller brachte 50 Bp. ins Spiel (laut ING)."
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,75 %, 10J 5,00 % (Stand gestern, Anleihemarkt heute zu)",
+   "wirkung": "gegenwind",
+   "grund": "10J auf 5 % nach heißem CPI, gestern +12 Bp.; heute keine Bewegung."
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,08 %, LQD −0,07 % (FRED n/v)",
+   "wirkung": "neutral",
+   "grund": "Kein Stress erkennbar."
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 87,08 (+1,2 %), Brent 92,62, EUR/USD 1,1091 (−1,2 %)",
+   "wirkung": "gegenwind",
+   "grund": "Starker Dollar und steigendes Öl belasten Exporteure und Inflationsbild."
+  },
+  {
+   "name": "Trend",
+   "wert": "über 21/50/200-Tage-Schnitt; großer Trend Bear seit 28.10.",
+   "wirkung": "neutral",
+   "grund": "Kurzfristig aufwärts, der große Trend (3 Monate) spricht gegen Long."
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev. netto −372 Tsd. (+28 Tsd.)",
+   "wirkung": "neutral",
+   "grund": "Hedgefonds stark short, leichtes Eindecken; Treibstoff für Erholung, aber kein Extremwechsel."
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "keine größeren Meldungen gefunden; Cisco Do. nachbörslich",
+   "wirkung": "neutral",
+   "grund": "Kein Einzelkatalysator."
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: 10J zurück bei 5 %, Dollar fest",
+   "wirkung": "gegenwind",
+   "grund": "Falkenhafte Fed flacht die Kurve bärisch ab."
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Feiertag Anleihemarkt, keine Fed-Termine bekannt",
+   "wirkung": "rueckenwind",
+   "grund": "Kein Ereignisrisiko bis 22:00, dünnes Volumen lässt Erholung laufen."
+  }
+ ],
+ "vola_pct": 8.16,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52326,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 52326,
+  "zeit": 1794407557,
+  "zeit_iso": "2026-11-11T14:32:37+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 52231.8906,
+  "hoch": 52316.89,
+  "tief": 51977.08,
+  "tag": "2026-11-10"
+ },
+ "sigma_punkte": 268,
+ "spanne": [
+  52058,
+  52594
+ ],
+ "ergebnis": null
+}

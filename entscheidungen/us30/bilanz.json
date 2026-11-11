@@ -1,29 +1,29 @@
 {
- "stand": "2026-11-10",
+ "stand": "2026-11-11",
  "regeln": "NYSE bis 16:00 New York; Richtung vom Kurs zur Notiz bis Schluss; Range ±1 σ",
  "gesamt": {
-  "trades": 3,
-  "richtung_richtig_pct": 67,
-  "punkte_summe": -1029,
-  "punkte_schnitt": -343
+  "trades": 4,
+  "richtung_richtig_pct": 50,
+  "punkte_summe": -1058,
+  "punkte_schnitt": -264
  },
  "nach_score": {
   "1–3": {
    "trades": 0
   },
   "4–6": {
-   "trades": 3,
-   "richtung_richtig_pct": 67,
-   "punkte_summe": -1029,
-   "punkte_schnitt": -343
+   "trades": 4,
+   "richtung_richtig_pct": 50,
+   "punkte_summe": -1058,
+   "punkte_schnitt": -264
   },
   "7–10": {
    "trades": 0
   }
  },
  "spanne": {
-  "tage": 3,
-  "treffer_pct": 0,
+  "tage": 4,
+  "treffer_pct": 25,
   "soll_pct": 68
  },
  "kein_trade_tage": 0,
@@ -75,6 +75,22 @@
    "punkte": 538,
    "richtig": true,
    "punkte_ohne_marken": 538
+  },
+  {
+   "datum": "2026-11-10",
+   "richtung": "short",
+   "score": 5,
+   "einstieg": 52203,
+   "schluss": 52231.8906,
+   "bewegung_punkte": 29,
+   "eroeffnung": 52163.21,
+   "hoch": 52316.89,
+   "tief": 51977.08,
+   "in_spanne": true,
+   "ausgang": "Schluss",
+   "punkte": -29,
+   "richtig": false,
+   "punkte_ohne_marken": -29
   }
  ]
 }
