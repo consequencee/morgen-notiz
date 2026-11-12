@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-12",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Siemens-Rekordjahr und Versicherer-Zahlen tragen den DAX über das Rekordhoch, die Nvidia-Unruhe in den US-Futures und 5 % US-Rendite bremsen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 +1,31 %, Nasdaq 100 +2,28 %; Futures S&P −0,46 %, Nasdaq −1,00 %",
+   "wirkung": "neutral",
+   "grund": "Starker Schluss, aber Futures drehen nach Berichten über mögliche Ablösung von Nvidia-Chef Huang"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.889 (+0,85 %), Eröffnung n/v",
+   "wirkung": "rueckenwind",
+   "grund": "Indikation über dem Rekordhoch 26.692; Lücke schon gelaufen"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei −0,70 %, Shanghai −0,67 %, CSI 300 −0,78 %, Hang Seng −1,45 %",
+   "wirkung": "gegenwind",
+   "grund": "Tech-Schwäche nach Nvidia-Bericht"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-CPI Okt. über Prognose; UK-BIP/Industrie heute leicht besser",
+   "wirkung": "gegenwind",
+   "grund": "Heiße US-Inflation wirkt nach"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 113 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Erhöhung voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 10J 5,00 %, Bund 10J 3,31 % (−1 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "US-10J auf 5 %"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,22 %, LQD +0,08 % (FRED n/v)",
+   "wirkung": "rueckenwind",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 93,23 (+0,51 %), EUR/USD 1,1090 (−0,71 %)",
+   "wirkung": "neutral",
+   "grund": "Schwacher Euro hilft Exporteuren, Öl hoch"
+  },
+  {
+   "name": "Trend",
+   "wert": "Über 21/50/200-T.-Schnitt; großer Trend Bull seit 11.11.",
+   "wirkung": "rueckenwind",
+   "grund": "Trend passt zu Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 03.11.: kein Extrem",
+   "wirkung": "neutral",
+   "grund": "Keine Auffälligkeit"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Siemens +3,2 %, Munich Re +1,2 %, Allianz +0,7 %, Merck +0,7 % (Tradegate)",
+   "wirkung": "rueckenwind",
+   "grund": "Schwergewichte mit starken Zahlen"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar-Rally zinsgetrieben, Risikostimmung gedämpft",
+   "wirkung": "gegenwind",
+   "grund": "Zinsen und Dollar"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "US-Erstanträge 14:30, Barr 16:00",
+   "wirkung": "neutral",
+   "grund": "Kein großer Termin; Nvidia-Aufsichtsrat könnte entscheiden"
+  }
+ ],
+ "vola_pct": 14,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-11, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26889,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 26889,
+  "zeit": 1794470692,
+  "zeit_iso": "2026-11-12T08:04:52.726000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.99,
+ "vortag": {
+  "schluss": 26662.7695,
+  "hoch": 26662.77,
+  "tief": 26491.77,
+  "tag": "2026-11-11"
+ },
+ "sigma_punkte": 236,
+ "spanne": [
+  26653,
+  27125
+ ],
+ "ergebnis": null
+}
