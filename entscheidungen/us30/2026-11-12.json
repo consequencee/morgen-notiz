@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-12",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Der Dow hält den Nvidia-Schock dank Umschichtung in defensive Schwergewichte; Zinsen und Dollar bremsen.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke −0,11 %, jetzt 52.532 (+0,2 % seit Eröffnung)",
+   "wirkung": "rueckenwind",
+   "grund": "Lücke sofort geschlossen, Dow über Vortagesschluss trotz Nvidia-Schock"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +40 Pkt., Nvidia −109",
+   "wirkung": "rueckenwind",
+   "grund": "Defensive Werte (Travelers, J&J, McDonald's, Amgen) gleichen Nvidia mehr als aus"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Erstanträge 200K vs. 194K",
+   "wirkung": "neutral",
+   "grund": "Leicht schwächer als erwartet, kaum Marktwirkung"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +0,43 %, Euro Stoxx 50 ±0,00 %, Hang Seng −1,26 %",
+   "wirkung": "neutral",
+   "grund": "Europa stabil, Asien schwach"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 104 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Zinserhöhung voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,80 %, 10J 5,03 % (+4 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "10J über 5 %"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,17 %, LQD −0,23 %",
+   "wirkung": "neutral",
+   "grund": "Leichte Abgaben, kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 86,55, Brent 93,40, EUR/USD 1,1095 (−0,66 %)",
+   "wirkung": "gegenwind",
+   "grund": "Starker Dollar, Öl hoch"
+  },
+  {
+   "name": "Trend",
+   "wert": "Über 21/50/200-Tage-Schnitt; großer Trend Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "Großer Trend passt nicht zur Richtung Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "Hedgefonds S&P netto −372.318",
+   "wirkung": "neutral",
+   "grund": "Viel Short-Bestand, kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia-Chef Huang tritt zurück",
+   "wirkung": "gegenwind",
+   "grund": "Belastet Tech, Ansteckungsrisiko"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar mit weiterem Aufwärtspotenzial, Vertrauen in KI-Handel",
+   "wirkung": "neutral",
+   "grund": "Gemischt"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed-Reden, 30J-Auktion 19:00, Cisco nach Schluss",
+   "wirkung": "neutral",
+   "grund": "Kein Fed-Entscheid"
+  }
+ ],
+ "vola_pct": 10.16,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52532,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 52532,
+  "zeit": 1794493961,
+  "zeit_iso": "2026-11-12T14:32:41+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 52486.4883,
+  "hoch": 52512.72,
+  "tief": 52055.14,
+  "tag": "2026-11-11"
+ },
+ "sigma_punkte": 335,
+ "spanne": [
+  52197,
+  52867
+ ],
+ "ergebnis": null
+}
