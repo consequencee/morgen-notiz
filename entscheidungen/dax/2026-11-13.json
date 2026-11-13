@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-13",
+ "richtung": "short",
+ "score": 3,
+ "grund": "Nach Rekordwoche (+3,5 %) belasten steigende Renditen, Fed-Erhöhungserwartung und schwaches China; nur der intakte Aufwärtstrend hält dagegen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 -0,35 %, Nasdaq 100 -0,30 %; Futures S&P -0,01 %, Nasdaq -0,12 %",
+   "wirkung": "gegenwind",
+   "grund": "Leichte Verluste nach Rücktritt von Nvidia-Chef Huang, Futures ohne Erholung"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.716 (-0,21 %)",
+   "wirkung": "gegenwind",
+   "grund": "Leicht schwächerer Start nach Rekordhoch über 27.000"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +0,53 %, Shanghai -0,59 %, CSI 300 -0,68 %, Hang Seng -1,66 %",
+   "wirkung": "gegenwind",
+   "grund": "China und Hongkong klar schwächer"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-Erstanträge 200K vs. 194K; CPI Okt. über Prognose",
+   "wirkung": "neutral",
+   "grund": "Keine frische Überraschung heute früh"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 113 % für +25 Bp., Jan. 69 %; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Erhöhungen voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 10J 5,12 % (+2 Bp.), Bund 10J 3,36 % (+3 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Renditen steigen weiter"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG -0,48 %, LQD -0,88 %",
+   "wirkung": "gegenwind",
+   "grund": "Anleihe-ETFs schwächer"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 95,65 USD (-0,18 %), EUR/USD 1,1062 (-0,30 %)",
+   "wirkung": "neutral",
+   "grund": "Schwacher Euro hilft Exporteuren, Öl hoch"
+  },
+  {
+   "name": "Trend",
+   "wert": "Über 21-/50-/200-T.-Schnitt; großer Trend Bull seit 11.11.",
+   "wirkung": "gegenwind",
+   "grund": "Bull-Trend widerspricht Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 03.11. ohne Extrem",
+   "wirkung": "neutral",
+   "grund": "Kein Signal"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "RWE/E.ON: Bund erwägt Kauf der Urenco-Anteile",
+   "wirkung": "neutral",
+   "grund": "Kaum Nachrichten der Schwergewichte"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: taktisch bearish für Anleihen, Dollar stark",
+   "wirkung": "gegenwind",
+   "grund": "Höhere Zinsen"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "EZ-BIP 11:00, US-PPI 14:30, Fed-Redner",
+   "wirkung": "neutral",
+   "grund": "PPI kann Inflationssorge nähren"
+  }
+ ],
+ "vola_pct": 12.54,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-12, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26716,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 26716,
+  "zeit": 1794557112,
+  "zeit_iso": "2026-11-13T08:05:12.664000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.99,
+ "vortag": {
+  "schluss": 26771.8809,
+  "hoch": 27001.67,
+  "tief": 26671.45,
+  "tag": "2026-11-12"
+ },
+ "sigma_punkte": 210,
+ "spanne": [
+  26506,
+  26926
+ ],
+ "ergebnis": null
+}
