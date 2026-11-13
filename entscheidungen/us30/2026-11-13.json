@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-13",
+ "richtung": "short",
+ "score": 5,
+ "grund": "Eröffnungsplus komplett abverkauft, Nasdaq −2 %, Renditen über 5 % und Bear-Trend; nur der leicht schwächere PPI stützt.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 52.491 (+0,37 %), jetzt 52.216 (−0,52 % seit Eröffnung)",
+   "wirkung": "gegenwind",
+   "grund": "Lücke nach oben komplett abverkauft"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −49 Pkt.; CAT −74, NVDA −36, CSCO −34, GS −34 vs. V +38, JNJ +25",
+   "wirkung": "gegenwind",
+   "grund": "Teuerster Wert Caterpillar zieht am stärksten"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "PPI m/m 0,3 % vs. 0,4 %, Kern 0,3 % wie erwartet",
+   "wirkung": "rueckenwind",
+   "grund": "Leicht schwächere Erzeugerpreise"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −0,12 %, Euro Stoxx 50 −0,20 %, Hang Seng −1,55 %",
+   "wirkung": "gegenwind",
+   "grund": "Schwache Vorgaben, China-Kredite eingebrochen"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "9.12.: 107 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung voll eingepreist, weitere folgen"
+  },
+  {
+   "name": "Renditen",
+   "wert": "2J 4,84 %, 10J 5,13 % (+3 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "10J klar über 5 %"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,01 %, LQD −0,04 % (FRED n/v)",
+   "wirkung": "neutral",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 89,10, Brent 96,45, EUR/USD 1,1035 (−0,54 %)",
+   "wirkung": "gegenwind",
+   "grund": "Steigendes Öl, starker Dollar"
+  },
+  {
+   "name": "Trend",
+   "wert": "52.216 unter 21-T (52.250), über 50-T (52.001) und 200-T (50.741); großer Trend Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "Bear-Trend passt zu Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 3.11.: Hedgefonds S&P netto −372.318",
+   "wirkung": "neutral",
+   "grund": "Kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Cisco −5,5 % trotz Zahlen über Erwartung und höherer Prognose",
+   "wirkung": "gegenwind",
+   "grund": "Gute Zahlen werden verkauft"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dont mess with the dollar near term",
+   "wirkung": "gegenwind",
+   "grund": "Starker Dollar bleibt"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed Bowman 16:50, Daly 18:00; kein Fed-Entscheid",
+   "wirkung": "neutral",
+   "grund": "Kein großes Ereignis; Freitag vor Nvidia-Zahlen am 17.11."
+  }
+ ],
+ "vola_pct": 10.16,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52216,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 52216,
+  "zeit": 1794584734,
+  "zeit_iso": "2026-11-13T15:45:34+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.806,
+ "vortag": {
+  "schluss": 52297.0898,
+  "hoch": 52751.22,
+  "tief": 52271.16,
+  "tag": "2026-11-12"
+ },
+ "sigma_punkte": 300,
+ "spanne": [
+  51916,
+  52516
+ ],
+ "ergebnis": null
+}
