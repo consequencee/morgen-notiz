@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-16",
+ "richtung": "short",
+ "score": 3,
+ "grund": "Tech-Ausverkauf vor Nvidia-Zahlen, schwacher Empire-State-Index und Bear-Trend wiegen etwas schwerer als defensive Umschichtung, fallende Renditen und billigeres Öl.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 52.267 (Lücke −0,15 %), jetzt 52.262 (−0,01 % seit Eröffnung), Hoch/Tief 52.324/52.199",
+   "wirkung": "neutral",
+   "grund": "Kleine Lücke nach unten, seitdem seitwärts."
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −36 Pkt.; Goldman −96, Caterpillar −80 gegen Amgen +45, UnitedHealth +32",
+   "wirkung": "gegenwind",
+   "grund": "Die zwei teuersten Zykliker ziehen nach unten, Defensive halten dagegen."
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Empire State 7,8 vs. Prognose 17,6 (zuvor 25,5)",
+   "wirkung": "gegenwind",
+   "grund": "Deutlich schwächer als erwartet, belastet Industriewerte."
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −0,08 %, Euro Stoxx 50 −0,14 %; Nikkei −2,42 %, Shanghai −0,87 %, Hang Seng +0,49 %",
+   "wirkung": "gegenwind",
+   "grund": "Nikkei deutlich schwächer, Europa flach."
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 107 % für +25 Bp., Januar 71 %",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung voll eingepreist, weitere folgen."
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,84 %, 10J 5,13 % (−2 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "Leicht fallende Renditen nach schwachen Daten."
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG −0,01 %, LQD +0,16 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress erkennbar."
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 87,16 (−1,58 %), Brent 93,78 (−2,15 %), EUR/USD 1,1014 (−0,32 %)",
+   "wirkung": "neutral",
+   "grund": "Billigeres Öl hilft, der stärkere Dollar bremst Exporteure."
+  },
+  {
+   "name": "Trend",
+   "wert": "52.262 knapp über 21-Tage (52.258), über 50- (51.974) und 200-Tage-Schnitt (50.757); großer Trend Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "Großer Trend Bear passt zu Short."
+  },
+  {
+   "name": "Positionierung",
+   "wert": "CFTC n/v",
+   "wirkung": "neutral",
+   "grund": "Keine neuen Daten."
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia −2,0 % vor Zahlen am 17.11.; Home Depot und Disney morgen vorbörslich",
+   "wirkung": "gegenwind",
+   "grund": "Vorsicht vor Nvidia drückt Tech, Nasdaq 100 −1,58 %."
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING FX Daily: EUR/USD unter 1,10?",
+   "wirkung": "gegenwind",
+   "grund": "ING sieht den Dollar weiter fest."
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed Williams 15:05, Fed-Chef Warsh 18:00, 3-Monats-Auktion 17:30",
+   "wirkung": "neutral",
+   "grund": "Warsh-Rede kann bewegen, kein Zinsentscheid."
+  }
+ ],
+ "vola_pct": 11.75,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 52262,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 52262,
+  "zeit": 1794839572,
+  "zeit_iso": "2026-11-16T14:32:52+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 52347.5508,
+  "hoch": 52521.48,
+  "tief": 52017.86,
+  "tag": "2026-11-13"
+ },
+ "sigma_punkte": 385,
+ "spanne": [
+  51877,
+  52647
+ ],
+ "ergebnis": null
+}
