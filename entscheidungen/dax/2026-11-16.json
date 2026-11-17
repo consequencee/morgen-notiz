@@ -106,5 +106,17 @@
   26518,
   26972
  ],
- "ergebnis": null
+ "ergebnis": {
+  "einstieg": 26745,
+  "schluss": 26598.6406,
+  "bewegung_punkte": -146,
+  "eroeffnung": 26772.11,
+  "hoch": 26797.19,
+  "tief": 26617.48,
+  "in_spanne": true,
+  "ausgang": "Schluss",
+  "punkte": 146,
+  "richtig": true,
+  "punkte_ohne_marken": 146
+ }
 }

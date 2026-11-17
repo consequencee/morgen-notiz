@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-17",
+ "richtung": "long",
+ "score": 2,
+ "grund": "Die Eröffnungslücke von −0,8 % holt den US-Tech-Ausverkauf bereits nach; stabile US-Futures, fallende Renditen, billigeres Öl und der intakte Bull-Trend sprechen knapp für eine Erholung bis zum Schluss, Deutsche-Bank-Leak und Nvidia-Vorsicht dagegen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 −1,92 %, Nasdaq 100 −2,67 %; Futures S&P −0,22 %, Nasdaq +0,12 %",
+   "wirkung": "gegenwind",
+   "grund": "Schwerer Tech-Ausverkauf gestern, Futures stabilisieren sich"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 26.381 (−0,82 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Lücke holt US-Verluste nach; Analystenspanne 26.350–26.650 liegt darüber"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei −1,34 %, Shanghai −0,50 %, CSI 300 −0,08 %, Hang Seng −0,95 %",
+   "wirkung": "gegenwind",
+   "grund": "Chipwerte unter Druck nach US-Exportregeln"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "UK Arbeitslosenquote 4,6 % vs. 4,7 %; US-PPI zuletzt leicht unter Prognose",
+   "wirkung": "neutral",
+   "grund": "Keine deutliche Überraschung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 101 % für +25 Bp., Jan. 71 %",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Erhöhungen voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,36 % (−2 Bp.), US 10J 5,11 % (−1 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "Leicht fallende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG −0,27 %, LQD −0,01 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 91,84 USD (−0,65 %), EUR/USD 1,0999 (−0,24 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Billigeres Öl, schwacher Euro hilft Exporteuren"
+  },
+  {
+   "name": "Trend",
+   "wert": "Über 21-T. 25.963, 50-T. 25.621, 200-T. 24.983; großer Trend Bull seit 11.11.",
+   "wirkung": "rueckenwind",
+   "grund": "Trend passt zu Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 10.11.: Hedgefonds S&P netto −303.060 (+69.258)",
+   "wirkung": "neutral",
+   "grund": "Kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Deutsche Bank Datenleck, vorbörslich ca. −3 %; Chipwerte schwach",
+   "wirkung": "gegenwind",
+   "grund": "Belastung für Banken und KI-Werte"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar als sicherer Hafen, Nvidia als Test",
+   "wirkung": "neutral",
+   "grund": "Erwartet Stabilisierung statt neuer Dollar-Rally"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "11:00 ZEW, 14:30 US-Einzelhandel, 15:10 Waller; Nvidia nach US-Schluss",
+   "wirkung": "neutral",
+   "grund": "Mittleres Ereignisrisiko, Nvidia erst nach Xetra-Schluss"
+  }
+ ],
+ "vola_pct": 13.1,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-16, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 26381,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 26381,
+  "zeit": 1794902723,
+  "zeit_iso": "2026-11-17T08:05:23.227000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.989,
+ "vortag": {
+  "schluss": 26598.6406,
+  "hoch": 26797.19,
+  "tief": 26598.64,
+  "tag": "2026-11-16"
+ },
+ "sigma_punkte": 217,
+ "spanne": [
+  26164,
+  26598
+ ],
+ "ergebnis": null
+}
