@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-18",
+ "richtung": "short",
+ "score": 4,
+ "grund": "Breite Schwäche der Dow-Werte (−168 Pkt.) trotz starker Nvidia-Zahlen, Bruch unter den 200-Tage-Schnitt und falkenhafte Fed-Signale vor dem Protokoll überwiegen das fallende Öl.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 50.627 (Lücke −0,26 %), jetzt 50.618, seit Eröffnung −0,02 %",
+   "wirkung": "gegenwind",
+   "grund": "Schwache Eröffnung ohne Erholung, Kurs nahe Tagestief von gestern"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −168 Pkt.; UNH −34, HD −27, CRM −26, AMGN −25; AMZN +28, NVDA +20",
+   "wirkung": "gegenwind",
+   "grund": "Breite Schwäche außerhalb von Tech"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Baubeginne 1,309 Mio. vs. ca. 1,23 Mio.; Genehmigungen 1,295 Mio. vs. ca. 1,38 Mio.",
+   "wirkung": "neutral",
+   "grund": "Gemischt"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −0,43 %, Euro Stoxx 50 −0,20 %, Nikkei +0,28 %, Hang Seng −0,91 %",
+   "wirkung": "gegenwind",
+   "grund": "Europa im Minus"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Dez.: 104 % für +25 Bp.; Waller bringt +50 Bp. ins Spiel",
+   "wirkung": "gegenwind",
+   "grund": "Straffung voll eingepreist, Risiko mehr"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,82 %, 10J 5,10 % (unverändert)",
+   "wirkung": "neutral",
+   "grund": "Hoch, aber stabil"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,08 %, LQD +0,21 % (FRED n/v)",
+   "wirkung": "neutral",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 83,81 (−2,56 %), Brent 89,80 (−3,59 %), EUR/USD 1,0972 (−0,24 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Deutlich billigeres Öl entlastet"
+  },
+  {
+   "name": "Trend",
+   "wert": "Unter 21-T (52.182), 50-T (51.897) und 200-T (50.777); großer Trend Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "Passt zu Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "CFTC n/v",
+   "wirkung": "neutral",
+   "grund": "Keine neuen Daten"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia Umsatz 115,8 Mrd. USD, Ausblick ca. 130 Mrd. USD",
+   "wirkung": "neutral",
+   "grund": "Hilft Nasdaq mehr als Dow, Rotation aus Dow-Werten"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: fester Dollar, weitere 75 Bp. Fed-Straffung eingepreist",
+   "wirkung": "gegenwind",
+   "grund": "Falkenhaftes Umfeld"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed-Protokoll 20:00, Williams 20:30, Anthropic-IPO",
+   "wirkung": "neutral",
+   "grund": "Kein Zinsentscheid, Protokoll kann falkenhaft ausfallen"
+  }
+ ],
+ "vola_pct": 14.8,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 50618,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 50618,
+  "zeit": 1795012367,
+  "zeit_iso": "2026-11-18T14:32:47+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 50759.4219,
+  "hoch": 51463.53,
+  "tief": 50566.98,
+  "tag": "2026-11-17"
+ },
+ "sigma_punkte": 470,
+ "spanne": [
+  50148,
+  51088
+ ],
+ "ergebnis": null
+}
