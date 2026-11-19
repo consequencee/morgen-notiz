@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-19",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Anthropic-Börsengang treibt KI- und Finanzwerte, die Dow-Schwergewichte liefern +137 Punkte, gegen falkenhafte Fed, steigende Renditen und den Bear-Trend.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke +0,47 %, seit Eröffnung +0,02 %",
+   "wirkung": "rueckenwind",
+   "grund": "Positive Eröffnung, Gewinne bisher gehalten"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +137 Pkt.",
+   "wirkung": "rueckenwind",
+   "grund": "Goldman, Microsoft, Caterpillar tragen"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Philly Fed 6,3 vs. 20,6; Erstanträge 203K vs. 198K",
+   "wirkung": "gegenwind",
+   "grund": "Schwächere Industrie, aber steigende Preise"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX -0,13 %, ES50 +0,24 %, Hang Seng -1,95 %",
+   "wirkung": "neutral",
+   "grund": "Gemischt"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Dez. 110 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Protokoll falkenhaft"
+  },
+  {
+   "name": "Renditen",
+   "wert": "2J 4,84 %, 10J 5,10 % (+3 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Hohe und steigende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,10 %, LQD -0,05 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 83,63, Brent 90,44, EUR/USD 1,1002",
+   "wirkung": "neutral",
+   "grund": "Öl uneinheitlich, Dollar stabil"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage-Schnitt, Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "Trend gegen Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "n/v",
+   "wirkung": "neutral",
+   "grund": "CFTC-Daten fehlen"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Anthropic-IPO bei 83 USD, Walmart -2,6 %",
+   "wirkung": "rueckenwind",
+   "grund": "KI-Stimmung hebt MSFT, NVDA, AMZN, GS"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: höhere US-Realzinsen dominieren",
+   "wirkung": "gegenwind",
+   "grund": "Fester Dollar, hohe Realzinsen"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Fed-Reden Jefferson, Goolsbee, Barkin, Barr; Anthropic-Erstnotiz",
+   "wirkung": "neutral",
+   "grund": "Kein Zinsentscheid"
+  }
+ ],
+ "vola_pct": 16.08,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 50440,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 50440,
+  "zeit": 1795098759,
+  "zeit_iso": "2026-11-19T14:32:39+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 50198.1719,
+  "hoch": 50637.7,
+  "tief": 50029.35,
+  "tag": "2026-11-18"
+ },
+ "sigma_punkte": 509,
+ "spanne": [
+  49931,
+  50949
+ ],
+ "ergebnis": null
+}
