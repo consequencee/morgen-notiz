@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-19",
+ "richtung": "long",
+ "score": 4,
+ "grund": "US-Futures nach dem über der Spanne platzierten Anthropic-Börsengang deutlich fester, Öl und Bund-Renditen tiefer; gegen Bear-Trend, falkenhafte Fed und schwaches Hongkong.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 -0,23 %, Nasdaq 100 +0,42 %, Dow -1,11 %; Futures S&P +1,00 %, Nasdaq +1,68 %",
+   "wirkung": "rueckenwind",
+   "grund": "Futures klar fester vor Anthropic-Erstnotiz"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.850 (+0,44 %), Eröffnung n/v",
+   "wirkung": "rueckenwind",
+   "grund": "Erholungslücke, aber kleiner als US-Futures"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +0,71 %, Shanghai -0,28 %, CSI 300 +0,03 %, Hang Seng -2,02 %",
+   "wirkung": "gegenwind",
+   "grund": "Hongkong auf 4-Monats-Tief, US-Chipregeln, Tencent"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "zuletzt US-Einzelhandel 0,2 % vs. 0,1 %, CPI über Prognose",
+   "wirkung": "gegenwind",
+   "grund": "Inflationsdaten stützen Fed-Erhöhungen"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 110 % für +25 Bp.; Protokoll falkenhaft",
+   "wirkung": "gegenwind",
+   "grund": "einzelne Notenbanker bringen 50 Bp. ins Spiel"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,36 % (-2 Bp.), US 10J 5,07 % (-4 Bp. zum Vortag)",
+   "wirkung": "rueckenwind",
+   "grund": "leicht fallende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,03 %, LQD +0,40 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 89,28 (-2,90 %), EUR/USD 1,0984",
+   "wirkung": "rueckenwind",
+   "grund": "Ölpreis fällt deutlich"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21-T., über 50-/200-T.; großer Trend Bear seit 17.11.",
+   "wirkung": "gegenwind",
+   "grund": "Bear-Trend gegen Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 10.11.: S&P lev netto -303.060",
+   "wirkung": "neutral",
+   "grund": "kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Commerzbank/UniCredit-Einigung mit Bund; Siemens vorbörslich +1 %",
+   "wirkung": "rueckenwind",
+   "grund": "leicht positiv"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: höhere US-Realzinsen dominieren, Dollar fest",
+   "wirkung": "neutral",
+   "grund": "Zinsen/Devisen, kaum Aktienbezug"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "14:30 US-Erstanträge, Philly Fed; Anthropic-Erstnotiz; Trump-Xi-Putin",
+   "wirkung": "neutral",
+   "grund": "kein Großtermin, aber Anthropic-Debüt als Taktgeber"
+  }
+ ],
+ "vola_pct": 17.78,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-18, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25850,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25850,
+  "zeit": 1795075585,
+  "zeit_iso": "2026-11-19T08:06:25.022000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.987,
+ "vortag": {
+  "schluss": 25736.2402,
+  "hoch": 26139.16,
+  "tief": 25723.67,
+  "tag": "2026-11-18"
+ },
+ "sigma_punkte": 288,
+ "spanne": [
+  25562,
+  26138
+ ],
+ "ergebnis": null
+}
