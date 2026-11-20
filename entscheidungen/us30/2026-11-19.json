@@ -106,5 +106,17 @@
   49931,
   50949
  ],
- "ergebnis": null
+ "ergebnis": {
+  "einstieg": 50440,
+  "schluss": 49097.0586,
+  "bewegung_punkte": -1343,
+  "eroeffnung": 50432.32,
+  "hoch": 50454.81,
+  "tief": 49091.92,
+  "in_spanne": false,
+  "ausgang": "Schluss",
+  "punkte": -1343,
+  "richtig": false,
+  "punkte_ohne_marken": -1343
+ }
 }

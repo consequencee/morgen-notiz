@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-20",
+ "richtung": "short",
+ "score": 3,
+ "grund": "Globaler KI-Ausverkauf (Nikkei −5 %, DAX −2 %, Nasdaq 100 −1,5 %), Goldman Sachs als größter Bremser und der große Bear-Trend überwiegen knapp die Umschichtung in defensive Dow-Werte und fallende Renditen.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 49.072 (−0,05 %), jetzt 49.172 (+0,2 % seit Eröffnung)",
+   "wirkung": "rueckenwind",
+   "grund": "Leichte Erholung nach dem −1.101-Punkte-Tag"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +57 Pkt.; GS −184, UNH +79, CAT −69",
+   "wirkung": "neutral",
+   "grund": "Umschichtung in Defensive gleicht Goldman aus"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "keine Daten um 14:30; Michigan 16:00",
+   "wirkung": "neutral",
+   "grund": "Kein Impuls vor Eröffnung"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −2,04 %, Euro Stoxx 50 −2,07 %, Nikkei −5,06 %",
+   "wirkung": "gegenwind",
+   "grund": "Globaler Risikoabbau"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Dezember 101 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Erhöhung voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,69 %, 10J 4,98 % (−7 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "Fallende Renditen entlasten"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,01 %, LQD +0,29 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress sichtbar"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 81,99 (−1,47 %), Brent 88,70 (−3,57 %), EUR/USD 1,0991",
+   "wirkung": "neutral",
+   "grund": "Fallendes Öl hilft, signalisiert aber auch Wachstumssorgen"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage-Schnitt; Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "Bear passt zur Richtung Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev netto −303.060",
+   "wirkung": "neutral",
+   "grund": "Keine Extreme"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Chip-Ausverkauf, Nvidia −3,2 %, Goldman −3,5 %",
+   "wirkung": "gegenwind",
+   "grund": "KI-Skepsis nach verblasstem Anthropic-Debüt"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Carry trade unwind in full swing",
+   "wirkung": "gegenwind",
+   "grund": "Risikoabbau läuft"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Michigan 16:00, Fed Cook 18:15, großer Optionsverfall",
+   "wirkung": "neutral",
+   "grund": "Kein Zinsentscheid"
+  }
+ ],
+ "vola_pct": 20.34,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 49172,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 49172,
+  "zeit": 1795185162,
+  "zeit_iso": "2026-11-20T14:32:42+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 49097.0586,
+  "hoch": 50454.81,
+  "tief": 49091.92,
+  "tag": "2026-11-19"
+ },
+ "sigma_punkte": 628,
+ "spanne": [
+  48544,
+  49800
+ ],
+ "ergebnis": null
+}
