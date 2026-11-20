@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-20",
+ "richtung": "short",
+ "score": 5,
+ "grund": "Globaler KI-Ausverkauf: Wall Street -2 %, Nikkei -5 %, US-Futures weiter schwach und großer Trend Bear; Gegenargument: sechster Verlusttag, Erholung nach Eröffnungslücke möglich.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 -2,02 %, Nasdaq 100 -2,21 %, Futures -0,33 % / -0,75 %",
+   "wirkung": "gegenwind",
+   "grund": "Sechster Verlusttag am US-Markt, KI-Werte unter Druck, Futures weiter tiefer"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.176 (-1,13 %)",
+   "wirkung": "gegenwind",
+   "grund": "Deutliche Lücke nach unten, 200-Tage-Linie bei 24.998 in Reichweite"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei -5,06 %, Hang Seng -2,00 %, Shanghai -1,22 %, CSI 300 -0,76 %",
+   "wirkung": "gegenwind",
+   "grund": "Breiter Ausverkauf, Kospi -5,6 %"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "DE Erzeugerpreise 1,4 % m/m vs. 0,9 %; US-Erstanträge 203K vs. 198K",
+   "wirkung": "gegenwind",
+   "grund": "Heißere Erzeugerpreise stützen Zinssorgen"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed Dez.: 99 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Straffungszyklus fest eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,37 % (-4 Bp.), US 10J 5,02 % (-3 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "Flucht in Anleihen senkt Renditen leicht"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG -0,16 %, LQD -0,07 %",
+   "wirkung": "neutral",
+   "grund": "Kein Stress am Kreditmarkt sichtbar"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 89,51 (-2,69 %), EUR/USD 1,0982",
+   "wirkung": "neutral",
+   "grund": "Billigeres Öl hilft, fällt aber als Konjunktursorge"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21T (26.009) und 50T (25.627), über 200T (24.998); großer Trend Bear seit 17.11.",
+   "wirkung": "gegenwind",
+   "grund": "Bear passt zur Short-Richtung"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P-Future Hebel-Fonds netto -303.060 (+69.258)",
+   "wirkung": "neutral",
+   "grund": "Hohe Shortposition kann Erholung befeuern, aber kein Auslöser"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "keine eigenen Meldungen der Schwergewichte gefunden",
+   "wirkung": "neutral",
+   "grund": "Tech-/KI-nahe Werte im Sog"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Carry trade unwind in full swing",
+   "wirkung": "gegenwind",
+   "grund": "Auflösung von Carry-Positionen belastet Risikoanlagen"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "Lagarde 9:15, Nagel 14:00, Waller 14:25, Michigan 16:00, Eurex-Verfall 13:00",
+   "wirkung": "neutral",
+   "grund": "Kein großer Termin, Verfall kann Schwankung erhöhen"
+  }
+ ],
+ "vola_pct": 18.72,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-19, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25176,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25176,
+  "zeit": 1795161880,
+  "zeit_iso": "2026-11-20T08:04:40.147000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.991,
+ "vortag": {
+  "schluss": 25463.8105,
+  "hoch": 25945.52,
+  "tief": 25463.81,
+  "tag": "2026-11-19"
+ },
+ "sigma_punkte": 296,
+ "spanne": [
+  24880,
+  25472
+ ],
+ "ergebnis": null
+}
