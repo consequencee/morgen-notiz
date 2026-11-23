@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-23",
+ "richtung": "long",
+ "score": 4,
+ "grund": "Erleichterungsrally nach der schlechtesten Woche seit 2020: Nvidia-Comeback von Huang, breite Gewinne der Schwergewichte und Short-Eindeckung überwiegen den Bear-Trend und steigende Renditen.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke +2,27 %, +0,14 % seit Eröffnung",
+   "wirkung": "rueckenwind",
+   "grund": "Gap hält, Tief = Eröffnung"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +1.071 Pkt.",
+   "wirkung": "rueckenwind",
+   "grund": "GS, NVDA, CAT, MSFT tragen breit"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Chicago Fed -0,06 vs. 0,20",
+   "wirkung": "neutral",
+   "grund": "schwach, aber kaum marktbewegend"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +1,63 %, ES50 +1,88 %",
+   "wirkung": "rueckenwind",
+   "grund": "Europa im Erholungsmodus"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "101 % für +25 Bp. am 9.12.",
+   "wirkung": "gegenwind",
+   "grund": "Fed straffer"
+  },
+  {
+   "name": "Renditen",
+   "wert": "2J 4,72 %, 10J 4,97 % (+6 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "steigende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,32 %, LQD -0,04 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI -2,41 %, Brent -4,83 %, EUR/USD 1,0942",
+   "wirkung": "rueckenwind",
+   "grund": "billigeres Öl"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage, Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "Trend passt nicht zu Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "Hebel-Fonds S&P netto -234.978",
+   "wirkung": "rueckenwind",
+   "grund": "Short-Eindeckung möglich"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Huang zurück als Nvidia-CEO; UNH -5 %",
+   "wirkung": "rueckenwind",
+   "grund": "KI-Stimmung dreht"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: uneasy calm",
+   "wirkung": "neutral",
+   "grund": "Stabilisierung, aber fragil"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "US-PMI 15:45, Williams 22:00",
+   "wirkung": "neutral",
+   "grund": "kein Zinsentscheid"
+  }
+ ],
+ "vola_pct": 27.4,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 49307,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 49307,
+  "zeit": 1795444360,
+  "zeit_iso": "2026-11-23T14:32:40+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 48147.3281,
+  "hoch": 49594.9,
+  "tief": 47998.86,
+  "tag": "2026-11-20"
+ },
+ "sigma_punkte": 848,
+ "spanne": [
+  48459,
+  50155
+ ],
+ "ergebnis": null
+}
