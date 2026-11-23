@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-23",
+ "richtung": "long",
+ "score": 4,
+ "grund": "Kräftig steigende US-Futures, fallender Ölpreis und hohe Short-Positionen sprechen nach sechs Verlusttagen für eine Gegenbewegung, gegen den Bear-Trend und steigende Renditen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 −3,70 %, Nasdaq 100 −5,61 % am Freitag; Futures S&P +2,23 %, Nasdaq +2,97 %",
+   "wirkung": "rueckenwind",
+   "grund": "Nach dem KI-Ausverkauf deuten die Futures auf eine kräftige Gegenbewegung."
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 24.895 (+0,37 %), Eröffnung n/v",
+   "wirkung": "rueckenwind",
+   "grund": "Leicht fester Start nahe dem Oktober-Tief, DAX weniger techlastig."
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei geschlossen (Feiertag), Shanghai +0,15 %, CSI 300 +0,09 %, Hang Seng −0,16 %",
+   "wirkung": "neutral",
+   "grund": "China dreht nach schwachem Start ins Plus, Stabilisierung statt Anschlussverkäufe."
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-Verbraucherstimmung 51,5 vs. 51,0; PMIs Deutschland 9:30 offen",
+   "wirkung": "neutral",
+   "grund": "Keine nennenswerte Überraschung bisher."
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 96 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Straffungserwartung der Fed bleibt hoch und belastet Bewertungen."
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,32 % (+2 Bp.), US 10J 4,96 % (+5 Bp. live)",
+   "wirkung": "gegenwind",
+   "grund": "Renditen ziehen nach dem Rutsch vom Freitag wieder an."
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,26 %, LQD +0,59 % (Freitag); FRED n/v",
+   "wirkung": "gegenwind",
+   "grund": "Leichte Flucht aus Hochzins in Qualität, kein akuter Stress."
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 89,59 USD (−3,22 %), EUR/USD 1,0997 (+0,25 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Fallender Ölpreis entlastet, Euro stabil."
+  },
+  {
+   "name": "Trend",
+   "wert": "Unter 21-, 50- und 200-Tage-Schnitt; großer Trend Bear seit 17.11.",
+   "wirkung": "gegenwind",
+   "grund": "Trendlage spricht gegen Long."
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P-Future Hebelfonds netto −235.000 Kontrakte (Stand 17.11.)",
+   "wirkung": "rueckenwind",
+   "grund": "Hohe Short-Positionen bieten Treibstoff für Eindeckungen."
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Bayer vorbörslich ca. +7 % (Glyphosat-Vergleich genehmigt)",
+   "wirkung": "rueckenwind",
+   "grund": "Positiver Einzelimpuls, sonst wenige Unternehmenstermine."
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Unruhige Ruhe, Märkte stabilisieren sich",
+   "wirkung": "neutral",
+   "grund": "Korrekturen seit 2022 kurz und heftig, Dollar bleibt aber gestützt."
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "PMIs Europa 9:15–10:30, US-PMIs 15:45",
+   "wirkung": "neutral",
+   "grund": "Kein Großereignis im Fenster."
+  }
+ ],
+ "vola_pct": 26.11,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-20, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 24895,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 24895,
+  "zeit": 1795421087,
+  "zeit_iso": "2026-11-23T08:04:47.148000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.991,
+ "vortag": {
+  "schluss": 24802.7793,
+  "hoch": 25194.64,
+  "tief": 24801.22,
+  "tag": "2026-11-20"
+ },
+ "sigma_punkte": 408,
+ "spanne": [
+  24487,
+  25303
+ ],
+ "ergebnis": null
+}
