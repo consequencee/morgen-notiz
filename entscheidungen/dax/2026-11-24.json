@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-24",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Die US-Tech-Rally nach Huangs Rückkehr, die Chip-Rally in Asien und billigeres Öl überwiegen knapp; die bröckelnde Indikation, der Bear-Trend und die eingepreiste Fed-Erhöhung bremsen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 +4,73 %, Nasdaq 100 +6,86 %, Dow +3,01 %; Futures S&P +0,19 %, Nasdaq +0,18 %",
+   "wirkung": "rueckenwind",
+   "grund": "Bester US-Tag seit April 2025 nach Huangs Rückkehr zu Nvidia, Futures halten die Gewinne"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.282 (−0,22 %), X-Dax um 7:16 noch 25.394 (+0,2 %)",
+   "wirkung": "gegenwind",
+   "grund": "Vorbörsliche Gewinne bröckeln, der DAX hat die US-Rally gestern schon zum Teil vorweggenommen"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +3,91 %, Shanghai +0,27 %, CSI 300 +0,14 %, Hang Seng −0,77 %; Kospi ca. +6 %, Taiex ca. +9 %",
+   "wirkung": "rueckenwind",
+   "grund": "Chip-Rally in Japan, Korea, Taiwan; China nur seitwärts"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "Ifo 10:00 offen (Prognose 90,5); US-Erstanträge 203K vs. 198K",
+   "wirkung": "neutral",
+   "grund": "Keine frische Überraschung vor dem Ifo"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 107 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Fed-Erhöhung voll eingepreist, weitere im Januar/März wahrscheinlich"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,28 % (±0), US 10J 4,93 % live (+1 Bp.)",
+   "wirkung": "neutral",
+   "grund": "Renditen stabil auf hohem Niveau"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,25 %, LQD +0,23 %",
+   "wirkung": "rueckenwind",
+   "grund": "Anleihe-ETFs erholt, kein akuter Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 86,77 USD (−2,91 %, Yahoo), EUR/USD 1,0910 (−0,56 %)",
+   "wirkung": "rueckenwind",
+   "grund": "Billigeres Öl und schwächerer Euro helfen Exporteuren"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21-T (25.989) und 50-T (25.610), über 200-T (24.999); großer Trend Bear seit 17.11.",
+   "wirkung": "gegenwind",
+   "grund": "Bear-Trend gegen die Long-Richtung"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 17.11.: Hebel-Fonds S&P netto −234.978",
+   "wirkung": "rueckenwind",
+   "grund": "Hohe Shorts liefern Treibstoff für Eindeckungen"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Keine großen Meldungen der Schwergewichte",
+   "wirkung": "neutral",
+   "grund": "Tech-/KI-Werte folgen eher der US-Stimmung"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar droht zu überschießen; vorsichtig bei Bunds",
+   "wirkung": "neutral",
+   "grund": "Kein klares Aktiensignal"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "Ifo 10:00, US Conference Board 16:00",
+   "wirkung": "neutral",
+   "grund": "Kein Großereignis im Fenster"
+  }
+ ],
+ "vola_pct": 20.45,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-23, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25282,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25282,
+  "zeit": 1795507482,
+  "zeit_iso": "2026-11-24T08:04:42.044000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.991,
+ "vortag": {
+  "schluss": 25337.2695,
+  "hoch": 25386.82,
+  "tief": 24873.34,
+  "tag": "2026-11-23"
+ },
+ "sigma_punkte": 324,
+ "spanne": [
+  24958,
+  25606
+ ],
+ "ergebnis": null
+}
