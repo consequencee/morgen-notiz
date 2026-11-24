@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-24",
+ "richtung": "short",
+ "score": 4,
+ "grund": "Gewinnmitnahmen bei Nvidia und Chipwerten, ein schwächeres Europa, die voll eingepreiste Fed-Erhöhung und der Bear-Trend überwiegen leicht die Stütze durch hohe Short-Positionen und die relative Stärke des Dow.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Eröffnung 49.495 (−0,20 %), jetzt 49.394 (−0,2 % seit Eröffnung), Hoch/Tief 49.495/49.294",
+   "wirkung": "gegenwind",
+   "grund": "Rücksetzer nach dem +3-%-Tag, Eröffnung ist bisher das Hoch"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −168 Pkt.; NVDA −56, GS −55, CAT −36, UNH −32, AMGN +30",
+   "wirkung": "gegenwind",
+   "grund": "Gestrige Gewinner geben nach"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Case-Shiller 20 J/J 2,6 % vs. 2,7 %, FHFA 0,0 % vs. 0,2 %; Verbrauchervertrauen 16:00 (Prognose 92,4)",
+   "wirkung": "neutral",
+   "grund": "Häuserpreise etwas schwächer, kaum marktbewegend"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −0,94 %, Euro Stoxx 50 −0,84 %; Nikkei +3,91 %, Hang Seng −0,73 %",
+   "wirkung": "gegenwind",
+   "grund": "Europa dreht nach fester Eröffnung ins Minus"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 101 % für +25 Bp., Januar 69 %",
+   "wirkung": "gegenwind",
+   "grund": "Straffung voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,66 % (+3 Bp.), 10J 4,90 % (−2 Bp.)",
+   "wirkung": "neutral",
+   "grund": "Kaum verändert"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,15 %, LQD −0,05 % (FRED n/v)",
+   "wirkung": "neutral",
+   "grund": "Kein Stress sichtbar"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 81,22 (+1,31 %), Brent 87,90 (−1,64 %), EUR/USD 1,0977",
+   "wirkung": "neutral",
+   "grund": "Gemischt"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage-Schnitt; Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "Bear passt zur Richtung Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev netto −234.978 (17.11.)",
+   "wirkung": "gegenwind",
+   "grund": "Hohe Shorts können Eindeckungen auslösen"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia −5,5 %, Chipwerte schwach; Kritik von US-Abgeordneten an Huangs Rückkehr",
+   "wirkung": "gegenwind",
+   "grund": "KI-Erholung wird getestet"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar evtl. überschossen, heißes PCE am Mittwoch",
+   "wirkung": "gegenwind",
+   "grund": "Inflationsrisiko vor Fed"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Verbrauchervertrauen 16:00, Richmond-Fed 16:00; PCE morgen",
+   "wirkung": "neutral",
+   "grund": "Kein Zinsentscheid"
+  }
+ ],
+ "vola_pct": 19.05,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 49394,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 49394,
+  "zeit": 1795530771,
+  "zeit_iso": "2026-11-24T14:32:51+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.993,
+ "vortag": {
+  "schluss": 49595.3086,
+  "hoch": 49810.26,
+  "tief": 49033.31,
+  "tag": "2026-11-23"
+ },
+ "sigma_punkte": 591,
+ "spanne": [
+  48803,
+  49985
+ ],
+ "ergebnis": null
+}
