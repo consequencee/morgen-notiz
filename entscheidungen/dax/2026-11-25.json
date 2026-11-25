@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-25",
+ "richtung": "short",
+ "score": 3,
+ "grund": "Asiatisches Chip-Beben, deutlich tiefere US-Futures und neue Zollpläne überwiegen die robuste DAX-Vorbörse; PCE um 14:30 ist das Ereignisrisiko.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 -0,50 %, Nasdaq 100 -1,99 %, Dow +0,85 %; Futures S&P -1,18 %, Nasdaq -2,11 %",
+   "wirkung": "gegenwind",
+   "grund": "KI-Ausverkauf geht weiter, Futures deutlich tiefer als beim DAX-Schluss"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.084 (+0,26 %), Eröffnung n/v",
+   "wirkung": "rueckenwind",
+   "grund": "DAX zeigt sich robust gegen die Tech-Schwäche"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei -2,78 %, Kospi ca. -6 %, Shanghai -2,03 %, CSI 300 -1,65 %, Hang Seng -1,25 %",
+   "wirkung": "gegenwind",
+   "grund": "Chip-Beben in Asien"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "BIP Q3 DE +0,1 % q/q (revidiert von 0,2 %); US-Verbrauchervertrauen 103,3 vs. 92,2",
+   "wirkung": "neutral",
+   "grund": "Deutsches BIP schwach, US-Stimmung stark"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 99 % für +25 Bp.; EZB 2,50 %",
+   "wirkung": "gegenwind",
+   "grund": "Straffung voll eingepreist, heißer PCE erwartet"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,24 % (-3 Bp.), US 10J 4,87 % (-3 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "leicht fallende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG -0,12 %, LQD -0,13 %",
+   "wirkung": "neutral",
+   "grund": "kein akuter Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 87,05 USD (-4,76 %, Yahoo), EUR/USD 1,0942",
+   "wirkung": "rueckenwind",
+   "grund": "billigeres Öl"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21T (25.971) und 50T (25.602), knapp über 200T (25.000); großer Trend Bear seit 17.11.",
+   "wirkung": "rueckenwind",
+   "grund": "Bear passt zur Short-Richtung"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "n/v (CFTC nicht erreichbar)",
+   "wirkung": "neutral",
+   "grund": "keine aktuellen Daten"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "JPMorgan senkt Ziel Mercedes auf 50 Euro; Zollsorgen DHL",
+   "wirkung": "gegenwind",
+   "grund": "neue US-Zollpläne gegen EU"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: voller Abbau von Risikopositionen, PCE dürfte Rendite-Rückgang stoppen",
+   "wirkung": "gegenwind",
+   "grund": "Risk-off-Umfeld"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "14:30 US-PCE, BIP Q3, Auftragseingänge langlebige Güter, Erstanträge",
+   "wirkung": "gegenwind",
+   "grund": "Ereignisrisiko, Konsens erwartet höhere Inflation"
+  }
+ ],
+ "vola_pct": 21.72,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-24, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25084,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25084,
+  "zeit": 1795593798,
+  "zeit_iso": "2026-11-25T08:03:18.662000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.994,
+ "vortag": {
+  "schluss": 25017.8105,
+  "hoch": 25330.32,
+  "tief": 24955.35,
+  "tag": "2026-11-24"
+ },
+ "sigma_punkte": 342,
+ "spanne": [
+  24742,
+  25426
+ ],
+ "ergebnis": null
+}
