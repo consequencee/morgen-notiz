@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-25",
+ "richtung": "short",
+ "score": 5,
+ "grund": "Breiter Ausverkauf mit Lücke −1,1 % und weiterem Abrutschen nach heißen GDP/Kern-PCE-Daten, Chip-Schwäche und neuen Zollsorgen; großer Trend Bear.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke −1,10 %, seit Eröffnung −0,59 %, Eröffnung = Hoch",
+   "wirkung": "rueckenwind",
+   "grund": "Verkaufsdruck hält nach der Eröffnung an"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe −752 Pkt., GS −174, CAT −129, NVDA −78",
+   "wirkung": "rueckenwind",
+   "grund": "breite Schwäche der teuren Werte"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "BIP 4,3 % vs. 3,4 %, Kern-PCE J/J 3,3 % vs. 3,2 %, Anträge 189K vs. 201K",
+   "wirkung": "rueckenwind",
+   "grund": "heiße Daten stützen Fed-Erhöhung"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX −0,58 %, ES50 −0,81 %, Nikkei −2,78 %, Shanghai −2,03 %",
+   "wirkung": "rueckenwind",
+   "grund": "weltweit Risikoabbau"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 99 % für +25 Bp.",
+   "wirkung": "rueckenwind",
+   "grund": "Straffung voll eingepreist, Januar 57 %"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,59 %, 10J 4,83 % (−7 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "fallende Renditen dämpfen den Druck"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG −0,20 %, LQD +0,39 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress sichtbar"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 82,97 (+1,1 %), Brent 89,74 (−1,8 %), EUR/USD 1,0952",
+   "wirkung": "neutral",
+   "grund": "kein klares Signal"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage-Schnitt, großer Trend Bear seit 28.10.",
+   "wirkung": "rueckenwind",
+   "grund": "passt zu Short"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "Hebel-Fonds S&P netto −234.978",
+   "wirkung": "gegenwind",
+   "grund": "Eindeckungsrisiko wie gestern"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Nvidia −8 %, Chipwerte −5 bis −6 %, Zollberichte",
+   "wirkung": "rueckenwind",
+   "grund": "KI-Ausverkauf vertieft sich"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: voller Abbau von Risikopositionen, Fed bleibt hawkish",
+   "wirkung": "rueckenwind",
+   "grund": "Risiko-aus-Stimmung"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Neubauverkäufe 16:00, Ölvorräte 16:30; morgen Thanksgiving",
+   "wirkung": "neutral",
+   "grund": "kein Zinsentscheid, dünner Handel vor Feiertag"
+  }
+ ],
+ "vola_pct": 17.27,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 49178,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 49178,
+  "zeit": 1795617186,
+  "zeit_iso": "2026-11-25T14:33:06+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.992,
+ "vortag": {
+  "schluss": 50018.6992,
+  "hoch": 50075.12,
+  "tief": 49294.49,
+  "tag": "2026-11-24"
+ },
+ "sigma_punkte": 533,
+ "spanne": [
+  48645,
+  49711
+ ],
+ "ergebnis": null
+}
