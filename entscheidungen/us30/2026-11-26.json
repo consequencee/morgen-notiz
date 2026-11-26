@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-26",
+ "richtung": "kein",
+ "score": null,
+ "grund": "NYSE wegen Thanksgiving geschlossen – kein regulärer Handel bis zum US-Schluss.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "keine Eröffnung (Thanksgiving)",
+   "wirkung": "neutral",
+   "grund": "NYSE geschlossen"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +208 Pkt. (Kurse vom 25.11.)",
+   "wirkung": "neutral",
+   "grund": "kein Handel heute"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "keine (Feiertag)",
+   "wirkung": "neutral",
+   "grund": "Daten kamen gestern"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +2,01 %, Euro Stoxx 50 +1,92 %, Nikkei +0,86 %, Hang Seng +1,19 %",
+   "wirkung": "rueckenwind",
+   "grund": "Erholung weltweit"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 9.12.: 99 % +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Straffung voll eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "US 2J 4,65 %, 10J 4,86 % (−4 Bp.)",
+   "wirkung": "rueckenwind",
+   "grund": "fallende Renditen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,12 %, LQD +0,48 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "WTI 84,79 (+1,33 %), Brent 91,51 (−3,28 %), EUR/USD 1,0987",
+   "wirkung": "neutral",
+   "grund": "gemischt"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50/200-Tage-Schnitt, Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "Abwärtstrend"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev netto −234.978",
+   "wirkung": "rueckenwind",
+   "grund": "Short-Eindeckungen möglich"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "keine wesentlichen",
+   "wirkung": "neutral",
+   "grund": "Feiertag"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Fed straffen weiter",
+   "wirkung": "gegenwind",
+   "grund": "hawkische Fed"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "Börse geschlossen; Futures bis 19:00",
+   "wirkung": "neutral",
+   "grund": "Feiertag"
+  }
+ ],
+ "vola_pct": 22.72,
+ "vola_quelle": "VXD 2026-11-25T21:15:00.000Z, Yahoo Finance (^VXD, Cboe DJIA Volatility Index)",
+ "referenz": 50183,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 50183,
+  "zeit": 1795642337,
+  "zeit_iso": "2026-11-25T21:32:17+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 1.0,
+ "vortag": {
+  "schluss": 50182.9492,
+  "hoch": 50395.24,
+  "tief": 48913.74,
+  "tag": "2026-11-25"
+ },
+ "sigma_punkte": 718,
+ "spanne": [
+  49465,
+  50901
+ ],
+ "ergebnis": null
+}
