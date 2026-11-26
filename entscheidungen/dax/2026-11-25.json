@@ -106,5 +106,17 @@
   24742,
   25426
  ],
- "ergebnis": null
+ "ergebnis": {
+  "einstieg": 25084,
+  "schluss": 24702.1309,
+  "bewegung_punkte": -382,
+  "eroeffnung": 25083.98,
+  "hoch": 25151.42,
+  "tief": 24698.22,
+  "in_spanne": false,
+  "ausgang": "Schluss",
+  "punkte": 382,
+  "richtig": true,
+  "punkte_ohne_marken": 382
+ }
 }

@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-26",
+ "richtung": "long",
+ "score": 3,
+ "grund": "Die Kehrtwende der US-Techwerte, steigende US-Futures und freundliches Asien tragen den DAX, doch die große Eröffnungslücke an einem dünnen Thanksgiving-Tag und der Bear-Trend begrenzen die Überzeugung.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P 500 −0,25 %, Nasdaq 100 −0,64 % nach zeitweise fast −5 %; Futures S&P +0,37 %, Nasdaq +0,54 %",
+   "wirkung": "rueckenwind",
+   "grund": "Starke Erholung vom Tagestief, Futures legen weiter zu"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.155 (+1,83 % zum Schluss 24.702), Eröffnung n/v",
+   "wirkung": "neutral",
+   "grund": "Große Lücke preist viel ein, Rückfallrisiko an dünnem Tag"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +0,86 %, Hang Seng +1,45 %, Shanghai +0,01 %, CSI 300 +0,06 %",
+   "wirkung": "rueckenwind",
+   "grund": "Japan und Hongkong folgen der Tech-Erholung"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-Kern-PCE Oktober 3,3 % über Erwartung; GfK nur leicht besser",
+   "wirkung": "gegenwind",
+   "grund": "Hartnäckige Inflation stützt Fed-Straffung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 99 % für +25 Bp.; EZB 2,50 %, Protokoll heute",
+   "wirkung": "gegenwind",
+   "grund": "Fed straffen weiter, aber eingepreist"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,25 % (+3 Bp.), US 10J 4,85 % (−4 Bp. live)",
+   "wirkung": "neutral",
+   "grund": "Gemischt, kein klarer Impuls"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "FRED n/v; HYG +0,12 %, LQD +0,48 %",
+   "wirkung": "rueckenwind",
+   "grund": "Anleihe-ETFs fest, kein Kreditstress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 90,61 (−4,23 %, vermutlich Kontraktwechsel; WTI +0,23 %), EUR/USD 1,0976 (+0,12 %)",
+   "wirkung": "neutral",
+   "grund": "Kein klares Signal"
+  },
+  {
+   "name": "Trend",
+   "wert": "DAX unter 21T (25.928) und 50T (25.585), über 200T (24.999); großer Trend Bear seit 17.11.",
+   "wirkung": "gegenwind",
+   "grund": "Bear-Trend widerspricht Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT 17.11.: Hedgefonds S&P-Future netto −235 Tsd. (+68 Tsd.)",
+   "wirkung": "neutral",
+   "grund": "Short-Eindeckung möglich, kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "Rheinmetall Kapitalmarkttag, Bayer Kaufempfehlung Berenberg",
+   "wirkung": "rueckenwind",
+   "grund": "Leicht positiv"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Risikoappetit schwach, Zinsen fallen trotz heißer Inflation",
+   "wirkung": "neutral",
+   "grund": "Vorsichtig, keine Aktiensicht"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "EZB-Protokoll, EU-Sondergipfel, US-Börsen geschlossen (Thanksgiving)",
+   "wirkung": "neutral",
+   "grund": "Kein großes Ereignisrisiko, aber dünner Handel"
+  }
+ ],
+ "vola_pct": 20.32,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-25, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25155,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25155,
+  "zeit": 1795680302,
+  "zeit_iso": "2026-11-26T08:05:02.604000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.99,
+ "vortag": {
+  "schluss": 24702.1309,
+  "hoch": 25151.42,
+  "tief": 24698.22,
+  "tag": "2026-11-25"
+ },
+ "sigma_punkte": 320,
+ "spanne": [
+  24835,
+  25475
+ ],
+ "ergebnis": null
+}
