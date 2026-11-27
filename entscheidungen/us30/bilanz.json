@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-26",
+ "stand": "2026-11-27",
  "regeln": "NYSE bis 16:00 New York; Richtung vom Kurs zur Notiz bis Schluss; Range ±1 σ",
  "gesamt": {
   "trades": 15,
@@ -29,7 +29,7 @@
   "treffer_pct": 40,
   "soll_pct": 68
  },
- "kein_trade_tage": 0,
+ "kein_trade_tage": 1,
  "letzte": [
   {
    "datum": "2026-11-04",
@@ -270,6 +270,14 @@
    "punkte": -1005,
    "richtig": false,
    "punkte_ohne_marken": -1005
+  },
+  {
+   "datum": "2026-11-26",
+   "richtung": "kein",
+   "score": null,
+   "ausgang": "kein Handel (Börse geschlossen)",
+   "punkte": 0,
+   "richtig": null
   }
  ]
 }

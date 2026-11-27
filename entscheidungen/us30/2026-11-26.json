@@ -106,5 +106,9 @@
   49465,
   50901
  ],
- "ergebnis": null
+ "ergebnis": {
+  "ausgang": "kein Handel (Börse geschlossen)",
+  "punkte": 0,
+  "richtig": null
+ }
 }

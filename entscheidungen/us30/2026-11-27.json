@@ -1,0 +1,110 @@
+{
+ "bericht": "us30",
+ "datum": "2026-11-27",
+ "richtung": "long",
+ "score": 5,
+ "grund": "Breite Eröffnungsstärke (+463 Pkt. aus den Dow-Werten, alle großen Beiträge positiv), starke Vorgaben aus Asien und Europa und fallendes Brent überwiegen den Bear-Trend und die eingepreiste Fed-Erhöhung im Dezember.",
+ "signale": [
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Lücke +0,55 %, seit Eröffnung +0,43 %, Hoch 50.697",
+   "wirkung": "rueckenwind",
+   "grund": "Dow eröffnet auf Tagestief und steigt seitdem"
+  },
+  {
+   "name": "Schwergewichte heute",
+   "wert": "Summe +463 Pkt.; CAT +95, GS +64, MSFT +52",
+   "wirkung": "rueckenwind",
+   "grund": "breit getragen, kaum Bremser"
+  },
+  {
+   "name": "US-Daten heute",
+   "wert": "Warenhandelsbilanz −149,5 Mrd. vs. −135,9 Mrd.; Großhandelslager +0,9 % vs. +0,5 %",
+   "wirkung": "neutral",
+   "grund": "Nebendaten, kaum marktbewegend"
+  },
+  {
+   "name": "Europa & Asien",
+   "wert": "DAX +0,48 %, Euro Stoxx 50 +0,99 %, Nikkei +2,11 %, Shanghai +3,73 %",
+   "wirkung": "rueckenwind",
+   "grund": "weltweite Erholung"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "9.12.: 99 % für +25 Bp.",
+   "wirkung": "gegenwind",
+   "grund": "Fed erhöht wohl erneut"
+  },
+  {
+   "name": "Renditen",
+   "wert": "2J 4,67 %, 10J 4,89 % (+4 Bp.)",
+   "wirkung": "gegenwind",
+   "grund": "Renditen steigen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,15 %, LQD −0,03 %",
+   "wirkung": "neutral",
+   "grund": "kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 91,44 (−3,35 %), WTI 84,25, EUR/USD 1,0953",
+   "wirkung": "rueckenwind",
+   "grund": "Ölpreis fällt"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21T (51.328) und 50T (51.582), über 200T (50.773); großer Trend Bear seit 28.10.",
+   "wirkung": "gegenwind",
+   "grund": "Bear-Trend passt nicht zur Richtung"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "S&P lev netto −235k (+68k)",
+   "wirkung": "neutral",
+   "grund": "Shorts werden abgebaut"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "keine Quartalszahlen, keine großen Meldungen gefunden",
+   "wirkung": "neutral",
+   "grund": "ruhiger Feiertagshandel"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Dollar hält, Markt preist wieder Fed-Erhöhungen ein",
+   "wirkung": "neutral",
+   "grund": "vorsichtig, aber kein Aktienthema"
+  },
+  {
+   "name": "Termine im Fenster",
+   "wert": "verkürzter Handel bis 19:00 Uhr, keine Fed-Termine",
+   "wirkung": "rueckenwind",
+   "grund": "kein Ereignisrisiko, dünner Handel"
+  }
+ ],
+ "vola_pct": 14.4,
+ "vola_quelle": "S&P-500-Tagesoption (SPY), auf den Dow umgerechnet , Nasdaq option chain (CBOE didn't answer, so no IV or delta); als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 50675,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 50675,
+  "zeit": 1795789981,
+  "zeit_iso": "2026-11-27T14:33:01+00:00",
+  "quelle": "Yahoo Finance ^DJI"
+ },
+ "restzeit_anteil": 0.992,
+ "vortag": {
+  "schluss": 50182.9492,
+  "hoch": 50395.24,
+  "tief": 48913.74,
+  "tag": "2026-11-25"
+ },
+ "sigma_punkte": 458,
+ "spanne": [
+  50217,
+  51133
+ ],
+ "ergebnis": null
+}
