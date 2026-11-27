@@ -1,0 +1,110 @@
+{
+ "bericht": "dax",
+ "datum": "2026-11-27",
+ "richtung": "long",
+ "score": 4,
+ "grund": "Kräftige US-Futures, Chinas Rally nach Stützungszusage und der Schwung der Erholung überwiegen den Bear-Trend und steigende Renditen.",
+ "signale": [
+  {
+   "name": "Vorgaben USA",
+   "wert": "S&P-Future +1,66 %, Nasdaq-Future +2,27 % vs. Schluss 25.11.",
+   "wirkung": "rueckenwind",
+   "grund": "Tech-Erholung setzt sich fort"
+  },
+  {
+   "name": "Eröffnung & erste Minuten",
+   "wert": "Indikation 25.393 (+0,70 %)",
+   "wirkung": "neutral",
+   "grund": "Eröffnung n/v, Lücke moderat"
+  },
+  {
+   "name": "Asien & China",
+   "wert": "Nikkei +2,11 %, Shanghai +3,73 %, CSI 300 +4,17 %, Hang Seng +1,98 %",
+   "wirkung": "rueckenwind",
+   "grund": "Staatsrat sagt Marktstützung zu"
+  },
+  {
+   "name": "Datenüberraschungen",
+   "wert": "US-BIP 4,3 % vs. 3,4 %, Kern-PCE 3,3 % vs. 3,2 %",
+   "wirkung": "neutral",
+   "grund": "Starkes Wachstum, aber zinstreibend"
+  },
+  {
+   "name": "Zinserwartung",
+   "wert": "Fed 09.12.: 99 % Erhöhung",
+   "wirkung": "gegenwind",
+   "grund": "Straffung eingepreist, EZB mit Straffungsneigung"
+  },
+  {
+   "name": "Renditen",
+   "wert": "Bund 10J 3,28 %, US 10J 4,91 % live",
+   "wirkung": "gegenwind",
+   "grund": "Renditen steigen"
+  },
+  {
+   "name": "Kreditstress",
+   "wert": "HYG +0,12 %, LQD +0,48 %",
+   "wirkung": "rueckenwind",
+   "grund": "Kein Stress"
+  },
+  {
+   "name": "Öl & Dollar",
+   "wert": "Brent 92,56, EUR/USD 1,0977",
+   "wirkung": "neutral",
+   "grund": "Öl fester, Dollar ruhig"
+  },
+  {
+   "name": "Trend",
+   "wert": "unter 21/50-Tage-Schnitt, über 200; großer Trend Bear",
+   "wirkung": "gegenwind",
+   "grund": "Bear passt nicht zu Long"
+  },
+  {
+   "name": "Positionierung",
+   "wert": "COT S&P lev netto -234.978",
+   "wirkung": "neutral",
+   "grund": "kein Extrem"
+  },
+  {
+   "name": "Unternehmensnachrichten",
+   "wert": "SAP Stellenabbau, IT-Vorfall; Rheinmetall gefragt",
+   "wirkung": "neutral",
+   "grund": "gemischt"
+  },
+  {
+   "name": "Profi-Sicht",
+   "wert": "ING: Erholung, aber Fed-Straffung zurück in Preisen",
+   "wirkung": "neutral",
+   "grund": "keine Aktienaussage"
+  },
+  {
+   "name": "Termine bis 17:30",
+   "wert": "Inflation Frankreich/Spanien, US-Kurzhandel",
+   "wirkung": "neutral",
+   "grund": "kein großes Ereignis"
+  }
+ ],
+ "vola_pct": 16.27,
+ "vola_quelle": "DAX-Tagesoption (Eurex ODAP) 2026-11-26, Eurex, tägliche Abrechnungspreise (dSettle) der DAX-Tagesoptionen ODAP; als Jahresvola ausgedrückt (σ Tag × √252)",
+ "referenz": 25393,
+ "referenz_art": "Kurs zur Notiz",
+ "einstieg": {
+  "kurs": 25393,
+  "zeit": 1795766726,
+  "zeit_iso": "2026-11-27T08:05:26.105000+00:00",
+  "quelle": "Median der Echtzeit-Indikationen L&S, J.P. Morgan, UBS (onvista)"
+ },
+ "restzeit_anteil": 0.989,
+ "vortag": {
+  "schluss": 25215.5195,
+  "hoch": 25300.88,
+  "tief": 25114.25,
+  "tag": "2026-11-26"
+ },
+ "sigma_punkte": 259,
+ "spanne": [
+  25134,
+  25652
+ ],
+ "ergebnis": null
+}
